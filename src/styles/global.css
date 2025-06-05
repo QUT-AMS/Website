@@ -1,0 +1,16 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=Share+Tech&display=swap');
+@import "tailwindcss";
+
+@theme {
+    --color-primary: #FF00E6;
+    --color-secondary: #FF8BF4;
+    --color-background: #090909;
+    --font-body: "Inter", sans-serif;
+    --font-heading: "Share Tech", sans-serif;
+}
+
+.background {
+background: radial-gradient(125% 125% at 50% 10%, #090909 40%, #FF00E6 100%);
+
+}
+

@@ -1,0 +1,17 @@
+---
+import { Icon } from "astro-icon/components"
+
+interface Props {
+    path?: string
+    icon?: string
+}
+
+const {
+    path,
+    icon,
+} = Astro.props as Props
+---
+
+<a href={ path } class="text-white text-3xl border-2 border-white rounded-lg p-2 hover:bg-white/20 transition-all duration-300">
+    <Icon name={ icon } />
+</a>

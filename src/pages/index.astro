@@ -1,5 +1,7 @@
 ---
-
+import "@/styles/global.css"
+import Logo from "@/logos/Logo-Full.svg"
+import Button from "@/components/Button.astro"
 ---
 
 <html lang="en">
@@ -7,10 +9,22 @@
 		<meta charset="utf-8" />
 		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
 		<meta name="viewport" content="width=device-width" />
-		<meta name="generator" content={Astro.generator} />
 		<title>Astro</title>
 	</head>
-	<body>
-		<h1>Astro</h1>
+	<body class="dark">
+		<main class="flex min-h-screen flex-col justify-center items-center background">
+			<h1 class="text-4xl font-heading text-white p-8">Something exciting is coming soon . . .</h1>
+			<Logo class="w-1/2" />
+			<h1 class="text-4xl font-heading text-white p-8">Empowering the Future with AI & Machine Learning</h1>
+			<p class="text-white font-body text-xl">We're just getting started! While the site is under construction, follow us on social media to stay in the loop and see what we're up to.</p>
+			
+			<div class="flex flex-row gap-4 m-8">
+				<Button path="https://discord.gg/tUDGrrNPf7" icon="tabler:brand-discord" />
+				<Button path="https://github.com/qut-ams" icon="tabler:brand-github" />
+				<Button path="https://www.instagram.com/qut_ams/" icon="tabler:brand-instagram" />
+				<Button path="https://www.linkedin.com/company/qut-ams/" icon="tabler:brand-linkedin" />
+				<Button path="https://www.tiktok.com/@qut_ams" icon="tabler:brand-tiktok" />
+			</div>
+		</main>
 	</body>
 </html>

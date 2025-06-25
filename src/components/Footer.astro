@@ -1,0 +1,33 @@
+---
+import Button from "@/components/Button.astro"
+---
+
+<footer
+  style="
+    margin-top: 80px;
+    padding: 40px 20px;
+    text-align: center;
+    color: #ccc;
+    font-size: 0.9rem;
+    background-color: #111;
+  "
+>
+  <!-- Social links row -->
+  <div
+    style="
+      display: flex;
+      justify-content: center;
+      gap: 16px;
+      margin-bottom: 24px;
+    "
+  >
+    <Button path="https://discord.gg/tUDGrrNPf7" icon="tabler:brand-discord" />
+    <Button path="https://github.com/qut-ams"         icon="tabler:brand-github"  />
+    <Button path="https://www.instagram.com/qut_ams/" icon="tabler:brand-instagram" />
+    <Button path="https://www.linkedin.com/company/qut-ams/" icon="tabler:brand-linkedin" />
+    <Button path="https://www.tiktok.com/@qut_ams"     icon="tabler:brand-tiktok"   />
+  </div>
+
+  <p>© Copyright 2025, QUT AI & ML Society. All Rights Reserved.</p>
+  <p>Designed & Developed by Zac Knight & the first QUT AMS Executive Team</p>
+</footer>

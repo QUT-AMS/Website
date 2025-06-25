@@ -2,6 +2,8 @@
 import "@/styles/global.css"
 import Logo from "@/logos/Logo-Full.svg"
 import Button from "@/components/Button.astro"
+import Navigation from "@/components/Navigation.astro"
+import Footer from '../components/Footer.astro';
 ---
 
 <html lang="en">
@@ -11,12 +13,12 @@ import Button from "@/components/Button.astro"
 		<meta name="viewport" content="width=device-width" />
 		<title>QUT AI & ML Society</title>
 	</head>
-	<body class="dark">
-		<main class="flex min-h-screen flex-col justify-center items-center background py-4 px-8">
-			<h1 class="text-4xl font-heading text-center text-white p-8">Something exciting is coming soon . . .</h1>
+	<body class="dark background">
+		<Navigation />
+		<main class="min-h-screen flex flex-col justify-center items-center">
 			<Logo class="md:w-1/2" />
-			<h1 class="text-2xl text-center md:text-4xl font-heading text-white p-8">Empowering the Future Through AI & Machine Learning</h1>
-			<p class="text-white font-body text-center text-lg md:text-xl">We're just getting started! While the site is under construction, follow us on social media to stay in the loop and see what we're up to.</p>
+			<h1 class="text-2xl text-center md:text-4xl font-heading p-8" style="color:white">Empowering the Future Through AI & Machine Learning</h1>
+			<p class="text-white font-body text-center text-lg md:text-xl">Follow us on social media to stay in the loop and see what we're up to.</p>
 			
 			<div class="flex flex-row gap-4 m-8">
 				<Button path="https://discord.gg/tUDGrrNPf7" icon="tabler:brand-discord" />
@@ -26,5 +28,6 @@ import Button from "@/components/Button.astro"
 				<Button path="https://www.tiktok.com/@qut_ams" icon="tabler:brand-tiktok" />
 			</div>
 		</main>
+		<Footer />
 	</body>
 </html>

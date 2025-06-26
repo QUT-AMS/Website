@@ -1,0 +1,70 @@
+---
+import "@/styles/global.css"
+import Navigation from "@/components/Navigation.astro"
+import Footer from '@/components/Footer.astro';
+---
+
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <meta name="viewport" content="width=device-width" />
+    <title>QUT AI & ML Society</title>
+  </head>
+  <body class="dark background-non-curved">
+    <Navigation />
+    <main class="min-h-screen">
+
+      <div class="team-header">
+        <h1>Beginner Projects</h1>
+      </div>
+
+
+      <div class="project-cards" style="padding: 50px 200px">
+
+        <!-- Card 1: Linear Regression -->
+        <div class="card">
+          <img src="/images/linear.png" alt="Linear Regression" />
+          <div class="content">
+            <h2>Linear Regression</h2>
+            <p>
+              Linear regression helps us understand and quantify relationships between variables,
+              making it essential for prediction, analysis, and informed decision-making.
+            </p>
+            <a href="#" class="btn">Learn more</a>
+          </div>
+        </div>
+
+        <!-- Card 2: Logistic Regression -->
+        <div class="card">
+          <img src="/images/logistic.png" alt="Logistic Regression" />
+          <div class="content">
+            <h2>Logistic Regression</h2>
+            <p>
+              Logistic regression helps us understand and quantify relationships between variables,
+              making it essential for prediction, analysis, and informed decision-making.
+            </p>
+            <a href="#" class="btn">Learn more</a>
+          </div>
+        </div>
+
+        <!-- Card 3: Clustering -->
+        <div class="card">
+          <img src="/images/clustering.png" alt="Clustering" />
+          <div class="content">
+            <h2>Clustering</h2>
+            <p>
+              Clustering helps us group similar data points and uncover hidden patterns, 
+              enabling segmentation, pattern recognition, and unsupervised learning.
+            </p>
+            <a href="#" class="btn">Learn more</a>
+          </div>
+        </div>
+
+      </div>
+
+
+    </main>
+	<Footer />
+  </body>
+</html>

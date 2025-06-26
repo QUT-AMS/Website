@@ -4,11 +4,11 @@ import Logo from "@/logos/Logo-Full.svg"
 const { pathname } = Astro.url;
 ---
 
-<nav class="relative flex items-center justify-center h-15">
+<nav class="relative flex items-center justify-center h-14">
     
-  <div class="absolute top-3 bottom-3 left-10">
+  <div class="absolute top-2 left-10">
     <a href="/">
-        <Logo class="w-56 logo-header" />
+        <Logo class="w-54 logo-header" />
     </a>
   </div>
 
@@ -16,23 +16,28 @@ const { pathname } = Astro.url;
     <a href="/"        class={pathname === "/"        ? "active" : ""}>Home</a>
     <a href="/about"   class={pathname === "/about"   ? "active" : ""}>About Us</a>
     <a href="/team"    class={pathname === "/team"    ? "active" : ""}>Our Team</a>
-    <a href="/projects"class={pathname === "/projects"? "active" : ""}>Projects</a>
+
+    <div class="dropdown">
+      <a class={pathname.startsWith("/projects") ? "active" : ""}>Projects</a>
+      <div class="dropdown-content">
+        <a href="/projects/beginner">Beginner</a>
+        <a href="/projects/intermediate">Intermediate</a>
+        <a href="/projects/advanced">Advanced</a>
+      </div>
+    </div>
+
     <a href="/events"  class={pathname === "/events"  ? "active" : ""}>Events</a>
     <a href="/contact" class={pathname === "/contact" ? "active" : ""}>Contact Us</a>
     <div class="indicator"></div>
   </div>
 </nav>
 
+
 <script type="module" client:load>
-  // Grab the nav container, all link elements, and the underline indicator
   const navContainer = document.querySelector('.nav-links');
-  const links        = Array.from(navContainer.querySelectorAll('a'));
+  const links        = Array.from(navContainer.querySelectorAll('a:not(.dropdown-content a)'));
   const indicator    = navContainer.querySelector('.indicator');
 
-  /**
-   * Positions and resizes the indicator under a given link.
-   * @param {HTMLAnchorElement} linkEl
-   */
   function updateIndicator(linkEl) {
     const linkBox      = linkEl.getBoundingClientRect();
     const containerBox = navContainer.getBoundingClientRect();
@@ -42,22 +47,18 @@ const { pathname } = Astro.url;
     indicator.style.left  = `${offsetX}px`;
   }
 
-  // On load: snap the indicator under the active link (if present)
   const activeLink = navContainer.querySelector('a.active');
   if (activeLink) {
     updateIndicator(activeLink);
   }
 
-  // On hover: move indicator under the hovered link
   links.forEach(link => {
     link.addEventListener('mouseenter', () => updateIndicator(link));
   });
 
-  // On mouse leave: return indicator to the active link
   navContainer.addEventListener('mouseleave', () => {
     if (activeLink) {
       updateIndicator(activeLink);
     }
   });
 </script>
-

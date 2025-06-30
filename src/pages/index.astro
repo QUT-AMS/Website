@@ -1,6 +1,6 @@
 ---
 import "@/styles/global.css"
-import Logo from "@/logos/Logo-Full.svg"
+import KeyLogo from "@/logos/Logo-Full.svg"
 import Button from "@/components/Button.astro"
 import Navigation from "@/components/Navigation.astro"
 import Footer from '../components/Footer.astro';
@@ -15,18 +15,10 @@ import Footer from '../components/Footer.astro';
 	</head>
 	<body class="dark background">
 		<Navigation />
-		<main class="min-h-screen flex flex-col justify-center items-center">
-			<Logo class="md:w-1/2" />
+		<main class="min-h-screen flex flex-col justify-center items-center p-12">
+
+			<KeyLogo class="md:w-1/2"/>
 			<h1 class="text-2xl text-center md:text-4xl font-heading p-8" style="color:white">Empowering the Future Through AI & Machine Learning</h1>
-			<p class="text-white font-body text-center text-lg md:text-xl">Follow us on social media to stay in the loop and see what we're up to.</p>
-			
-			<div class="flex flex-row gap-4 m-8">
-				<Button path="https://discord.gg/tUDGrrNPf7" icon="tabler:brand-discord" />
-				<Button path="https://github.com/qut-ams" icon="tabler:brand-github" />
-				<Button path="https://www.instagram.com/qut_ams/" icon="tabler:brand-instagram" />
-				<Button path="https://www.linkedin.com/company/qut-ams/" icon="tabler:brand-linkedin" />
-				<Button path="https://www.tiktok.com/@qut_ams" icon="tabler:brand-tiktok" />
-			</div>
 		</main>
 		<Footer />
 	</body>

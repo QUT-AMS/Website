@@ -1,42 +1,148 @@
 ---
-import Logo from "@/logos/Logo-Full.svg"
+import MainLogo from "@/logos/Head-Transparent.svg"
 
 const { pathname } = Astro.url;
 ---
-
-<nav class="relative flex items-center justify-center h-14">
     
-  <div class="absolute top-2 left-10">
-    <a href="/">
-        <Logo class="w-54 logo-header" />
-    </a>
-  </div>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8"/>
+  <meta name="viewport" content="width=device-width,initial-scale=1"/>
+  <title>Navbar</title>
+  <link rel="stylesheet" href="styles.css"/>
+</head>
+<body>
 
-  <div class="nav-links relative">
-    <a href="/"        class={pathname === "/"        ? "active" : ""}>Home</a>
-    <a href="/about"   class={pathname === "/about"   ? "active" : ""}>About Us</a>
-    <a href="/team"    class={pathname === "/team"    ? "active" : ""}>Our Team</a>
-
-    <div class="dropdown">
-      <a class={pathname.startsWith("/projects") ? "active" : ""}>Projects</a>
-      <div class="dropdown-content">
-        <a href="/projects/beginner">Beginner</a>
-        <a href="/projects/intermediate">Intermediate</a>
-        <a href="/projects/advanced">Advanced</a>
-      </div>
+  <nav class="navbar">
+    <div class="brand" >
+      <a href="/">
+        <MainLogo class="logo"/>
+      </a>
     </div>
 
-    <a href="/events"  class={pathname === "/events"  ? "active" : ""}>Events</a>
-    <a href="/contact" class={pathname === "/contact" ? "active" : ""}>Contact Us</a>
-    <div class="indicator"></div>
-  </div>
-</nav>
+    <button class="hamburger" id="menu-toggle">&#9776;</button>
+
+    <ul class="nav-links main-links" id="main-links">
+      <li><a href="/">Home</a></li>
+      <li><a href="/about">About Us</a></li>
+      <li><a href="/team">Our Team</a></li>
+      <li class="dropdown">
+        <a href="#" class="dropbtn">Projects</a>
+        <ul class="dropdown-content">
+          <li><a href="/projects/beginner">Beginner</a></li>
+          <li><a href="/projects/intermediate">Development</a></li>
+          <li><a href="/projects/advanced">Advanced</a></li>
+        </ul>
+      </li>
+      <li class="dropdown">
+        <a href="#" class="dropbtn">Events</a>
+        <ul class="dropdown-content">
+          <li><a href="/events/offer">What we offer</a></li>
+          <li><a href="/events/upcoming">Upcoming Events</a></li>
+        </ul>
+      </li>
+      <div class="indicator"></div>
+    </ul>
+
+    <div class="secondary-links">
+      <a href="#" class="btn signup">Sign Up</a>
+      <a href="#" class="contact-link contact">Contact Us</a>
+    </div>
+  </nav>
+
+</body>
+</html>
+
+
+
+
+<script>
+
+    document.addEventListener("DOMContentLoaded", () => {
+      const toggleButton = document.getElementById("menu-toggle");
+      const mainLinks    = document.getElementById("main-links");
+      const nav = document.querySelector(".navbar");
+
+      // Hamburger → toggle main menu
+      toggleButton.addEventListener("click", e => {
+        e.stopPropagation(); // prevents triggering the document click
+        mainLinks.classList.toggle("show");
+      });
+
+      // Dropdown buttons → toggle submenus
+      const dropbtns = document.querySelectorAll(".dropdown > .dropbtn");
+      dropbtns.forEach(btn => {
+        btn.addEventListener("click", e => {
+          e.preventDefault();
+          e.stopPropagation(); // prevent document click
+
+          const submenu = btn.parentElement.querySelector(".dropdown-content");
+          const isOpen  = submenu.classList.contains("show");
+
+          // Close all other submenus
+          document.querySelectorAll(".dropdown-content.show")
+            .forEach(open => open.classList.remove("show"));
+
+          // Open this one if it was closed
+          if (!isOpen) submenu.classList.add("show");
+        });
+      });
+
+      // Clicking submenu links → close submenus
+      document.querySelectorAll(".dropdown-content a").forEach(link => {
+        link.addEventListener("click", e => {
+          // allow normal link behavior
+          document.querySelectorAll(".dropdown-content.show")
+            .forEach(open => open.classList.remove("show"));
+          // optional: also close main menu
+          mainLinks.classList.remove("show");
+        });
+      });
+
+      // Click anywhere else → close main menu & submenus only if click is outside navbar
+      document.addEventListener("click", e => {
+        if (!nav.contains(e.target)) {
+          mainLinks.classList.remove("show");
+          document.querySelectorAll(".dropdown-content.show")
+            .forEach(open => open.classList.remove("show"));
+        }
+      });
+
+      // Optional: Close menus on resize to desktop
+      window.addEventListener("resize", () => {
+        if (window.innerWidth >= 769) {
+          mainLinks.classList.remove("show");
+          document.querySelectorAll(".dropdown-content.show")
+            .forEach(open => open.classList.remove("show"));
+        }
+      });
+    });
+
+  </script>
+</html>
+
+
+
 
 
 <script type="module" client:load>
   const navContainer = document.querySelector('.nav-links');
   const links        = Array.from(navContainer.querySelectorAll('a:not(.dropdown-content a)'));
   const indicator    = navContainer.querySelector('.indicator');
+  let activeLink     = navContainer.querySelector('a.active');
+  let indicatorTimeout;
+
+  // Fall back to correct .active link on page load (in case it's not already set)
+  const currentPath = window.location.pathname;
+  if (!activeLink) {
+    links.forEach(link => {
+      if (link.getAttribute('href') === currentPath) {
+        link.classList.add('active');
+        activeLink = link;
+      }
+    });
+  }
 
   function updateIndicator(linkEl) {
     const linkBox      = linkEl.getBoundingClientRect();
@@ -47,18 +153,27 @@ const { pathname } = Astro.url;
     indicator.style.left  = `${offsetX}px`;
   }
 
-  const activeLink = navContainer.querySelector('a.active');
+  // Initial setup on load
   if (activeLink) {
     updateIndicator(activeLink);
   }
 
+  // Hover → move indicator
   links.forEach(link => {
-    link.addEventListener('mouseenter', () => updateIndicator(link));
+    link.addEventListener('mouseenter', () => {
+      clearTimeout(indicatorTimeout);
+      updateIndicator(link);
+    });
   });
 
+  // Exit hover → snap back to active
   navContainer.addEventListener('mouseleave', () => {
-    if (activeLink) {
-      updateIndicator(activeLink);
-    }
+    clearTimeout(indicatorTimeout);
+    indicatorTimeout = setTimeout(() => {
+      if (activeLink) {
+        updateIndicator(activeLink);
+      }
+    }, 100); // Adds subtle delay
   });
+
 </script>

@@ -1,7 +1,6 @@
 @import url('https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=Share+Tech&display=swap');
-@import "tailwindcss";
-@import url('https://fonts.googleapis.com/css2?family=Sarabun:wght@400;700&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Rajdhani:wght@400;600&display=swap');
+@import "tailwindcss";
 
 @theme {
   --color-primary: #FF00E6;
@@ -12,171 +11,332 @@
 }
 
 .background {
-  background: radial-gradient(125% 125% at 50% -10%, #090909 40%, #FF00E6 100%);
+    background: radial-gradient(125% 125% at 50% -10%, #090909 40%, #FF00E6 100%);
 }
 
 .background-non-curved {
-  background: linear-gradient(
-    to bottom,
-    #090909 0%,
-    #090909 60%,
-    #FF00E6 100%
-  );
+    background: linear-gradient(
+        to bottom,
+        #090909 0%,
+        #090909 60%,
+        #FF00E6 100%
+    );
 }
 
-body,
-ul,
-li,
-p {
-    color: white;
-    font-size: 20px;
-}
 
-ul {
-  list-style-type: disc;
-  margin-left: 2rem;
-  padding-left: 1rem;
-  font-size: 18px;
+/* ----------------------------- */
+/*           MAIN HTML           */
+/* ----------------------------- */
+
+* { 
+  margin:0; 
+  padding:0; 
+  box-sizing:border-box; 
   color: white;
-}
-li {
-  margin-bottom: 0.75rem;
-  line-height: 1.6;
+  font-size: 20px;
 }
 
+/* Heading 1 */
 h1 {
-    font-size: 42px;
-    font-weight: bold;
-    color: #FF00E6;
+  font-size: 42px;
+  font-weight: bold;
+  color: #FF00E6;
 }
 
-main {
-    padding: 50px 0px;
-}
-
-.dropdown {
-    position: relative;
-    display: inline-block;
-  }
-
-  .dropdown > a {
-    cursor: pointer;
-  }
-
-  .dropdown-content {
-    display: none;
-    position: absolute;
-    top: 100%;
-    left: 0;
-    background-color: rgba(0, 0, 0, 0.9);
-    padding: 0.5rem 0;
-    z-index: 20;
-    min-width: 160px;
-    border-radius: 4px;
-  }
-
-  .dropdown-content a {
-    display: block;
-    padding: 10px 20px;
-    text-align: left;
-    text-decoration: none;
-    font-size: 0.9rem;
-    color: white;
-    transition: background 0.2s;
-  }
-
-  .dropdown-content a:hover {
-    background-color: rgba(255, 0, 230, 0.1);
-    color: #FF00E6;
-  }
-
-  .dropdown:hover .dropdown-content {
-    display: block;
-  }
-
-/* nav styles */
-.nav-links {
-  display: flex;            
-  justify-content: center;      
-  margin: 1.5rem auto 0;        
-  position: relative;
+h2 {
+  font-size: 38px;
+  font-weight: bold;
   color: white;
 }
 
-.nav-links a {
-    font-family: 'Rajdhani', sans-serif;
+
+.image-style {
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  opacity: 0.3;
+}
+
+
+
+
+
+
+/* ----------------------------- */
+/*         NAVBAR BASE           */
+/* ----------------------------- */
+
+/* ── Navbar Desktop Layout ── */
+.navbar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 1rem 4rem;
+  background:transparent; 
+  color:#fff;
+  font-family: 'Rajdhani', sans-serif;
+  font-size: 1rem;
+  font-weight: bold;
+  text-transform: uppercase;
+  letter-spacing: 0.02em;
+}
+
+.brand .logo { 
+  width:46px; 
+}
+
+.brand {
+  font-size:1.5rem; 
+}
+
+/* Centered main links */
+.main-links {
+  display: flex;
+  list-style:none;
+  gap: 2rem;
+  margin:0 auto;
+  padding-bottom: 10px;
+  position: relative;
+}
+
+.main-links li { 
+  position: relative; 
+}
+
+.main-links a { 
+  transition: color 0.3s ease, border-bottom 0.3s ease;
+  padding: 0px 17px;
+}
+
+
+
+.main-links a:hover { 
+  color:#FF8BF4; 
+}
+
+.contact-link {
+  font-size: 1rem;
+  display: flex;
+  list-style:none;
+  margin:0 auto;
+  padding-top: 11px;
+  padding-left: 10px;
+  position: relative;
+}
+
+.contact-link:hover { 
+  color:#FF8BF4; 
+}
+
+
+.main-links a.active { 
+  color:#FF00E6; 
+}
+
+/* Desktop-only hover dropdown */
+.dropdown-content {
+  display: none;
+  position: absolute;
+  top:100%; 
+  left:0;
+  background: #4d4d4d;
+  flex-direction: column;
+  padding: 0.5rem 0;
+  min-width: 200px;
+  border-radius: 4px;
+  background-color: black;
+  z-index: 20;
+}
+
+.dropdown-content a {
+  display: block; 
+  width: 100%;
+  font-size: 0.9rem;
+  color: white;
+  text-align: left !important;
+  transition: background 0.2s;
+}
+
+.dropdown-content a:hover {
+  background-color: rgba(255, 139, 244, 0.2);
+  color: #FF8BF4;
+  border-radius: 10px;
+}
+
+/* Desktop hover */
+@media (min-width:769px) {
+  .dropdown:hover .dropdown-content {
+    display: flex;
+  }
+
+   .dropdown-content.show {
+    display: none !important; /* prevent stale .show from leaking into desktop */
+  }
+}
+
+.dropdown-content li a {
+  padding:.8rem 1.2rem;
+  text-align:center;
+  color:#fff;
+}
+
+/* Secondary (Sign Up / Contact) always right */
+.secondary-links { 
+  display:flex; 
+  gap:1rem; 
+}
+
+.btn {
+  padding:.6rem 1.2rem;
+  background:#FF00E6; 
+  color:#fff;
+  border: 1px solid #FF00E6;
+  border-radius:25px; 
+  font-size: 1rem;
+  transition: left 0.4s ease-in-out,
+            width 0.4s ease-in-out;
+}
+
+.btn:hover{
+  background:transparent; 
+}
+
+/* Hamburger (hidden on desktop) */
+.hamburger {
+  display: none;
+  background:none; 
+  border:none;
+  color:#FF8BF4; 
+  cursor:pointer;
+}
+
+/* ── Mobile/Tablet Overrides ── */
+@media (max-width:768px) {
+  /* Stack navbar items vertically */
+  .navbar {
+    flex-direction: column;
+    align-items: center;
+  }
+  
+  .indicator {
+    display: none;
+  }
+
+  /* 1) Logo at top */
+  .brand {
+    order: 1;
+    margin-bottom: 1rem;
+  }
+
+  /* 2) Hamburger next */
+  .hamburger {
+    order: 2;
+    display: block;
+    margin-bottom: 1rem;
+  }
+
+  /* 3) Main links drop below hamburger */
+  .main-links {
+    order: 3;
+    display: none;            /* hidden until toggled */
+    flex-direction: column;
+    width: 100%;
+    background: #262626;
+  }
+  .main-links.show {
+    display: flex;
+  }
+  .main-links li {
     text-align: center;
-    padding: 12px 0;
-    text-decoration: none;
-    font-size: 1rem;
-    font-weight: bold;
-    transition: color 0.3s ease, border-bottom 0.3s ease;
-    letter-spacing: 0.02em;
-    color: white;
+    padding: .8rem 0;
+  }
+
+  /* 4) Sign Up + Contact below main-links */
+  .secondary-links {
+    order: 4;
+    flex-direction: column;
+    width: 100%;
+    gap: .5rem;
+    padding: 0 1.5rem;
+    margin-top: 1rem;
+  }
+  .secondary-links .btn {
+    width: 100%;
+    text-align: center;
+  }
+
+  /* disable hover on mobile entirely */
+  .dropdown:hover .dropdown-content {
+    display: none;
+  }
+
+  .dropdown-content.show {
+    display: flex !important;
+    position: static !important;
+    border: none;
+    margin: 0;
+  }
 }
 
 .indicator {
+  will-change: left, width;
   position: absolute;
   bottom: 0;
   height: 2px;
   background: var(--color-primary);
-  transition: left 0.5s ease-in-out,
-              width 0.5s ease-in-out;
+  transition: left 0.4s ease-in-out,
+              width 0.4s ease-in-out;
   border-radius: 1px;
   pointer-events: none;
+  z-index: 50;
+} 
+
+
+
+  
+/* ------------------------------------------------- */
+/*                    PROJECT CARDS                  */
+  
+.hero-section {
+  position: relative;
+  height: 300px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  text-align: center;
 }
 
-/* Hover / Focus */
-.nav-links a:hover,
-.nav-links a:focus {
-  color: #FF8BF4;
+.hero-background {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  z-index: 0;
 }
 
-.nav-links a.active {
-  color: #FF00E6;
+.hero-overlay {
+  position: absolute;
+  inset: 0;
+  background-color: rgba(0, 0, 0, 0.6); /* 80% dark opacity */
+  z-index: 1;
 }
 
-.logo-header {
-    padding-top: 5px;
-    padding-left: 30px;
-        position: absolute;
+.hero-heading {
+  position: relative;
+  z-index: 2;
+  color: white;
+  font-size: 2.5rem;
+  margin: 0;
 }
 
-.team-header {
-    position: relative;
-    text-align: center;
-    height: 300px; /* Adjust height as needed */
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    overflow: hidden;
-    color: white;
-  }
-
-  .team-header::before {
-    content: "";
-    position: absolute;
-    top: 0;
-    right: 0;
-    bottom: 0;
-    left: 0;
-    background-image: url('network.jpg');
-    background-size: cover;
-    background-position: center;
-    opacity: 0.9;
-    z-index: 0;
-  }
-
-  .team-header h1 {
-    position: relative;
-    z-index: 1;
-    font-size: 2.5rem;
-    margin: 0;
-    color: white;
-  }
 
 
-  .project-cards {
+
+.project-cards {
   display: flex;
   flex-direction: column;
   gap: 30px;
@@ -226,21 +386,4 @@ main {
 
 .card .btn:hover {
   background: #FF8BF4;
-}
-
-
-
-
-/* Desktop tweaks */
-@media screen and (min-width: 636px) {
-  .nav-links {
-    margin-top: 3rem;        
-  }
-
-  .nav-links a {
-    display: inline-block;
-    padding: 10px 20px;
-    margin: 5px 15px;
-    text-transform: uppercase;    
-  }
-}
+} 

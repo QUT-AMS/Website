@@ -13,7 +13,7 @@ import Footer from '../components/Footer.astro';
 	</head>
 	<body class="dark background">
 		<Navigation />
-		<main class="min-h-screen py-12">
+		<main class="min-h-160 py-12">
 			
 			<div class="hero-section">
 				<img src="../../src/styles/network.jpg"  alt="Header background"  class="hero-background"/>
@@ -21,20 +21,27 @@ import Footer from '../components/Footer.astro';
 				<h1 class="hero-heading">About Us</h1>
 			</div>
 
-			<div class="pb-10 px-10 text-white text-[18px]">
-				<h1 class="mt-10 text-2xl font-bold">Who we are</h1>
-				<p class="mt-4 leading-relaxed">
-					The QUT AI & ML Society (QUT AMS) is a student-led group at QUT, focused on exploring artificial intelligence and machine learning. 
+			<div class="content-wrapper">
+				<!-- WHO WE ARE panel -->
+				<div class="info-panel">
+					<h1 class="section-title">WHO WE ARE</h1>
+					<p class="section-content">
+					The QUT AI & ML Society (QUT AMS) is a student-led group at QUT, focused on exploring artificial intelligence and machine learning.
 					We aim to support learning through hands-on projects, workshops, and collaboration with industry experts to improve skills in AI and ML.
-				</p>
+					</p>
+				</div>
 
-				<h1 class="mt-16 text-2xl font-bold">Our Aims & Objectives</h1>
-				<ul class="list-disc ml-8 pl-4 mt-4 space-y-3 leading-relaxed">
-					<li>Gain insights and guidance from alumni, professionals, and leaders in the AI and ML industry</li>
-					<li>Collaborate, experiment, and build impactful projects focused on artificial intelligence and machine learning</li>
-					<li>Connect and network with students, researchers, and professionals in the AI, ML, and broader scientific community</li>
-				</ul>
+				<!-- WHAT WE DO panel -->
+				<div class="info-panel">
+					<h1 class="section-title">WHAT WE DO</h1>
+					<ul class="section-list">
+						<li>Gain insights and guidance from alumni, professionals, and leaders in the AI and ML industry.</li>
+						<li>Collaborate, experiment, and build impactful projects focused on artificial intelligence and machine learning.</li>
+						<li>Connect and network with students, researchers, and professionals in the AI, ML, and broader tech community.</li>
+					</ul>
+				</div>
 			</div>
+
 		</main>
 		<Footer />
 	</body>

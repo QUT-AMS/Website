@@ -1,5 +1,5 @@
 ---
-import MainLogo from "@/logos/Head-Transparent.svg"
+import MainLogo from "@/logos/Head-Transparent.png"
 
 const { pathname } = Astro.url;
 ---
@@ -15,13 +15,15 @@ const { pathname } = Astro.url;
 <body>
 
   <nav class="navbar">
-    <div class="brand" >
-      <a href="/">
-        <MainLogo class="logo"/>
-      </a>
-    </div>
+    <div class="mobile-header">
+      <div class="brand">
+        <a href="/">
+          <img src={MainLogo.src} alt="Main Logo" class="logo" />
+        </a>
+      </div>
 
-    <button class="hamburger" id="menu-toggle">&#9776;</button>
+      <button class="hamburger" id="menu-toggle">&#9776;</button>
+    </div>
 
     <ul class="nav-links main-links" id="main-links">
       <li><a href="/">Home</a></li>
@@ -38,10 +40,19 @@ const { pathname } = Astro.url;
       <li class="dropdown">
         <a href="#" class="dropbtn">Events</a>
         <ul class="dropdown-content">
-          <li><a href="/events/offer">What we offer</a></li>
+          <li><a href="/events/types">What we offer</a></li>
           <li><a href="/events/upcoming">Upcoming Events</a></li>
         </ul>
       </li>
+
+      <!-- For mobile only -->
+      <div class="mobile-only">
+        <li class="pink-button"><a href="#">Sign Up</a></li>
+        <li><a href="#">Contact Us</a></li>
+        <li class="close-btn"><button id="close-menu">X</button></li>
+      </div>
+
+
       <div class="indicator"></div>
     </ul>
 
@@ -55,93 +66,88 @@ const { pathname } = Astro.url;
 </html>
 
 
-
-
 <script>
+document.addEventListener("DOMContentLoaded", () => {
+  const toggleButton = document.getElementById("menu-toggle");
+  const mainLinks = document.getElementById("main-links");
+  const closeButton = document.getElementById("close-menu");
 
-    document.addEventListener("DOMContentLoaded", () => {
-      const toggleButton = document.getElementById("menu-toggle");
-      const mainLinks    = document.getElementById("main-links");
-      const nav = document.querySelector(".navbar");
+  // Hamburger → toggle full-screen menu overlay
+  toggleButton.addEventListener("click", (e) => {
+    e.stopPropagation();
+    mainLinks.classList.toggle("show");
+  });
 
-      // Hamburger → toggle main menu
-      toggleButton.addEventListener("click", e => {
-        e.stopPropagation(); // prevents triggering the document click
-        mainLinks.classList.toggle("show");
-      });
+  // Dropdown buttons → toggle submenus
+  const dropbtns = document.querySelectorAll(".dropdown > .dropbtn");
+  dropbtns.forEach((btn) => {
+    btn.addEventListener("click", (e) => {
+      e.preventDefault();
+      e.stopPropagation();
+      const submenu = btn.parentElement.querySelector(".dropdown-content");
+      const isOpen = submenu.classList.contains("show");
 
-      // Dropdown buttons → toggle submenus
-      const dropbtns = document.querySelectorAll(".dropdown > .dropbtn");
-      dropbtns.forEach(btn => {
-        btn.addEventListener("click", e => {
-          e.preventDefault();
-          e.stopPropagation(); // prevent document click
+      // Close all other submenus
+      document.querySelectorAll(".dropdown-content.show")
+        .forEach((open) => open.classList.remove("show"));
 
-          const submenu = btn.parentElement.querySelector(".dropdown-content");
-          const isOpen  = submenu.classList.contains("show");
-
-          // Close all other submenus
-          document.querySelectorAll(".dropdown-content.show")
-            .forEach(open => open.classList.remove("show"));
-
-          // Open this one if it was closed
-          if (!isOpen) submenu.classList.add("show");
-        });
-      });
-
-      // Clicking submenu links → close submenus
-      document.querySelectorAll(".dropdown-content a").forEach(link => {
-        link.addEventListener("click", e => {
-          // allow normal link behavior
-          document.querySelectorAll(".dropdown-content.show")
-            .forEach(open => open.classList.remove("show"));
-          // optional: also close main menu
-          mainLinks.classList.remove("show");
-        });
-      });
-
-      // Click anywhere else → close main menu & submenus only if click is outside navbar
-      document.addEventListener("click", e => {
-        if (!nav.contains(e.target)) {
-          mainLinks.classList.remove("show");
-          document.querySelectorAll(".dropdown-content.show")
-            .forEach(open => open.classList.remove("show"));
-        }
-      });
-
-      // Optional: Close menus on resize to desktop
-      window.addEventListener("resize", () => {
-        if (window.innerWidth >= 769) {
-          mainLinks.classList.remove("show");
-          document.querySelectorAll(".dropdown-content.show")
-            .forEach(open => open.classList.remove("show"));
-        }
-      });
+      // Toggle selected submenu
+      if (!isOpen) submenu.classList.add("show");
     });
+  });
 
-  </script>
-</html>
-
+  // Close full menu with close button
+  if (closeButton) {
+    closeButton.addEventListener("click", (e) => {
+      e.stopPropagation();
+      mainLinks.classList.remove("show");
+    });
+  }
+});
+</script>
 
 
 
 
 <script type="module" client:load>
   const navContainer = document.querySelector('.nav-links');
+  // Include only top-level links and dropdown toggles
   const links        = Array.from(navContainer.querySelectorAll('a:not(.dropdown-content a)'));
   const indicator    = navContainer.querySelector('.indicator');
-  let activeLink     = navContainer.querySelector('a.active');
-  let indicatorTimeout;
 
-  // Fall back to correct .active link on page load (in case it's not already set)
+  let activeLink;
+  let indicatorTimeout;
   const currentPath = window.location.pathname;
+
+  // 1) Try exact match on top-level link
+  activeLink = links.find(link => link.getAttribute('href') === currentPath);
+
+  // 2) Try prefix match for top-level link
   if (!activeLink) {
-    links.forEach(link => {
-      if (link.getAttribute('href') === currentPath) {
-        link.classList.add('active');
-        activeLink = link;
-      }
+    activeLink = links.find(link => {
+      const href = link.getAttribute('href');
+      return href !== '/' && currentPath.startsWith(href);
     });
+  }
+
+  // 3) If still no match, look inside each dropdown’s children
+  if (!activeLink) {
+    document.querySelectorAll('.dropdown').forEach(drop => {
+      const toggle = drop.querySelector('.dropbtn');
+      const childs = drop.querySelectorAll('.dropdown-content a');
+      childs.forEach(child => {
+        const href = child.getAttribute('href');
+        if (href === currentPath || (href !== '/' && currentPath.startsWith(href))) {
+          activeLink = toggle;
+        }
+      });
+    });
+  }
+
+  // Mark active and position indicator
+  if (activeLink) {
+    activeLink.classList.add('active');
+    updateIndicator(activeLink);
   }
 
   function updateIndicator(linkEl) {
@@ -153,12 +159,7 @@ const { pathname } = Astro.url;
     indicator.style.left  = `${offsetX}px`;
   }
 
-  // Initial setup on load
-  if (activeLink) {
-    updateIndicator(activeLink);
-  }
-
-  // Hover → move indicator
+  // On hover, move the indicator
   links.forEach(link => {
     link.addEventListener('mouseenter', () => {
       clearTimeout(indicatorTimeout);
@@ -166,14 +167,11 @@ const { pathname } = Astro.url;
     });
   });
 
-  // Exit hover → snap back to active
+  // On mouse leave, return to active
   navContainer.addEventListener('mouseleave', () => {
     clearTimeout(indicatorTimeout);
     indicatorTimeout = setTimeout(() => {
-      if (activeLink) {
-        updateIndicator(activeLink);
-      }
-    }, 100); // Adds subtle delay
+      if (activeLink) updateIndicator(activeLink);
+    }, 100);
   });
-
 </script>

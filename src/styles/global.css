@@ -11,17 +11,28 @@
 }
 
 .background {
-    background: radial-gradient(125% 125% at 50% -10%, #090909 20%, #090909 55%, #FF00E6 76%);
+    background: radial-gradient(125% 125% at 50% -10%, #090909 20%, #090909 55%, #FF00E6 75%);
 }
 
 .background-non-curved {
     background: linear-gradient(
         to bottom,
         #090909 0%,
-        #090909 60%,
-        #FF00E6 100%
+        #090909 85%,
+        #FF00E6 95%
     );
 }
+
+
+.background-non-curved-v2 {
+    background: linear-gradient(
+        to bottom,
+        #090909 0%,
+        #090909 65%,
+        #FF00E6 83%
+    );
+}
+
 
 
 /* ----------------------------- */
@@ -166,7 +177,7 @@ h2 {
 }
 
 /* Desktop hover */
-@media (min-width:769px) {
+@media (min-width:1201px) {
   .dropdown:hover .dropdown-content {
     display: flex;
   }
@@ -174,6 +185,26 @@ h2 {
    .dropdown-content.show {
     display: none !important; /* prevent stale .show from leaking into desktop */
   }
+
+  
+
+  /* Hide mobile buttons by default */
+  .mobile-only {
+    display: none;
+  }
+
+  .indicator {
+    will-change: left, width;
+    position: absolute;
+    bottom: 0;
+    height: 2px;
+    background: var(--color-primary);
+    transition: left 0.4s ease-in-out,
+                width 0.4s ease-in-out;
+    border-radius: 1px;
+    pointer-events: none;
+    z-index: 50;
+  } 
 }
 
 .dropdown-content li a {
@@ -212,97 +243,155 @@ h2 {
   cursor:pointer;
 }
 
-/* ── Mobile/Tablet Overrides ── */
-@media (max-width:768px) {
 
-  main {
-    margin: 0px 30px;
+
+
+@media (max-width:1200px) {
+/* 1) Pin the navbar to the top */
+.navbar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 2000;            /* sit above the menu overlay */
+  background-color: black;
+  border-bottom: #4d4d4d;
+}
+
+  /* 2) Top row: brand + hamburger on same line */
+  .mobile-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
   }
 
-  /* Stack navbar items vertically */
-  .navbar {
-    flex-direction: column;
-    align-items: center;
+  /* remove old margins on brand & hamburger if present */
+  .mobile-header .brand,
+  .mobile-header .hamburger {
+    margin: 0;
+  }
+
+  /* ensure hamburger is visible */
+.hamburger {
+  display: block;
+  font-size: 1.2rem; 
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 0.5rem;
+}
+
+
+/* 2) Make the main menu an edge-to-edge overlay */
+.main-links {
+  position: fixed;
+  top: 0;                    /* cover full viewport */
+  left: 0;
+  right: 0;
+  bottom: 0;
+  display: none;
+  flex-direction: column;
+  background: #262626;
+  padding: 4rem 1.5rem;      /* push links below the fixed navbar */
+  overflow-y: auto;
+  z-index: 1000;             /* sit just beneath .navbar */
+}
+.main-links.show {
+  display: flex;
+}
+
+/* ensure dropdowns inside full-screen menu stretch full-width */
+.dropdown-content {
+  width: 100%;
+}
+
+  .mobile-only .btn,
+  .mobile-only {
+    display: block;
+  }
+
+  .pink-button {
+    background: #FF00E6;
+  }
+
+  /* Hide separate secondary links section */
+  .secondary-links {
+    display: none;
   }
   
-  .indicator {
-    display: none;
-  }
-
-  /* 1) Logo at top */
-  .brand {
-    order: 1;
-    margin-bottom: 1rem;
-  }
-
-  /* 2) Hamburger next */
-  .hamburger {
-    order: 2;
-    display: block;
-    margin-bottom: 1rem;
-  }
-
-  /* 3) Main links drop below hamburger */
-  .main-links {
-    order: 3;
-    display: none;            /* hidden until toggled */
-    flex-direction: column;
-    width: 100%;
-    background: #262626;
-  }
-  .main-links.show {
-    display: flex;
-  }
-  .main-links li {
-    text-align: center;
-    padding: .8rem 0;
-  }
-
-  /* 4) Sign Up + Contact below main-links */
-  .secondary-links {
-    order: 4;
-    flex-direction: column;
-    width: 100%;
-    gap: .5rem;
-    padding: 0 1.5rem;
-    margin-top: 1rem;
-  }
-  .secondary-links .btn {
-    width: 100%;
-    text-align: center;
-  }
-
-  /* disable hover on mobile entirely */
-  .dropdown:hover .dropdown-content {
-    display: none;
-  }
-
+  /* dropdown behavior for mobile */
   .dropdown-content.show {
     display: flex !important;
     position: static !important;
+    background: #4d4d4d;
+    flex-direction: column;
+    padding: 0.5rem 0;
+    border-radius: 4px;
+  }
+
+    /* Style for the close button */
+  .close-btn button {
+    background: none;
     border: none;
-    margin: 0;
+    text-align: center;
+    justify-content: center;
+    cursor: pointer;
   }
 }
 
-.indicator {
-  will-change: left, width;
-  position: absolute;
-  bottom: 0;
-  height: 2px;
-  background: var(--color-primary);
-  transition: left 0.4s ease-in-out,
-              width 0.4s ease-in-out;
-  border-radius: 1px;
-  pointer-events: none;
-  z-index: 50;
-} 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
   
-/* ------------------------------------------------- */
-/*                    PROJECT CARDS                  */
+/* ----------------------------- */
+/*         HEADER GRAPHIC        */
+/* ----------------------------- */
   
 .hero-section {
   position: relative;
@@ -337,6 +426,356 @@ h2 {
   font-size: 2.5rem;
   margin: 0;
 }
+
+
+
+/* ----------------------------- */
+/*         ABOUT US PAGE         */
+/* ----------------------------- */
+
+.content-wrapper {
+  position: relative;
+  margin: 40px auto;
+  max-width: 1000px;
+  display: flex;
+  flex-direction: column;
+  gap: 40px;
+  z-index: 1;
+}
+
+.content-wrapper::before {
+  content: "";
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 150%;                /* big glow */
+  height: 150%;
+  background: radial-gradient(
+    circle,
+    rgba(255, 0, 230, 0.5) 0%, /* FF00E6 with 50% opacity */
+    transparent 80%
+  );
+  filter: blur(100px);        /* soft big blur */
+  z-index: -1;
+}
+
+
+.info-panel {
+  background-color: #272727;
+  border-radius: 10px;
+  padding: 30px;
+  box-shadow: 5px 5px 0 #1B1B1B;
+  color: white;
+}
+
+.section-title {
+  margin-top: 0;
+  text-transform: uppercase;
+  font-size: 24px;
+  font-weight: bold;
+  margin-bottom: 20px;
+  text-align: center;
+  color: white;
+}
+
+.section-content {
+  line-height: 1.6;
+}
+
+.section-list {
+  margin: 0;
+  padding-left: 20px;
+  line-height: 1.6;
+  list-style-type: disc; 
+}
+
+.section-list li {
+  margin-bottom: 10px;
+}
+
+
+
+
+
+/* ----------------------------- */
+/*         TEAM PAGE             */
+/* ----------------------------- */
+
+/* === Section wrapper === */
+.team-section {
+  margin-top: 60px;
+  text-align: center;
+}
+
+/* === Card wrapper === */
+.team-wrapper {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center; 
+  gap: 40px;
+  margin-top: 40px;
+  width: 100%;
+  margin: 0 auto;
+}
+
+/* === Individual profile card === */
+.team-card {
+  max-width: 350px;
+}
+
+.team-card img {
+  width: 100%;
+  border-radius: 12px;
+}
+
+.team-card h2 {
+  margin-top: 10px;
+}
+
+.team-card p {
+  color: #FF00E6;
+}
+
+
+/* ----------------------------- */
+/*         UPCOMING EVENTS       */
+/* ----------------------------- */
+
+.toggle-switch {
+  position: relative;
+  display: flex;
+  justify-content: space-between;
+  width: 50%;
+  margin: 0 auto;
+  background-color: #333;
+  border-radius: 30px;
+  padding: 5px;
+  overflow: hidden;
+}
+
+.toggle-slider {
+  position: absolute;
+  top: 5px;
+  left: 5px;
+  width: calc(50% - 10px);  /* Half width minus padding */
+  height: calc(100% - 10px); /* Fill height minus padding */
+  background-color: #FF00E6;
+  border-radius: 30px;
+  transition: transform 0.3s ease;
+  z-index: 1;
+}
+
+.toggle-btn {
+  flex: 1;
+  border: none;
+  background: transparent;
+  color: white;
+  padding: 10px 0;
+  border-radius: 30px;
+  cursor: pointer;
+  font-weight: bold;
+  z-index: 2;              /* Keep buttons above slider */
+  position: relative;
+}
+
+.toggle-btn.active {
+  color: white;
+}
+
+.tab-content {
+  display: none;
+}
+
+.tab-content.active {
+  display: block;
+  margin-top: 20px;
+  color: white;
+}
+
+.schedule {
+  max-width: 50vw;
+  margin: 0 auto;
+  padding: 20px;
+}
+
+.schedule-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-bottom: 1px solid #666;
+  padding: 20px 20px;
+}
+
+.week {
+  color: #FF00E6;  /* Bright pink for week */
+  font-weight: bold;
+}
+
+.event {
+  color: white;    /* White for event */
+  font-weight: bold;
+}
+
+@media (max-width: 600px) {
+  /* 1. Make the toggle container a vertical flex */
+  .toggle-switch {
+    display: flex;              /* ensure flex remains */
+    flex-direction: column;     
+    align-items: stretch;       /* full-width children */
+    width: 90%;
+    padding: 10px;
+  }
+
+  /* 2. Force each button to be block-level, full width */
+  .toggle-btn {
+    display: block;
+    width: 100%;
+    text-align: center;         /* center the text */
+    padding: 12px 0;
+    margin: 0;                  /* reset any defaults */
+  }
+
+  /* 3. Space out stacked buttons */
+  .toggle-btn + .toggle-btn {
+    margin-top: 10px;
+  }
+
+  /* 4. Adjust slider for vertical orientation */
+  .toggle-slider {
+    position: absolute;
+    left: 5px;
+    top: 5px;
+    width: calc(100% - 20px);
+    height: calc(50% - 10px);
+    transition: transform 0.3s ease;
+  }
+
+  .schedule {
+      max-width: 90vw;
+  }
+
+  .schedule-item {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 8px;               /* space between week & event */
+    padding: 15px 10px;     /* adjust for mobile */
+  }
+
+  /* Make each label full-width and slightly smaller */
+  .schedule-item .week,
+  .schedule-item .event {
+    width: 100%;
+    font-size: 0.9em;
+  }
+
+}
+
+
+
+
+/* ----------------------------- */
+/*           OUR EVENTS          */
+/* ----------------------------- */
+
+
+/* — Base: desktop styles — */
+.toggleNights-switch {
+  position: relative;
+  display: flex;
+  justify-content: space-between;
+  width: 50%;
+  margin: 0 auto;
+  background-color: #333;
+  border-radius: 30px;
+  padding: 5px;
+  overflow: hidden;
+}
+
+.toggleNights-indicator {
+  position: absolute;
+  top: 5px;
+  left: 5px;
+  background-color: #FF00E6;
+  border-radius: 30px;
+  transition: transform 0.3s ease;
+  z-index: 1;
+}
+
+
+.toggleNights-btn {
+  flex: 1;
+  border: none;
+  background: transparent;
+  color: white;
+  padding: 10px 0;
+  border-radius: 30px;
+  cursor: pointer;
+  font-weight: bold;
+  position: relative;
+  z-index: 2;  /* sits above the indicator */
+}
+
+.toggleNights-btn.active {
+  color: white;
+}
+
+/* hide all panels by default */
+.toggleNights-content {
+  display: none;
+}
+
+/* show only the active one */
+.toggleNights-content.active {
+  display: inline-block;
+  max-width: 90vw;
+}
+
+/* desktop: full-height, width = 1/4th */
+@media (min-width: 601px) {
+  .toggleNights-indicator {
+    height: calc(100% - 10px);
+    width: 25%;            /* 4 buttons → 100%/4 */
+  }
+}
+
+/* mobile: full-width, height = 1/4th */
+@media (max-width: 600px) {
+  .toggleNights-switch {
+    flex-direction: column;
+    width: 90%;
+    padding: 10px;
+  }
+    .toggleNights-content {
+    width: 90%;
+  }
+  .toggleNights-btn {
+    width: 100%;
+    display: block;
+    margin: 0;
+    padding: 12px 0;
+    text-align: center;
+  }
+  .toggleNights-btn + .toggleNights-btn {
+    margin-top: 10px;
+  }
+  .toggleNights-indicator {
+    top: 5px;
+    left: 5px;
+    width: calc(100% - 10px);
+    height: 25%;           /* 4 buttons → 100%/4 */
+  }
+}
+
+
+
+
+
+
+
+
+
 
 
 
@@ -444,7 +883,7 @@ h2 {
   color: #FF00E6;
   border: 1px solid #FF00E6;
   background: transparent;
-  padding: 0.75rem 1.5rem;
+  padding: 0.75rem 2.5rem;
   border-radius: 2rem;
   font-weight: 600;
   transition: all 0.3s ease;

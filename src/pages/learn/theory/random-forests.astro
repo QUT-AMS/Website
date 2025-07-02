@@ -1,0 +1,116 @@
+---
+import "@/styles/global.css";
+import Navigation from "@/components/Navigation.astro";
+import Footer from "@/components/Footer.astro";
+---
+
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <meta name="viewport" content="width=device-width" />
+    <title>QUT AI & ML Society</title>
+  </head>
+
+  <body class="dark background-non-curved-v2">
+    <Navigation />
+
+    <div class="hero-section">
+      <img
+        src="../../src/styles/network.jpg"
+        alt="Header background"
+        class="hero-background"
+      />
+      <div class="hero-overlay"></div>
+      <h1 class="hero-heading">Random Forests</h1>
+    </div>
+
+    <main class="tutorials">
+
+      <!-- Step-by-Step Tutorials -->
+      <h2>Step-by-Step Tutorials</h2>
+      <div class="tutorial-grid">
+        <div class="tutorial-box">
+          <h3>Random Forest Algorithm in Machine Learning</h3>
+          <p>Understand how Random Forest builds multiple trees and aggregates their predictions.</p>
+          <a
+            href="https://www.simplilearn.com/tutorials/machine-learning-tutorial/random-forest-algorithm"
+            target="_blank"
+            class="link-button"
+          >
+            Read Tutorial
+          </a>
+        </div>
+
+        <div class="tutorial-box">
+          <h3>Random Forest (Step by Step)</h3>
+          <p>Walk through data import, model creation, training, prediction, and evaluation in Python.</p>
+          <a
+            href="https://holypython.com/rf/random-forest-step-by-step/"
+            target="_blank"
+            class="link-button"
+          >
+            Read Tutorial
+          </a>
+        </div>
+
+        <div class="tutorial-box">
+          <h3>How to Build Random Forests in R (Step-by-Step)</h3>
+          <p>Learn bootstrapping, tree building, and averaging predictions using the airquality dataset.</p>
+          <a
+            href="https://www.statology.org/random-forest-in-r/"
+            target="_blank"
+            class="link-button"
+          >
+            Read Tutorial
+          </a>
+        </div>
+      </div>
+
+      <hr class="divider" />
+
+      <!-- Video Tutorials -->
+      <h2>Video Tutorials</h2>
+      <div class="tutorial-grid">
+        <div class="tutorial-box">
+          <h3>Random Forest Algorithm Clearly Explained!</h3>
+          <p>Visual walkthrough of why Random Forests outperform single decision trees.</p>
+          <a
+            href="https://www.youtube.com/watch?v=v6VJ2RO66Ag"
+            target="_blank"
+            class="link-button"
+          >
+            Watch Video
+          </a>
+        </div>
+
+        <div class="tutorial-box">
+          <h3>Random Forests | The Analytics Edge</h3>
+          <p>MIT lecture covering ensemble methods and Random Forest fundamentals.</p>
+          <a
+            href="https://ocw.mit.edu/courses/15-071-the-analytics-edge-spring-2017/resources/video-5-random-forests-0/"
+            target="_blank"
+            class="link-button"
+          >
+            Watch Video
+          </a>
+        </div>
+
+        <div class="tutorial-box">
+          <h3>Random Forest Regression Intuition</h3>
+          <p>GeeksforGeeks video breaking down how multiple trees improve regression accuracy.</p>
+          <a
+            href="https://www.geeksforgeeks.org/videos/random-forest-regression-intuition/"
+            target="_blank"
+            class="link-button"
+          >
+            Watch Video
+          </a>
+        </div>
+      </div>
+
+    </main>
+
+    <Footer />
+  </body>
+</html>

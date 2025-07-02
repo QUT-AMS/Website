@@ -1,0 +1,116 @@
+---
+import "@/styles/global.css";
+import Navigation from "@/components/Navigation.astro";
+import Footer from "@/components/Footer.astro";
+---
+
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <meta name="viewport" content="width=device-width" />
+    <title>QUT AI & ML Society</title>
+  </head>
+
+  <body class="dark background-non-curved-v2">
+    <Navigation />
+
+    <div class="hero-section">
+      <img
+        src="../../src/styles/network.jpg"
+        alt="Header background"
+        class="hero-background"
+      />
+      <div class="hero-overlay"></div>
+      <h1 class="hero-heading">Reinforcement Learning</h1>
+    </div>
+
+    <main class="tutorials">
+
+      <!-- Step-by-Step Tutorials -->
+      <h2>Step-by-Step Tutorials</h2>
+      <div class="tutorial-grid">
+        <div class="tutorial-box">
+          <h3>Reinforcement Learning: An Introduction With Python Examples</h3>
+          <p>Learn RL fundamentals—agent, environment, actions, states—through Python code.</p>
+          <a
+            href="https://www.datacamp.com/tutorial/reinforcement-learning-python-introduction"
+            target="_blank"
+            class="link-button"
+          >
+            Read Tutorial
+          </a>
+        </div>
+
+        <div class="tutorial-box">
+          <h3>How to Learn Reinforcement Learning: A Step-by-step Guide</h3>
+          <p>A curated RL learning roadmap covering dynamic programming, Q-learning, and policy gradients.</p>
+          <a
+            href="https://github.com/anhOfTheStars/RLStudyGuide"
+            target="_blank"
+            class="link-button"
+          >
+            Read Tutorial
+          </a>
+        </div>
+
+        <div class="tutorial-box">
+          <h3>OpenAI Spinning Up in Deep RL: Introduction</h3>
+          <p>Official guide to core RL concepts and first exercises using Spinning Up resources.</p>
+          <a
+            href="https://spinningup.openai.com/en/latest/spinningup/rl_intro.html"
+            target="_blank"
+            class="link-button"
+          >
+            Read Tutorial
+          </a>
+        </div>
+      </div>
+
+      <hr class="divider" />
+
+      <!-- Video Tutorials -->
+      <h2>Video Tutorials</h2>
+      <div class="tutorial-grid">
+        <div class="tutorial-box">
+          <h3>Reinforcement Learning Course - Full Tutorial</h3>
+          <p>freeCodeCamp’s comprehensive course covering Q-learning, DQN, policy gradients, and more.</p>
+          <a
+            href="https://www.youtube.com/watch?v=ELE2_Mftqoc"
+            target="_blank"
+            class="link-button"
+          >
+            Watch Video
+          </a>
+        </div>
+
+        <div class="tutorial-box">
+          <h3>David Silver’s RL Lecture 1: Introduction to Reinforcement Learning</h3>
+          <p>Foundations of RL from DeepMind’s lead researcher—MDPs, rewards, and learning paradigms.</p>
+          <a
+            href="https://www.youtube.com/watch?v=2pWv7GOvuf0"
+            target="_blank"
+            class="link-button"
+          >
+            Watch Video
+          </a>
+        </div>
+
+        <div class="tutorial-box">
+          <h3>What Is Reinforcement Learning? | MATLAB & Simulink</h3>
+          <p>Engineer-focused overview of RL concepts and workflow from MathWorks.</p>
+          <a
+            href="https://www.mathworks.com/videos/reinforcement-learning-part-1-what-is-reinforcement-learning-1551974943006.html"
+            target="_blank"
+            class="link-button"
+          >
+            Watch Video
+          </a>
+        </div>
+      </div>
+
+    </main>
+
+    <Footer />
+  </body>
+</html>

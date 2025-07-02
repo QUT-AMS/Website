@@ -1,0 +1,116 @@
+---
+import "@/styles/global.css";
+import Navigation from "@/components/Navigation.astro";
+import Footer from "@/components/Footer.astro";
+---
+
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <meta name="viewport" content="width=device-width" />
+    <title>QUT AI & ML Society</title>
+  </head>
+
+  <body class="dark background-non-curved-v2">
+    <Navigation />
+
+    <div class="hero-section">
+      <img
+        src="../../src/styles/network.jpg"
+        alt="Header background"
+        class="hero-background"
+      />
+      <div class="hero-overlay"></div>
+      <h1 class="hero-heading">Support Vector Machines (SVM)</h1>
+    </div>
+
+    <main class="tutorials">
+
+      <!-- Step-by-Step Tutorials -->
+      <h2>Step-by-Step Tutorials</h2>
+      <div class="tutorial-grid">
+        <div class="tutorial-box">
+          <h3>Support Vector Machines in Python - A Step-by-Step Guide</h3>
+          <p>Build your first SVM model with scikit-learn using the breast cancer dataset.</p>
+          <a
+            href="https://www.nickmccullum.com/python-machine-learning/support-vector-machines-python/"
+            target="_blank"
+            class="link-button"
+          >
+            Read Tutorial
+          </a>
+        </div>
+
+        <div class="tutorial-box">
+          <h3>SVM Classification with scikit-learn in Python</h3>
+          <p>Learn to import the SVM module, train, predict, and tune hyperparameters.</p>
+          <a
+            href="https://www.datacamp.com/tutorial/svm-classification-scikit-learn-python"
+            target="_blank"
+            class="link-button"
+          >
+            Read Tutorial
+          </a>
+        </div>
+
+        <div class="tutorial-box">
+          <h3>Support Vector Machine Algorithm - GeeksforGeeks</h3>
+          <p>Understand hyperplanes, kernels, margins, and the math behind SVM.</p>
+          <a
+            href="https://www.geeksforgeeks.org/machine-learning/support-vector-machine-algorithm/"
+            target="_blank"
+            class="link-button"
+          >
+            Read Tutorial
+          </a>
+        </div>
+      </div>
+
+      <hr class="divider" />
+
+      <!-- Video Tutorials -->
+      <h2>Video Tutorials</h2>
+      <div class="tutorial-grid">
+        <div class="tutorial-box">
+          <h3>Support Vector Machine (SVM) in Machine Learning - GeeksforGeeks</h3>
+          <p>Comprehensive overview of SVM classification and regression tasks.</p>
+          <a
+            href="https://www.geeksforgeeks.org/videos/support-vector-machine-svm-in-machine-learning/"
+            target="_blank"
+            class="link-button"
+          >
+            Watch Video
+          </a>
+        </div>
+
+        <div class="tutorial-box">
+          <h3>Learning: Support Vector Machines - MIT OCW</h3>
+          <p>MIT lecture on SVM fundamentals, Lagrange multipliers, and kernel trick.</p>
+          <a
+            href="https://www.youtube.com/watch?v=_PwhiWxHK8o"
+            target="_blank"
+            class="link-button"
+          >
+            Watch Video
+          </a>
+        </div>
+
+        <div class="tutorial-box">
+          <h3>Support Vector Machine – How It Works</h3>
+          <p>Animated walkthrough of SVM concepts, hyperplanes, and support vectors.</p>
+          <a
+            href="https://www.youtube.com/watch?v=TtKF996oEl8"
+            target="_blank"
+            class="link-button"
+          >
+            Watch Video
+          </a>
+        </div>
+      </div>
+
+    </main>
+
+    <Footer />
+  </body>
+</html>

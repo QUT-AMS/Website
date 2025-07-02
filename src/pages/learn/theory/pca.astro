@@ -1,0 +1,116 @@
+---
+import "@/styles/global.css";
+import Navigation from "@/components/Navigation.astro";
+import Footer from "@/components/Footer.astro";
+---
+
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <meta name="viewport" content="width=device-width" />
+    <title>QUT AI & ML Society</title>
+  </head>
+
+  <body class="dark background-non-curved-v2">
+    <Navigation />
+
+    <div class="hero-section">
+      <img
+        src="../../src/styles/network.jpg"
+        alt="Header background"
+        class="hero-background"
+      />
+      <div class="hero-overlay"></div>
+      <h1 class="hero-heading">Principal Component Analysis (PCA)</h1>
+    </div>
+
+    <main class="tutorials">
+
+      <!-- Step-by-Step Tutorials -->
+      <h2>Step-by-Step Tutorials</h2>
+      <div class="tutorial-grid">
+        <div class="tutorial-box">
+          <h3>A Step-By-Step Complete Guide to Principal Component Analysis</h3>
+          <p>Introducing PCA, its intuition, and Python implementation with examples.</p>
+          <a
+            href="https://www.turing.com/kb/guide-to-principal-component-analysis"
+            target="_blank"
+            class="link-button"
+          >
+            Read Tutorial
+          </a>
+        </div>
+
+        <div class="tutorial-box">
+          <h3>Principal Component Analysis Made Easy: A Step-by-Step Tutorial</h3>
+          <p>Walk through covariance, eigenvectors, and scree plots with clear visuals.</p>
+          <a
+            href="https://towardsdatascience.com/principal-component-analysis-made-easy-a-step-by-step-tutorial-184f295e97fe/"
+            target="_blank"
+            class="link-button"
+          >
+            Read Tutorial
+          </a>
+        </div>
+
+        <div class="tutorial-box">
+          <h3>Principal Components Analysis in R: Step-by-Step Example</h3>
+          <p>Use prcomp() in R to compute, visualize, and interpret principal components.</p>
+          <a
+            href="https://www.statology.org/principal-components-analysis-in-r/"
+            target="_blank"
+            class="link-button"
+          >
+            Read Tutorial
+          </a>
+        </div>
+      </div>
+
+      <hr class="divider" />
+
+      <!-- Video Tutorials -->
+      <h2>Video Tutorials</h2>
+      <div class="tutorial-grid">
+        <div class="tutorial-box">
+          <h3>StatQuest: Principal Component Analysis (PCA), Step-by-Step</h3>
+          <p>Josh Starmer breaks down PCA and SVD in a clear, conceptual way.</p>
+          <a
+            href="https://www.youtube.com/watch?v=FgakZw6K1QQ"
+            target="_blank"
+            class="link-button"
+          >
+            Watch Video
+          </a>
+        </div>
+
+        <div class="tutorial-box">
+          <h3>Principal Component Analysis (PCA) – Steve Brunton</h3>
+          <p>An in-depth lecture on PCA from a dynamical-systems perspective.</p>
+          <a
+            href="https://www.youtube.com/watch?v=fkf4IBRSeEc"
+            target="_blank"
+            class="link-button"
+          >
+            Watch Video
+          </a>
+        </div>
+
+        <div class="tutorial-box">
+          <h3>Principal Component Analysis (PCA) Intuition</h3>
+          <p>GeeksforGeeks video that builds intuition for PCA transformations.</p>
+          <a
+            href="https://www.geeksforgeeks.org/videos/principal-component-analysis-pca-intuition/"
+            target="_blank"
+            class="link-button"
+          >
+            Watch Video
+          </a>
+        </div>
+      </div>
+
+    </main>
+
+    <Footer />
+  </body>
+</html>

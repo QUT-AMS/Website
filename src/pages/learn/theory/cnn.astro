@@ -1,0 +1,116 @@
+---
+import "@/styles/global.css";
+import Navigation from "@/components/Navigation.astro";
+import Footer from "@/components/Footer.astro";
+---
+
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <meta name="viewport" content="width=device-width" />
+    <title>QUT AI & ML Society</title>
+  </head>
+
+  <body class="dark background-non-curved-v2">
+    <Navigation />
+
+    <div class="hero-section">
+      <img
+        src="../../src/styles/network.jpg"
+        alt="Header background"
+        class="hero-background"
+      />
+      <div class="hero-overlay"></div>
+      <h1 class="hero-heading">Convolutional Neural Networks (CNNs)</h1>
+    </div>
+
+    <main class="tutorials">
+
+      <!-- Step-by-Step Tutorials -->
+      <h2>Step-by-Step Tutorials</h2>
+      <div class="tutorial-grid">
+        <div class="tutorial-box">
+          <h3>Building a Deep Learning Model from Scratch: CNNs</h3>
+          <p>Learn core concepts, layer architecture, and implement a CNN in Keras.</p>
+          <a
+            href="https://codezup.com/building-deep-learning-models-from-scratch/"
+            target="_blank"
+            class="link-button"
+          >
+            Read Tutorial
+          </a>
+        </div>
+
+        <div class="tutorial-box">
+          <h3>Python CNN with TensorFlow Tutorial</h3>
+          <p>Walk through constructing and training a CNN using TensorFlow 2.</p>
+          <a
+            href="https://www.datacamp.com/tutorial/cnn-tensorflow-python"
+            target="_blank"
+            class="link-button"
+          >
+            Read Tutorial
+          </a>
+        </div>
+
+        <div class="tutorial-box">
+          <h3>How to Build Your First CNN: Step-by-Step</h3>
+          <p>Break down conv layers, pooling, and dense layers with hands-on code.</p>
+          <a
+            href="https://www.skillcamper.com/blog/how-to-build-your-first-convolutional-neural-network-a-step-by-step-guide"
+            target="_blank"
+            class="link-button"
+          >
+            Read Tutorial
+          </a>
+        </div>
+      </div>
+
+      <hr class="divider" />
+
+      <!-- Video Tutorials -->
+      <h2>Video Tutorials</h2>
+      <div class="tutorial-grid">
+        <div class="tutorial-box">
+          <h3>CNN With TensorFlow | Simplilearn</h3>
+          <p>An end-to-end beginner’s guide to building and training CNNs in TensorFlow.</p>
+          <a
+            href="https://www.youtube.com/watch?v=ONBmh61NoHw"
+            target="_blank"
+            class="link-button"
+          >
+            Watch Video
+          </a>
+        </div>
+
+        <div class="tutorial-box">
+          <h3>Image Classification with CNNs | freeCodeCamp</h3>
+          <p>Hands-on walkthrough: load data, define model, train and evaluate accuracy.</p>
+          <a
+            href="https://www.youtube.com/watch?v=YRhxdVk_sIs"
+            target="_blank"
+            class="link-button"
+          >
+            Watch Video
+          </a>
+        </div>
+
+        <div class="tutorial-box">
+          <h3>CNNs Explained | deeplizard</h3>
+          <p>Conceptual deep dive into convolution, activation, pooling, and feature maps.</p>
+          <a
+            href="https://www.youtube.com/watch?v=RRI_3Qp2zRM"
+            target="_blank"
+            class="link-button"
+          >
+            Watch Video
+          </a>
+        </div>
+      </div>
+
+    </main>
+
+    <Footer />
+  </body>
+</html>

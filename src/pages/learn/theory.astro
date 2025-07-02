@@ -42,38 +42,39 @@ import Footer from "@/components/Footer.astro";
           </button>
         </div> 
 
+        <div style="max-width: 70vw">
           <div id="beginner" class="difficulty-content active">
               <h1>Beginner</h1>
 
               <!-- Linear Regression -->
-              <div class="ml-card" onclick="window.location.href='https://www.stanford.edu/class/stats202/figs/Chapter3/3.1.png';">
+              <a href="/learn/theory/linear-regression" class="ml-card">
                 <img src="/src/styles/topics/linear_regression.png" alt="Linear Regression Icon" class="ml-card__image">
                 <div class="ml-card__body">
                   <div class="ml-card__title">Linear Regression</div>
                   <div class="ml-card__description">Use past data to estimate future outcomes. From predicting house prices to analyzing market trends, this method helps you find patterns that matter.</div>
                 </div>
                 <div class="ml-card__arrow">→</div>
-              </div>
+              </a>
 
               <!-- Clustering -->
-              <div class="ml-card" onclick="window.location.href='https://miro.medium.com/v2/resize:fit:561/0*jw5RCEqt9BK4qLmn.jpg';">
+              <a href="/learn/theory/clustering" class="ml-card">
                 <img src="/src/styles/topics/clustering.jpg" alt="Clustering Icon" class="ml-card__image">
                 <div class="ml-card__body">
                   <div class="ml-card__title">Clustering</div>
                   <div class="ml-card__description">Reveal hidden groups in your data without any labels. Whether you're exploring behavior patterns or discovering naturally occurring clusters, clustering helps uncover structure and meaning.</div>
                 </div>
                 <div class="ml-card__arrow">→</div>
-              </div>
+              </a>
 
               <!-- Principal Component Analysis -->
-              <div class="ml-card" onclick="window.location.href='https://towardsdatascience.com/wp-content/uploads/2022/02/1QinDfRawRskupf4mU5bYSA.png';">
+              <a href="/learn/theory/pca" class="ml-card">
                 <img src="/src/styles/topics/PCA.png" alt="PCA Icon" class="ml-card__image">
                 <div class="ml-card__body">
                   <div class="ml-card__title">Principal Component Analysis</div>
                   <div class="ml-card__description">Simplify complex datasets by highlighting what is most important. PCA helps you focus on the big picture while reducing noise in high volume information.</div>
                 </div>
                 <div class="ml-card__arrow">→</div>
-              </div>
+              </a>
             </div>
 
 
@@ -83,34 +84,34 @@ import Footer from "@/components/Footer.astro";
             <h1>Intermediate</h1>
 
             <!-- CNN -->
-            <div class="ml-card" onclick="window.location.href='https://example.com/cnn';">
+              <a href="/learn/theory/cnn" class="ml-card">
               <img src="/src/styles/topics/CNN.png" alt="CNN Icon" class="ml-card__image">
               <div class="ml-card__body">
                 <div class="ml-card__title">Convolutional Neural Networks</div>
                 <div class="ml-card__description">Recognize patterns in images and video by mimicking how the visual cortex works. CNNs power everything from facial recognition to medical imaging.</div>
               </div>
               <div class="ml-card__arrow">→</div>
-            </div>
+            </a>
 
             <!-- SVM -->
-            <div class="ml-card" onclick="window.location.href='https://example.com/svm';">
+              <a href="/learn/theory/svm" class="ml-card">
               <img src="/src/styles/topics/SVM.png" alt="SVM Icon" class="ml-card__image">
               <div class="ml-card__body">
                 <div class="ml-card__title">Support Vector Machines</div>
                 <div class="ml-card__description">Draw clear boundaries between categories of data. SVMs are reliable for tasks like handwriting recognition, bioinformatics, and classification challenges.</div>
               </div>
               <div class="ml-card__arrow">→</div>
-            </div>
+            </a>
 
             <!-- Random Forest -->
-            <div class="ml-card" onclick="window.location.href='https://example.com/random-forest';">
+              <a href="/learn/theory/random-forest" class="ml-card">
               <img src="/src/styles/topics/random_forest.png" alt="Random Forest Icon" class="ml-card__image">
               <div class="ml-card__body">
                 <div class="ml-card__title">Random Forests</div>
                 <div class="ml-card__description">Build multiple decision trees and combine their results for better accuracy. Random Forests offer strong performance on complex data with minimal tuning.</div>
               </div>
               <div class="ml-card__arrow">→</div>
-            </div>
+            </a>
           </div>
 
 
@@ -118,7 +119,7 @@ import Footer from "@/components/Footer.astro";
             <h1>Advanced</h1>
 
             <!-- Transfer Learning -->
-            <div class="ml-card" onclick="window.location.href='https://example.com/transfer-learning';">
+              <a href="/learn/theory/transfer-learning" class="ml-card">
               <img src="/src/styles/topics/transfer_learning.png" alt="Transfer Learning Icon" class="ml-card__image">
               <div class="ml-card__body">
                 <div class="ml-card__title">Transfer Learning</div>
@@ -127,10 +128,10 @@ import Footer from "@/components/Footer.astro";
                 </div>
               </div>
               <div class="ml-card__arrow">→</div>
-            </div>
+            </a>
 
             <!-- Reinforcement Learning -->
-            <div class="ml-card" onclick="window.location.href='https://example.com/reinforcement-learning';">
+              <a href="/learn/theory/reinforcement-learning" class="ml-card">
               <img src="/src/styles/topics/reinforcement_learning.jpg" alt="Reinforcement Learning Icon" class="ml-card__image">
               <div class="ml-card__body">
                 <div class="ml-card__title">Reinforcement Learning</div>
@@ -139,10 +140,10 @@ import Footer from "@/components/Footer.astro";
                 </div>
               </div>
               <div class="ml-card__arrow">→</div>
-            </div>
+            </a>
 
             <!-- Transformers -->
-            <div class="ml-card" onclick="window.location.href='https://example.com/transformers';">
+              <a href="/learn/theory/transformers" class="ml-card">
               <img src="/src/styles/topics/transformers.png" alt="Transformers Icon" class="ml-card__image">
               <div class="ml-card__body">
                 <div class="ml-card__title">Transformers</div>
@@ -151,10 +152,10 @@ import Footer from "@/components/Footer.astro";
                 </div>
               </div>
               <div class="ml-card__arrow">→</div>
-            </div>
+            </a>
           </div>
-
         </div>
+      </div>
     </main>
     <Footer />
     </body>

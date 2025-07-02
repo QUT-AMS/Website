@@ -12,214 +12,108 @@ import Footer from "@/components/Footer.astro";
     <title>QUT AI & ML Society</title>
   </head>
 
-  <body class="dark background-non-curved-v2">
-    <Navigation />
+	<body class="dark background-non-curved-v2">
+		<Navigation />
 
-    <div class="hero-section">
-      <img
-        src="../../src/styles/network.jpg"
-        alt="Header background"
-        class="hero-background"
-      />
-      <div class="hero-overlay"></div>
-      <h1 class="hero-heading">Linear Regression</h1>
-    </div>
+      <div class="hero-section">
+        <img
+          src="../../src/styles/network.jpg"
+          alt="Header background"
+          class="hero-background"
+        />
+        <div class="hero-overlay"></div>
+        <h1 class="hero-heading">Linear Regression</h1>
+      </div> 
 
-    <main class="min-h-160 items-center p-12">
+      
+      <main class="tutorials">
 
-      <div id="beginner" class="difficulty-content active">
-        <h1>Beginner</h1>
-
-        <!-- Linear Regression -->
-        <div
-          class="ml-card"
-          onclick="window.location.href='https://www.stanford.edu/class/stats202/figs/Chapter3/3.1.png';"
-        >
-          <img
-            src="/src/styles/topics/linear_regression.png"
-            alt="Linear Regression Icon"
-            class="ml-card__image"
-          />
-          <div class="ml-card__body">
-            <div class="ml-card__title">Linear Regression</div>
-            <div class="ml-card__description">
-              Use past data to estimate future outcomes. From predicting house
-              prices to analyzing market trends, this method helps you find
-              patterns that matter.
-            </div>
+        <!-- Step-by-Step Tutorials -->
+        <h2>Step-by-Step Tutorials</h2>
+        <div class="tutorial-grid">
+          <div class="tutorial-box">
+            <h3>Introduction to Linear Regression</h3>
+            <p>Understand the goals of regression models and how linear equations form the foundation.</p>
+            <a
+              href="https://www.statology.org/step-by-step-guide-to-linear-regression-in-r/"
+              target="_blank"
+              class="link-button"
+            >
+              Read Tutorial
+            </a>
           </div>
-          <div class="ml-card__arrow">→</div>
+
+          <div class="tutorial-box">
+            <h3>Sklearn Linear Regression Guide</h3>
+            <p>Learn model fitting, evaluation metrics, and real-world examples using Python’s scikit-learn.</p>
+            <a
+              href="https://www.datacamp.com/tutorial/simple-linear-regression"
+              target="_blank"
+              class="link-button"
+            >
+              Read Tutorial
+            </a>
+          </div>
+
+          <div class="tutorial-box">
+            <h3>Linear Regression with scikit-learn</h3>
+            <p>A beginner-friendly walkthrough with Python code and visualizations.</p>
+            <a
+              href="https://www.scribbr.com/statistics/linear-regression-in-r/"
+              target="_blank"
+              class="link-button"
+            >
+              Read Tutorial
+            </a>
+          </div>
         </div>
 
-        <!-- Clustering -->
-        <div
-          class="ml-card"
-          onclick="window.location.href='https://miro.medium.com/v2/resize:fit:561/0*jw5RCEqt9BK4qLmn.jpg';"
-        >
-          <img
-            src="/src/styles/topics/clustering.jpg"
-            alt="Clustering Icon"
-            class="ml-card__image"
-          />
-          <div class="ml-card__body">
-            <div class="ml-card__title">Clustering</div>
-            <div class="ml-card__description">
-              Reveal hidden groups in your data without any labels. Whether
-              you're exploring behavior patterns or discovering naturally
-              occurring clusters, clustering helps uncover structure and
-              meaning.
-            </div>
+        <hr class="divider" />
+
+        <!-- Video Tutorials -->
+        <h2>Video Tutorials</h2>
+        <div class="tutorial-grid">
+          <div class="tutorial-box">
+            <h3>Intro to Simple Linear Regression</h3>
+            <p>A clear walkthrough of regression goals and how linear equations apply to real data.</p>
+            <a
+              href="https://www.youtube.com/watch?v=owI7zxCqNY0"
+              target="_blank"
+              class="link-button"
+            >
+              Watch Video
+            </a>
           </div>
-          <div class="ml-card__arrow">→</div>
+
+          <div class="tutorial-box">
+            <h3>Statistics 101: Linear Regression</h3>
+            <p>Foundational concepts explained with visuals and examples for beginners.</p>
+            <a
+              href="https://www.youtube.com/watch?v=ZkjP5RJLQF4&t=9s"
+              target="_blank"
+              class="link-button"
+            >
+              Watch Video
+            </a>
+          </div>
+
+          <div class="tutorial-box">
+            <h3>Linear Regression Made Easy</h3>
+            <p>Breaks down coefficients, R², and hypothesis testing in a simple visual style.</p>
+            <a
+              href="https://www.youtube.com/watch?v=WkVvZreJtmU"
+              target="_blank"
+              class="link-button"
+            >
+              Watch Video
+            </a>
+          </div>
         </div>
 
-        <!-- Principal Component Analysis -->
-        <div
-          class="ml-card"
-          onclick="window.location.href='https://towardsdatascience.com/wp-content/uploads/2022/02/1QinDfRawRskupf4mU5bYSA.png';"
-        >
-          <img
-            src="/src/styles/topics/PCA.png"
-            alt="PCA Icon"
-            class="ml-card__image"
-          />
-          <div class="ml-card__body">
-            <div class="ml-card__title">Principal Component Analysis</div>
-            <div class="ml-card__description">
-              Simplify complex datasets by highlighting what is most important.
-              PCA helps you focus on the big picture while reducing noise in high
-              volume information.
-            </div>
-          </div>
-          <div class="ml-card__arrow">→</div>
-        </div>
-      </div>
+      </main>
 
-      <div id="intermediate" class="difficulty-content">
-        <h1>Intermediate</h1>
 
-        <!-- CNN -->
-        <div class="ml-card" onclick="window.location.href='https://example.com/cnn';">
-          <img
-            src="/src/styles/topics/cnn.jpg"
-            alt="CNN Icon"
-            class="ml-card__image"
-          />
-          <div class="ml-card__body">
-            <div class="ml-card__title">Convolutional Neural Networks</div>
-            <div class="ml-card__description">
-              Recognize patterns in images and video by mimicking how the visual
-              cortex works. CNNs power everything from facial recognition to
-              medical imaging.
-            </div>
-          </div>
-          <div class="ml-card__arrow">→</div>
-        </div>
 
-        <!-- SVM -->
-        <div class="ml-card" onclick="window.location.href='https://example.com/svm';">
-          <img
-            src="/src/styles/topics/svm.jpg"
-            alt="SVM Icon"
-            class="ml-card__image"
-          />
-          <div class="ml-card__body">
-            <div class="ml-card__title">Support Vector Machines</div>
-            <div class="ml-card__description">
-              Draw clear boundaries between categories of data. SVMs are reliable
-              for tasks like handwriting recognition, bioinformatics, and
-              classification challenges.
-            </div>
-          </div>
-          <div class="ml-card__arrow">→</div>
-        </div>
-
-        <!-- Random Forest -->
-        <div
-          class="ml-card"
-          onclick="window.location.href='https://example.com/random-forest';"
-        >
-          <img
-            src="/src/styles/topics/random_forest.jpg"
-            alt="Random Forest Icon"
-            class="ml-card__image"
-          />
-          <div class="ml-card__body">
-            <div class="ml-card__title">Random Forests</div>
-            <div class="ml-card__description">
-              Build multiple decision trees and combine their results for better
-              accuracy. Random Forests offer strong performance on complex data
-              with minimal tuning.
-            </div>
-          </div>
-          <div class="ml-card__arrow">→</div>
-        </div>
-      </div>
-
-      <div id="advanced" class="difficulty-content">
-        <h1>Advanced</h1>
-
-        <!-- Transfer Learning -->
-        <div
-          class="ml-card"
-          onclick="window.location.href='https://example.com/transfer-learning';"
-        >
-          <img
-            src="/src/styles/topics/transfer_learning.jpg"
-            alt="Transfer Learning Icon"
-            class="ml-card__image"
-          />
-          <div class="ml-card__body">
-            <div class="ml-card__title">Transfer Learning</div>
-            <div class="ml-card__description">
-              Boost performance by reusing knowledge learned from one task on a
-              related task with limited data.
-            </div>
-          </div>
-          <div class="ml-card__arrow">→</div>
-        </div>
-
-        <!-- Reinforcement Learning -->
-        <div
-          class="ml-card"
-          onclick="window.location.href='https://example.com/reinforcement-learning';"
-        >
-          <img
-            src="/src/styles/topics/reinforcement_learning.jpg"
-            alt="Reinforcement Learning Icon"
-            class="ml-card__image"
-          />
-          <div class="ml-card__body">
-            <div class="ml-card__title">Reinforcement Learning</div>
-            <div class="ml-card__description">
-              Train agents through rewards and penalties to solve complex real
-              world problems from robotics to strategy games.
-            </div>
-          </div>
-          <div class="ml-card__arrow">→</div>
-        </div>
-
-        <!-- Transformers -->  
-        <div
-          class="ml-card"
-          onclick="window.location.href='https://example.com/transformers';"
-        >
-          <img
-            src="/src/styles/topics/transformers.jpg"
-            alt="Transformers Icon"
-            class="ml-card__image"
-          />
-          <div class="ml-card__body">
-            <div class="ml-card__title">Transformers</div>
-            <div class="ml-card__description">
-              Process sequences like text and time series with models that
-              excel at capturing context over long distances.
-            </div>
-          </div>
-          <div class="ml-card__arrow">→</div>
-        </div>
-      </div>
-    </main>
     <Footer />
-  </body>
+    </body>
 </html>

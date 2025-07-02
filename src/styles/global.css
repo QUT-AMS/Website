@@ -1240,3 +1240,83 @@ th.sortable::after {
   color: #FF00E6;
   margin-left: 24px;
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/* global.css */
+
+/* Container for both tutorials sections */
+.tutorials {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 3rem 1rem;
+}
+
+/* Section title */
+.tutorials h2 {
+  font-size: 2rem;
+  font-weight: 700;
+  color: #ffffff;
+  margin-bottom: 1.5rem;
+}
+
+/* Grid wrapper for boxes */
+.tutorial-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 1.5rem;
+}
+
+/* Individual tutorial box */
+.tutorial-box {
+  background-color: #2d2d2d;
+  padding: 1.5rem;
+  border-radius: 0.5rem;
+  box-shadow: 0 4px 6px rgba(0,0,0,0.5);
+}
+
+/* Box title */
+.tutorial-box h3 {
+  font-size: 1.25rem;
+  font-weight: 600;
+  color: #ffffff;
+  margin-bottom: 0.5rem;
+}
+
+/* Box description */
+.tutorial-box p {
+  color: #cccccc;
+  line-height: 1.5;
+}
+
+/* Link button inside box */
+.link-button {
+  display: inline-block;
+  margin-top: 1rem;
+  color: #60a5fa;
+  text-decoration: none;
+}
+
+.link-button:hover {
+  text-decoration: underline;
+}
+
+/* Divider between sections */
+.divider {
+  border: none;
+  border-top: 1px solid #444444;
+  margin: 3rem 0;
+}

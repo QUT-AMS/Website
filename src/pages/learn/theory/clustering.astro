@@ -1,0 +1,116 @@
+---
+import "@/styles/global.css";
+import Navigation from "@/components/Navigation.astro";
+import Footer from "@/components/Footer.astro";
+---
+
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <meta name="viewport" content="width=device-width" />
+    <title>QUT AI & ML Society</title>
+  </head>
+
+  <body class="dark background-non-curved-v2">
+    <Navigation />
+
+    <div class="hero-section">
+      <img
+        src="../../src/styles/network.jpg"
+        alt="Header background"
+        class="hero-background"
+      />
+      <div class="hero-overlay"></div>
+      <h1 class="hero-heading">Clustering</h1>
+    </div>
+
+    <main class="tutorials">
+
+      <!-- Step-by-Step Tutorials -->
+      <h2>Step-by-Step Tutorials</h2>
+      <div class="tutorial-grid">
+        <div class="tutorial-box">
+          <h3>Performing Cluster Analysis in Python</h3>
+          <p>Walk through preprocessing, k-means, evaluation and interpretation with the Mall Customers dataset.</p>
+          <a
+            href="https://www.statology.org/performing-cluster-analysis-in-python-a-step-by-step-tutorial/"
+            target="_blank"
+            class="link-button"
+          >
+            Read Tutorial
+          </a>
+        </div>
+
+        <div class="tutorial-box">
+          <h3>K-Means Clustering Simplified in Python</h3>
+          <p>Understand k-means steps, the elbow method, and implementation using scikit-learn.</p>
+          <a
+            href="https://www.analyticsvidhya.com/blog/2021/04/k-means-clustering-simplified-in-python/"
+            target="_blank"
+            class="link-button"
+          >
+            Read Tutorial
+          </a>
+        </div>
+
+        <div class="tutorial-box">
+          <h3>Clustering Workflow</h3>
+          <p>Explore data prep, similarity metrics, running algorithms and interpreting results.</p>
+          <a
+            href="https://developers.google.com/machine-learning/clustering/workflow"
+            target="_blank"
+            class="link-button"
+          >
+            Read Tutorial
+          </a>
+        </div>
+      </div>
+
+      <hr class="divider" />
+
+      <!-- Video Tutorials -->
+      <h2>Video Tutorials</h2>
+      <div class="tutorial-grid">
+        <div class="tutorial-box">
+          <h3>Clustering – Data Science</h3>
+          <p>Fundamentals of k-means clustering in Python, with live coding and visualization.</p>
+          <a
+            href="https://www.youtube.com/watch?v=Js3FeuNz0vk"
+            target="_blank"
+            class="link-button"
+          >
+            Watch Video
+          </a>
+        </div>
+
+        <div class="tutorial-box">
+          <h3>Clustering in Machine Learning</h3>
+          <p>GeeksforGeeks introduction to clustering algorithms, distance metrics and examples.</p>
+          <a
+            href="https://www.geeksforgeeks.org/videos/clustering-in-machine-learning/"
+            target="_blank"
+            class="link-button"
+          >
+            Watch Video
+          </a>
+        </div>
+
+        <div class="tutorial-box">
+          <h3>Exploring Clustering Algorithms</h3>
+          <p>41-minute dive into types of clustering (partition, density, hierarchical, fuzzy).</p>
+          <a
+            href="https://www.classcentral.com/course/youtube-exploring-clustering-algorithms-in-ml-333527"
+            target="_blank"
+            class="link-button"
+          >
+            Watch Video
+          </a>
+        </div>
+      </div>
+
+    </main>
+
+    <Footer />
+  </body>
+</html>

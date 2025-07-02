@@ -27,16 +27,23 @@ const { pathname } = Astro.url;
 
     <ul class="nav-links main-links" id="main-links">
       <li><a href="/">Home</a></li>
-      <li><a href="/about">About Us</a></li>
-      <li><a href="/team">Our Team</a></li>
       <li class="dropdown">
-        <a href="#" class="dropbtn">Projects</a>
+        <a href="#" class="dropbtn">About Us</a>
         <ul class="dropdown-content">
-          <li><a href="/projects/beginner">Beginner</a></li>
-          <li><a href="/projects/intermediate">Development</a></li>
-          <li><a href="/projects/advanced">Advanced</a></li>
+          <li><a href="/about/aims">Our Aims & Objectives</a></li>
+          <li><a href="/about/team">Our Team</a></li>
         </ul>
       </li>
+
+      <li class="dropdown">
+        <a href="#" class="dropbtn">Learn</a>
+        <ul class="dropdown-content">
+          <li><a href="/learn/topics">AI Tools & Resources</a></li>
+          <li><a href="/learn/theory">ML Fundamentals</a></li>
+        </ul>
+      </li>
+      <li><a href="/challenges">Challenges</a></li>
+
       <li class="dropdown">
         <a href="#" class="dropbtn">Events</a>
         <ul class="dropdown-content">
@@ -50,7 +57,6 @@ const { pathname } = Astro.url;
         <li class="contact-button"><a href="/contact">Contact Us</a></li>
         <li class="pink-button"><a href="/signup">Sign Up</a></li>
       </div>
-
 
       <div class="indicator"></div>
     </ul>

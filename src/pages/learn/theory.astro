@@ -1,0 +1,211 @@
+---
+import "@/styles/global.css";
+import Navigation from "@/components/Navigation.astro";
+import Footer from "@/components/Footer.astro";
+---
+
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <meta name="viewport" content="width=device-width" />
+    <title>QUT AI & ML Society</title>
+  </head>
+
+	<body class="dark background-non-curved-v2">
+		<Navigation />
+
+      <div class="hero-section">
+        <img
+          src="../../src/styles/network.jpg"
+          alt="Header background"
+          class="hero-background"
+        />
+        <div class="hero-overlay"></div>
+        <h1 class="hero-heading">Machine Learning Fundamentals</h1>
+      </div> 
+      
+			<main class="min-h-160 items-center p-12">
+
+      <div style="display: flex; flex-direction: column; align-items: center; padding-bottom: 400px">
+        <div class="difficulty-switch">
+          <div class="difficulty-indicator"></div>
+
+          <button class="difficulty-btn active" data-tab="beginner">
+            Beginner
+          </button>
+          <button class="difficulty-btn" data-tab="intermediate">
+            Intermediate
+          </button>
+          <button class="difficulty-btn" data-tab="advanced">
+            Advanced
+          </button>
+        </div> 
+
+          <div id="beginner" class="difficulty-content active">
+              <h1>Beginner</h1>
+
+              <!-- Linear Regression -->
+              <div class="ml-card" onclick="window.location.href='https://www.stanford.edu/class/stats202/figs/Chapter3/3.1.png';">
+                <img src="/src/styles/topics/linear_regression.png" alt="Linear Regression Icon" class="ml-card__image">
+                <div class="ml-card__body">
+                  <div class="ml-card__title">Linear Regression</div>
+                  <div class="ml-card__description">Use past data to estimate future outcomes. From predicting house prices to analyzing market trends, this method helps you find patterns that matter.</div>
+                </div>
+                <div class="ml-card__arrow">→</div>
+              </div>
+
+              <!-- Clustering -->
+              <div class="ml-card" onclick="window.location.href='https://miro.medium.com/v2/resize:fit:561/0*jw5RCEqt9BK4qLmn.jpg';">
+                <img src="/src/styles/topics/clustering.jpg" alt="Clustering Icon" class="ml-card__image">
+                <div class="ml-card__body">
+                  <div class="ml-card__title">Clustering</div>
+                  <div class="ml-card__description">Reveal hidden groups in your data without any labels. Whether you're exploring behavior patterns or discovering naturally occurring clusters, clustering helps uncover structure and meaning.</div>
+                </div>
+                <div class="ml-card__arrow">→</div>
+              </div>
+
+              <!-- Principal Component Analysis -->
+              <div class="ml-card" onclick="window.location.href='https://towardsdatascience.com/wp-content/uploads/2022/02/1QinDfRawRskupf4mU5bYSA.png';">
+                <img src="/src/styles/topics/PCA.png" alt="PCA Icon" class="ml-card__image">
+                <div class="ml-card__body">
+                  <div class="ml-card__title">Principal Component Analysis</div>
+                  <div class="ml-card__description">Simplify complex datasets by highlighting what is most important. PCA helps you focus on the big picture while reducing noise in high volume information.</div>
+                </div>
+                <div class="ml-card__arrow">→</div>
+              </div>
+            </div>
+
+
+
+
+          <div id="intermediate" class="difficulty-content">
+            <h1>Intermediate</h1>
+
+            <!-- CNN -->
+            <div class="ml-card" onclick="window.location.href='https://example.com/cnn';">
+              <img src="/src/styles/topics/CNN.png" alt="CNN Icon" class="ml-card__image">
+              <div class="ml-card__body">
+                <div class="ml-card__title">Convolutional Neural Networks</div>
+                <div class="ml-card__description">Recognize patterns in images and video by mimicking how the visual cortex works. CNNs power everything from facial recognition to medical imaging.</div>
+              </div>
+              <div class="ml-card__arrow">→</div>
+            </div>
+
+            <!-- SVM -->
+            <div class="ml-card" onclick="window.location.href='https://example.com/svm';">
+              <img src="/src/styles/topics/SVM.png" alt="SVM Icon" class="ml-card__image">
+              <div class="ml-card__body">
+                <div class="ml-card__title">Support Vector Machines</div>
+                <div class="ml-card__description">Draw clear boundaries between categories of data. SVMs are reliable for tasks like handwriting recognition, bioinformatics, and classification challenges.</div>
+              </div>
+              <div class="ml-card__arrow">→</div>
+            </div>
+
+            <!-- Random Forest -->
+            <div class="ml-card" onclick="window.location.href='https://example.com/random-forest';">
+              <img src="/src/styles/topics/random_forest.png" alt="Random Forest Icon" class="ml-card__image">
+              <div class="ml-card__body">
+                <div class="ml-card__title">Random Forests</div>
+                <div class="ml-card__description">Build multiple decision trees and combine their results for better accuracy. Random Forests offer strong performance on complex data with minimal tuning.</div>
+              </div>
+              <div class="ml-card__arrow">→</div>
+            </div>
+          </div>
+
+
+         <div id="advanced" class="difficulty-content">
+            <h1>Advanced</h1>
+
+            <!-- Transfer Learning -->
+            <div class="ml-card" onclick="window.location.href='https://example.com/transfer-learning';">
+              <img src="/src/styles/topics/transfer_learning.png" alt="Transfer Learning Icon" class="ml-card__image">
+              <div class="ml-card__body">
+                <div class="ml-card__title">Transfer Learning</div>
+                <div class="ml-card__description">
+                  Boost performance by reusing knowledge learned from one task on a different but related one. This approach saves training time and works well with limited data.
+                </div>
+              </div>
+              <div class="ml-card__arrow">→</div>
+            </div>
+
+            <!-- Reinforcement Learning -->
+            <div class="ml-card" onclick="window.location.href='https://example.com/reinforcement-learning';">
+              <img src="/src/styles/topics/reinforcement_learning.jpg" alt="Reinforcement Learning Icon" class="ml-card__image">
+              <div class="ml-card__body">
+                <div class="ml-card__title">Reinforcement Learning</div>
+                <div class="ml-card__description">
+                  Train agents to make decisions by rewarding good actions and discouraging bad ones. This trial-and-error method powers everything from robotics to game AI.
+                </div>
+              </div>
+              <div class="ml-card__arrow">→</div>
+            </div>
+
+            <!-- Transformers -->
+            <div class="ml-card" onclick="window.location.href='https://example.com/transformers';">
+              <img src="/src/styles/topics/transformers.png" alt="Transformers Icon" class="ml-card__image">
+              <div class="ml-card__body">
+                <div class="ml-card__title">Transformers</div>
+                <div class="ml-card__description">
+                  Work with models that handle sequences like language and code more efficiently than ever. Transformers are the foundation of breakthroughs in natural language processing.
+                </div>
+              </div>
+              <div class="ml-card__arrow">→</div>
+            </div>
+          </div>
+
+        </div>
+    </main>
+    <Footer />
+    </body>
+
+
+    <script>
+document.addEventListener('DOMContentLoaded', () => {
+  const buttons   = document.querySelectorAll('.difficulty-btn');
+  const indicator = document.querySelector('.difficulty-indicator');
+  const contents  = document.querySelectorAll('.difficulty-content');
+  const count     = buttons.length;
+  const stepPct   = 100 / count;
+
+  // Helper to size indicator on load & resize
+  function sizeIndicator() {
+    const isMobile = window.matchMedia('(max-width: 600px)').matches;
+    if (isMobile) {
+      indicator.style.width  = 'calc(100% - 10px)';
+      indicator.style.height = `${stepPct}%`;
+    } else {
+      indicator.style.width  = `${stepPct}%`;
+      indicator.style.height = 'calc(100% - 10px)';
+    }
+  }
+
+  // Initial size + on window resize
+  sizeIndicator();
+  window.addEventListener('resize', sizeIndicator);
+
+  buttons.forEach((btn, i) => {
+    btn.addEventListener('click', () => {
+      // 1) update active state
+      buttons.forEach(b => b.classList.remove('active'));
+      btn.classList.add('active');
+
+      // 2) move indicator
+      const isMobile = window.matchMedia('(max-width: 600px)').matches;
+      if (isMobile) {
+        indicator.style.transform = `translateY(${i * 100}%)`;
+      } else {
+        indicator.style.transform = `translateX(${i * 100}%)`;
+      }
+
+      // 3) show matching content
+      const target = btn.dataset.tab;
+      contents.forEach(c =>
+        c.classList.toggle('active', c.id === target)
+      );
+    });
+  });
+});
+</script>
+
+</html>

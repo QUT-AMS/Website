@@ -1120,3 +1120,123 @@ th.sortable::after {
   color: white;
   border-color: #FF00E6;
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/* ----------------------------- */
+/*           ML THEORY          */
+/* ----------------------------- */
+
+
+/* — Base: desktop styles — */
+.difficulty-switch {
+  position: relative;
+  display: flex;
+  justify-content: space-between;
+  width: 50%;
+  margin: 0 auto;
+  background-color: #333;
+  border-radius: 30px;
+  padding: 5px;
+  overflow: hidden;
+  margin-top: 20px;
+  margin-bottom: 50px;
+}
+
+.difficulty-indicator {
+  position: absolute;
+  top: 5px;
+  left: 5px;
+  background-color: #FF00E6;
+  border-radius: 30px;
+  transition: transform 0.3s ease;
+  z-index: 1;
+}
+
+
+.difficulty-btn {
+  flex: 1;
+  border: none;
+  background: transparent;
+  color: white;
+  padding: 10px 0;
+  border-radius: 30px;
+  cursor: pointer;
+  font-weight: bold;
+  position: relative;
+  z-index: 2;  /* sits above the indicator */
+}
+
+.difficulty-btn.active {
+  color: white;
+}
+
+/* hide all panels by default */
+.difficulty-content {
+  display: none;
+}
+
+/* show only the active one */
+.difficulty-content.active {
+  display: inline-block;
+  max-width: 90vw;
+}
+
+
+.ml-card {
+  display: flex;
+  align-items: center;
+  background-color: #2e2e2e;
+  padding: 24px 28px;
+  margin: 24px 0;
+  border-radius: 16px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.04);
+  cursor: pointer;
+  transition: background 0.25s ease;
+}
+.ml-card:hover {
+  background-color: #5b5b5b;
+}
+
+.ml-card__image {
+  width: 175px;
+  height: 175px;
+  object-fit: cover;
+  border-radius: 12px;
+  margin-right: 28px;
+}
+
+.ml-card__body {
+  flex: 1;
+}
+
+.ml-card__title {
+  font-size: 1.5rem;
+  font-weight: 700;
+  margin-bottom: 10px;
+}
+
+.ml-card__description {
+  font-size: 1.15rem;
+  line-height: 1.6;
+}
+
+.ml-card__arrow {
+  font-size: 2rem;
+  color: #FF00E6;
+  margin-left: 24px;
+}

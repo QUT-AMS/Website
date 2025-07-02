@@ -176,6 +176,16 @@ h2 {
   border-radius: 10px;
 }
 
+
+
+
+
+body.no-scroll {
+  overflow: hidden;
+  height: 100%;
+}
+
+
 /* Desktop hover */
 @media (min-width:1201px) {
   .dropdown:hover .dropdown-content {
@@ -185,8 +195,6 @@ h2 {
    .dropdown-content.show {
     display: none !important; /* prevent stale .show from leaking into desktop */
   }
-
-  
 
   /* Hide mobile buttons by default */
   .mobile-only {
@@ -247,26 +255,33 @@ h2 {
 
 
 @media (max-width:1200px) {
-/* 1) Pin the navbar to the top */
-.navbar {
-  position: fixed;
-  top: 0;
-  left: 0;
-  right: 0;
-  z-index: 2000;            /* sit above the menu overlay */
-  background-color: black;
-  border-bottom: #4d4d4d;
-}
+  /* 1) Pin the entire nav bar at the very top */
+  .navbar {
+    padding: 1rem 2rem !important;
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 2000;           /* above everything else */
+    background-color: black;
+  }
 
-  /* 2) Top row: brand + hamburger on same line */
+/* 2) Make the logo + hamburger sit above the overlay */
   .mobile-header {
     display: flex;
     justify-content: space-between;
     align-items: center;
     width: 100%;
+    position: relative;
+    z-index: 2001;           /* higher than .main-links */
   }
 
-  /* remove old margins on brand & hamburger if present */
+  .brand {
+    display: flex;
+
+  }
+
+  /* remove any old margins */
   .mobile-header .brand,
   .mobile-header .hamburger {
     margin: 0;
@@ -283,28 +298,44 @@ h2 {
 }
 
 
-/* 2) Make the main menu an edge-to-edge overlay */
-.main-links {
-  position: fixed;
-  top: 0;                    /* cover full viewport */
-  left: 0;
-  right: 0;
-  bottom: 0;
-  display: none;
-  flex-direction: column;
-  background: #262626;
-  padding: 4rem 1.5rem;      /* push links below the fixed navbar */
-  overflow-y: auto;
-  z-index: 1000;             /* sit just beneath .navbar */
-}
+  /* 3) Push the full-screen menu BELOW the header */
+  .main-links {
+    position: fixed;
+    top: 4rem;               /* <-- height of .mobile-header */
+    left: 0;
+    right: 0;
+    bottom: 0;
+    display: none;
+    flex-direction: column;
+    background: black;
+    padding: 1.5rem;
+    overflow-y: auto;
+    z-index: 2000;           /* just under the header */
+  }
+
 .main-links.show {
   display: flex;
+}
+
+.dropbtn {
+  color: white !important;
 }
 
 /* ensure dropdowns inside full-screen menu stretch full-width */
 .dropdown-content {
   width: 100%;
 }
+
+  /* dropdown behavior for mobile */
+  .dropdown-content.show {
+    display: flex !important;
+    position: static !important;
+    background: #262626;
+    flex-direction: column;
+    margin-top: 10px;
+    padding: 0.5rem 0;
+    border-radius: 4px;
+  }
 
   .mobile-only .btn,
   .mobile-only {
@@ -313,31 +344,22 @@ h2 {
 
   .pink-button {
     background: #FF00E6;
+    padding:.6rem 0rem;
+    border: 1px solid #FF00E6;
+    border-radius:25px; 
+    font-size: 1rem;
   }
+
+  .contact-button {
+    padding-bottom: 1.5rem;
+  }
+
 
   /* Hide separate secondary links section */
   .secondary-links {
     display: none;
   }
-  
-  /* dropdown behavior for mobile */
-  .dropdown-content.show {
-    display: flex !important;
-    position: static !important;
-    background: #4d4d4d;
-    flex-direction: column;
-    padding: 0.5rem 0;
-    border-radius: 4px;
-  }
 
-    /* Style for the close button */
-  .close-btn button {
-    background: none;
-    border: none;
-    text-align: center;
-    justify-content: center;
-    cursor: pointer;
-  }
 }
 
 

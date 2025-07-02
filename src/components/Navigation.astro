@@ -47,9 +47,8 @@ const { pathname } = Astro.url;
 
       <!-- For mobile only -->
       <div class="mobile-only">
-        <li class="pink-button"><a href="#">Sign Up</a></li>
-        <li><a href="#">Contact Us</a></li>
-        <li class="close-btn"><button id="close-menu">X</button></li>
+        <li class="contact-button"><a href="/contact">Contact Us</a></li>
+        <li class="pink-button"><a href="/signup">Sign Up</a></li>
       </div>
 
 
@@ -57,8 +56,8 @@ const { pathname } = Astro.url;
     </ul>
 
     <div class="secondary-links">
-      <a href="#" class="btn signup">Sign Up</a>
-      <a href="#" class="contact-link contact">Contact Us</a>
+      <a href="/signup" class="btn signup">Sign Up</a>
+      <a href="/contact" class="contact-link contact">Contact Us</a>
     </div>
   </nav>
 
@@ -70,12 +69,13 @@ const { pathname } = Astro.url;
 document.addEventListener("DOMContentLoaded", () => {
   const toggleButton = document.getElementById("menu-toggle");
   const mainLinks = document.getElementById("main-links");
-  const closeButton = document.getElementById("close-menu");
+  const body = document.body;
 
-  // Hamburger → toggle full-screen menu overlay
+  // Toggle menu and scrolling
   toggleButton.addEventListener("click", (e) => {
     e.stopPropagation();
     mainLinks.classList.toggle("show");
+    body.classList.toggle("no-scroll");
   });
 
   // Dropdown buttons → toggle submenus
@@ -96,15 +96,18 @@ document.addEventListener("DOMContentLoaded", () => {
     });
   });
 
-  // Close full menu with close button
+  // Close menu if you ever have a close button (not shown here)
+  const closeButton = document.getElementById("close-menu");
   if (closeButton) {
     closeButton.addEventListener("click", (e) => {
       e.stopPropagation();
       mainLinks.classList.remove("show");
+      body.classList.remove("no-scroll");
     });
   }
 });
 </script>
+
 
 
 

@@ -14,9 +14,7 @@ import Footer from "@/components/Footer.astro";
 
   <body class="dark background-non-curved-v2">
     <Navigation />
-
-    <main class="min-h-screen py-12">
-      <div class="hero-section">
+    <div class="hero-section">
         <img
           src="../../src/styles/network.jpg"
           alt="Header background"
@@ -26,8 +24,10 @@ import Footer from "@/components/Footer.astro";
         <h1 class="hero-heading">Upcoming Events</h1>
       </div>
 
-
-      <div class="toggle-switch">
+    <main class="min-h-screen py-12">
+    
+      <!--- I AM INTENTIONALLY COMMENTING THIS OUT. WHEN WE GET TO NEXT YEAR WE CAN GIVE THE OPTION FOR MEMBERS TO SEE WHAT WE HAVE DONE IN THE PAST -->
+      <!-- <div class="toggle-switch">
         <div class="toggle-slider"></div>
         <button class="toggle-btn active" data-tab="sem2">
           Sem 2, 2025
@@ -35,43 +35,45 @@ import Footer from "@/components/Footer.astro";
         <button class="toggle-btn" data-tab="sem1">
           Sem 1, 2026
         </button>
+      </div> -->
+
+      <div id="sem2" class="tab-content active" style="padding-bottom: 400px;">
+        <div class="schedule">
+          <h1>Semester 2, 2025</h1>
+
+          <div class="schedule-item">
+            <span class="week">Week 1</span>
+            <span class="event"><a href="/events/types">🎮 Games Night</a></span>
+          </div>
+          <div class="schedule-item">
+            <span class="week">Weeks 2–8</span>
+            <span class="event"><a href="/events/types">💻 Project Night</a></span>
+          </div>
+          <div class="schedule-item">
+            <span class="week">Week 9</span>
+            <span class="event"><a href="/events/types">🎙️ Industry Talk</a></span>
+          </div>
+          <div class="schedule-item">
+            <span class="week">Mid Sem Break</span>
+            <span class="event">🚫 No Events</span>
+          </div>
+          <div class="schedule-item">
+            <span class="week">Week 10</span>
+            <span class="event"><a href="/events/types">🎉 Social Night</a></span>
+          </div>
+          <div class="schedule-item">
+            <span class="week">Weeks 11–12</span>
+            <span class="event"><a href="/events/types">📚 Study Night</a></span>
+          </div>
+          <div class="schedule-item">
+            <span class="week">Week 13</span>
+            <span class="event"><a href="/events/types">🎉 Social Night</a></span>
+          </div>
+        </div>
       </div>
 
 
-      <div id="sem2" class="tab-content active" style="padding-bottom: 400px;">
-          <div class="schedule">
-            <div class="schedule-item">
-              <span class="week">Week 1</span>
-              <span class="event">🎮 Games Night</span>
-            </div>
-            <div class="schedule-item">
-              <span class="week">Weeks 2–8</span>
-              <span class="event">💻 Project Night</span>
-            </div>
-            <div class="schedule-item">
-              <span class="week">Week 9</span>
-              <span class="event">🎙️ Industry Talk</span>
-            </div>
-            <div class="schedule-item">
-              <span class="week">Mid Sem Break</span>
-              <span class="event">🚫 No Events</span>
-            </div>
-            <div class="schedule-item">
-              <span class="week">Week 10</span>
-              <span class="event">🎉 Social Night</span>
-            </div>
-            <div class="schedule-item">
-              <span class="week">Weeks 11–12</span>
-              <span class="event">📚 Study Night</span>
-            </div>
-            <div class="schedule-item">
-              <span class="week">Week 13</span>
-              <span class="event">🎉 Social Night</span>
-            </div>
-          </div>
-        </div>
-
-      <div id="sem1" class="tab-content" style="padding-bottom: 400px;">
+      <!-- <div id="sem1" class="tab-content" style="padding-bottom: 400px;">
           <div class="schedule">
             <div class="schedule-item">
               <span class="week">Week 1</span>
@@ -106,7 +108,7 @@ import Footer from "@/components/Footer.astro";
               <span class="event">🎉 Social Night</span>
             </div>
           </div>
-        </div>
+        </div> -->
 
     </main>
 

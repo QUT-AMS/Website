@@ -2,6 +2,8 @@
 import "@/styles/global.css"
 import Navigation from "@/components/Navigation.astro"
 import Footer from '../components/Footer.astro';
+import Button from "@/components/Button.astro"
+
 ---
 
 <html lang="en">
@@ -13,14 +15,25 @@ import Footer from '../components/Footer.astro';
   </head>
   <body class="dark background">
     <Navigation />
-    <main class="min-h-screen py-12">
-      		
-			<div class="hero-section">
+      <div class="hero-section">
 				<img src="../../src/styles/network.jpg"  alt="Header background"  class="hero-background"/>
 				<div class="hero-overlay"></div>
 				<h1 class="hero-heading">Contact Us</h1>
 			</div>
 
+    <main class="min-h-screen py-12">
+      		<h1>Get in Touch</h1>
+
+          
+
+          <h1>Our Socials</h1>
+            <div class="footer-social">
+              <Button path="https://discord.gg/tUDGrrNPf7" icon="tabler:brand-discord"/>
+              <Button path="https://github.com/qut-ams" icon="tabler:brand-github" />
+              <Button path="https://www.instagram.com/qut_ams/" icon="tabler:brand-instagram" />
+              <Button path="https://www.linkedin.com/company/qut-ams/" icon="tabler:brand-linkedin" />
+              <Button path="https://www.tiktok.com/@qut_ams" icon="tabler:brand-tiktok" />
+            </div>
     </main>
 	<Footer />
   </body>

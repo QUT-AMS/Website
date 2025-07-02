@@ -255,6 +255,21 @@ body.no-scroll {
 
 
 @media (max-width:1200px) {
+
+.background{
+    background: linear-gradient(
+        to bottom,
+        #090909 0%,
+        #090909 65%,
+        #FF00E6 78%
+    );
+}
+
+  main {
+    margin-top: 4rem;
+    padding: 10px 40px;
+  }
+
   /* 1) Pin the entire nav bar at the very top */
   .navbar {
     padding: 1rem 2rem !important;
@@ -360,6 +375,20 @@ body.no-scroll {
     display: none;
   }
 
+  .hero-section {
+    margin-top: 4rem;
+  }
+
+  .background-non-curved {
+    background: linear-gradient(
+        to bottom,
+        #090909 0%,
+        #090909 93%,
+        #FF00E6 97%
+    );
+  }
+
+
 }
 
 
@@ -423,6 +452,7 @@ body.no-scroll {
   justify-content: center;
   overflow: hidden;
   text-align: center;
+  padding: 10px 20px;
 }
 
 .hero-background {
@@ -437,7 +467,7 @@ body.no-scroll {
 .hero-overlay {
   position: absolute;
   inset: 0;
-  background-color: rgba(0, 0, 0, 0.6); /* 80% dark opacity */
+  background-color: rgba(0, 0, 0, 0.5); /* 80% dark opacity */
   z-index: 1;
 }
 
@@ -448,6 +478,7 @@ body.no-scroll {
   font-size: 2.5rem;
   margin: 0;
 }
+
 
 
 
@@ -574,6 +605,8 @@ body.no-scroll {
   border-radius: 30px;
   padding: 5px;
   overflow: hidden;
+  margin-top: 20px;
+  margin-bottom: 50px;
 }
 
 .toggle-slider {
@@ -713,6 +746,8 @@ body.no-scroll {
   border-radius: 30px;
   padding: 5px;
   overflow: hidden;
+  margin-top: 20px;
+  margin-bottom: 50px;
 }
 
 .toggleNights-indicator {
@@ -902,6 +937,10 @@ body.no-scroll {
 }
 
 .button-outline-pink {
+  display: inline-flex;         /* use flex for easy centering */
+  justify-content: center;      /* center horizontally */
+  align-items: center;          /* center vertically */
+  text-align: center;           /* ensure text itself is centered */
   color: #FF00E6;
   border: 1px solid #FF00E6;
   background: transparent;
@@ -914,3 +953,7 @@ body.no-scroll {
 .button-outline-pink:hover {
   background-color: rgba(194, 194, 194, 0.2);
 }
+
+
+
+

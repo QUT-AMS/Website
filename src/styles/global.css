@@ -200,36 +200,6 @@ body.no-scroll {
   height: 100%;
 }
 
-
-/* Desktop hover */
-@media (min-width:1201px) {
-  .dropdown:hover .dropdown-content {
-    display: flex;
-  }
-
-   .dropdown-content.show {
-    display: none !important; /* prevent stale .show from leaking into desktop */
-  }
-
-  /* Hide mobile buttons by default */
-  .mobile-only {
-    display: none;
-  }
-
-  .indicator {
-    will-change: left, width;
-    position: absolute;
-    bottom: 0;
-    height: 2px;
-    background: var(--color-primary);
-    transition: left 0.4s ease-in-out,
-                width 0.4s ease-in-out;
-    border-radius: 1px;
-    pointer-events: none;
-    z-index: 50;
-  } 
-}
-
 .dropdown-content li a {
   padding:.8rem 1.2rem;
   text-align:center;
@@ -273,6 +243,16 @@ body.no-scroll {
 
 
 @media (max-width:1200px) {
+
+  .main-links.show {
+  height: 100vh;
+  padding: 1.5rem;
+  background: black;
+  position: fixed;
+  top: 4rem; /* pushes it just below your fixed navbar */
+  z-index: 1000; /* lower than the hamburger + mobile-header */
+}
+
 
   .main-links {
     /* shrink the vertical gap between each <li> */
@@ -375,24 +355,27 @@ body.no-scroll {
     font-size: 2.5rem;
   }
 
-  /* 3) Push the full-screen menu BELOW the header */
+  /* 1) Keep it flex but collapse it by default */
   .main-links {
     position: fixed;
-    top: 4rem;               /* <-- height of .mobile-header */
+    top: 4rem;          /* below your header */
     left: 0;
     right: 0;
-    bottom: 0;
-    display: none;
+    bottom: auto;     /* ← let the menu height be auto */
+    overflow: hidden;   /* clip when collapsed */
+    max-height: 0;      /* start closed */
+    display: flex;      /* still flex so children layout is preserved */
     flex-direction: column;
     background: black;
-    padding: 1.5rem;
-    overflow-y: auto;
-    z-index: 2000;           /* just under the header */
+    padding: 0 1.5rem;  /* no vertical padding when closed */
+    transition: max-height 0.4s ease;
   }
 
-.main-links.show {
-  display: flex;
-}
+  /* 2) When open, let it grow up to full viewport minus header */
+  .main-links.show {
+    max-height: calc(100vh - 4rem);
+    padding: 1.5rem;    /* restore vertical padding */
+  }
 
 .dropbtn {
   color: white !important;
@@ -456,7 +439,34 @@ body.no-scroll {
 
 
 
+/* Desktop hover */
+@media (min-width:1201px) {
+  .dropdown:hover .dropdown-content {
+    display: flex;
+  }
 
+   .dropdown-content.show {
+    display: none !important; /* prevent stale .show from leaking into desktop */
+  }
+
+  /* Hide mobile buttons by default */
+  .mobile-only {
+    display: none;
+  }
+
+  .indicator {
+    will-change: left, width;
+    position: absolute;
+    bottom: 0;
+    height: 2px;
+    background: var(--color-primary);
+    transition: left 0.4s ease-in-out,
+                width 0.4s ease-in-out;
+    border-radius: 1px;
+    pointer-events: none;
+    z-index: 50;
+  } 
+}
 
 
 

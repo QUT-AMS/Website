@@ -26,9 +26,13 @@ const { pathname } = Astro.url;
     </div>
 
     <ul class="nav-links main-links" id="main-links">
+
       <li><a href="/">Home</a></li>
+
       <li class="dropdown">
-        <a href="#" class="dropbtn">About Us</a>
+        <a href="#" class="dropbtn">
+          About Us <span class="arrow">&#9662;</span>
+        </a>
         <ul class="dropdown-content">
           <li><a href="/about/aims">Our Aims & Objectives</a></li>
           <li><a href="/about/team">Our Team</a></li>
@@ -36,16 +40,21 @@ const { pathname } = Astro.url;
       </li>
 
       <li class="dropdown">
-        <a href="#" class="dropbtn">Learn</a>
+        <a href="#" class="dropbtn">
+          Learn <span class="arrow">&#9662;</span>
+        </a>
         <ul class="dropdown-content">
           <li><a href="/learn/tools">AI Tools & Resources</a></li>
           <li><a href="/learn/theory">ML Fundamentals</a></li>
         </ul>
       </li>
+
       <li><a href="/challenges">Challenges</a></li>
 
       <li class="dropdown">
-        <a href="#" class="dropbtn">Events</a>
+        <a href="#" class="dropbtn">
+          Events <span class="arrow">&#9662;</span>
+        </a>
         <ul class="dropdown-content">
           <li><a href="/events/types">What we offer</a></li>
           <li><a href="/events/upcoming">Upcoming Events</a></li>
@@ -74,35 +83,55 @@ const { pathname } = Astro.url;
 <script>
 document.addEventListener("DOMContentLoaded", () => {
   const toggleButton = document.getElementById("menu-toggle");
-  const mainLinks = document.getElementById("main-links");
-  const body = document.body;
+  const mainLinks    = document.getElementById("main-links");
+  const body         = document.body;
 
-  // Toggle menu and scrolling
   toggleButton.addEventListener("click", (e) => {
     e.stopPropagation();
-    mainLinks.classList.toggle("show");
+
+    // Toggle menu & page scroll
+    const isOpen = mainLinks.classList.toggle("show");
     body.classList.toggle("no-scroll");
+
+    // Swap icon and toggle .open class
+    if (isOpen) {
+      toggleButton.innerHTML = "&times;";        // ×
+      toggleButton.classList.add("open");
+    } else {
+      toggleButton.innerHTML = "&#9776;";        // ☰
+      toggleButton.classList.remove("open");
+    }
   });
 
-  // Dropdown buttons → toggle submenus
+
+  // Dropdown buttons → toggle submenus AND arrows
   const dropbtns = document.querySelectorAll(".dropdown > .dropbtn");
   dropbtns.forEach((btn) => {
     btn.addEventListener("click", (e) => {
       e.preventDefault();
       e.stopPropagation();
+
       const submenu = btn.parentElement.querySelector(".dropdown-content");
-      const isOpen = submenu.classList.contains("show");
+      const isOpen  = submenu.classList.contains("show");
 
-      // Close all other submenus
-      document.querySelectorAll(".dropdown-content.show")
-        .forEach((open) => open.classList.remove("show"));
+      // Close all other submenus & reset their arrows
+      document.querySelectorAll(".dropdown-content.show").forEach((open) => {
+        open.classList.remove("show");
+        open.parentElement.querySelector(".dropbtn").classList.remove("active");
+      });
 
-      // Toggle selected submenu
-      if (!isOpen) submenu.classList.add("show");
+      // Toggle this submenu & its arrow
+      if (isOpen) {
+        submenu.classList.remove("show");
+        btn.classList.remove("active");
+      } else {
+        submenu.classList.add("show");
+        btn.classList.add("active");
+      }
     });
   });
 
-  // Close menu if you ever have a close button (not shown here)
+  // (Optional) close-menu button
   const closeButton = document.getElementById("close-menu");
   if (closeButton) {
     closeButton.addEventListener("click", (e) => {
@@ -113,6 +142,7 @@ document.addEventListener("DOMContentLoaded", () => {
   }
 });
 </script>
+
 
 
 

@@ -178,6 +178,20 @@ h2 {
   border-radius: 10px;
 }
 
+/* 1) Make each dropbtn fill its parent <li> */
+/* ———————— */
+.nav-links .dropdown > .dropbtn {
+  display: block;      /* so width:100% works */
+  width: 100%;
+  position: relative;  /* for the arrow’s absolute positioning */
+  padding-right: 2rem; /* make room for the arrow */
+}
+
+/* 2) Absolutely position the arrow at that right edge */
+/* hide it by default, then show+rotate in your mobile media-query */
+.nav-links .dropbtn .arrow {
+  display: none;
+}
 
 
 
@@ -252,10 +266,44 @@ body.no-scroll {
   cursor:pointer;
 }
 
-
+/* Always hide arrows by default */
+.dropbtn .arrow {
+  display: none;
+}
 
 
 @media (max-width:1200px) {
+
+  .main-links {
+    /* shrink the vertical gap between each <li> */
+    gap: 1.5rem;            /* ↓ from 2rem to 1rem */
+  }
+
+  
+
+  .nav-links .dropbtn .arrow {
+    display: block;
+    position: absolute;
+    top: 50%;
+    right: 1rem;              /* same for every item */
+    transform: translateY(-50%);
+    transition: transform .3s ease;
+  }
+
+  /* when JS adds .active, rotate around the same anchor point */
+  .nav-links .dropbtn.active .arrow {
+    transform: translateY(-50%) rotate(180deg);
+  }
+  
+  .dropbtn .arrow {
+    display: inline-block;
+    margin-left: 0.4rem;
+    transition: transform 0.3s ease;
+  }
+
+  .dropbtn.active .arrow {
+    transform: rotate(180deg); /* flips the arrow when dropdown is active */
+  }
 
 .background{
     background: linear-gradient(
@@ -303,16 +351,29 @@ body.no-scroll {
     margin: 0;
   }
 
-  /* ensure hamburger is visible */
-.hamburger {
-  display: block;
-  font-size: 1.2rem; 
-  background: none;
-  border: none;
-  cursor: pointer;
-  padding: 0.5rem;
-}
+  .hamburger {
+    /* Always a 2.5rem × 2.5rem box */
+    width: 2.5rem;
+    height: 2.5rem;
+    padding: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: none;
+    border: none;
+    cursor: pointer;
+    line-height: 1;
+  }
 
+  /* Small “☰” when closed */
+  .hamburger:not(.open) {
+    font-size: 1.3rem;
+  }
+
+  /* Big “×” when open */
+  .hamburger.open {
+    font-size: 2.5rem;
+  }
 
   /* 3) Push the full-screen menu BELOW the header */
   .main-links {
@@ -337,10 +398,6 @@ body.no-scroll {
   color: white !important;
 }
 
-/* ensure dropdowns inside full-screen menu stretch full-width */
-.dropdown-content {
-  width: 100%;
-}
 
   /* dropdown behavior for mobile */
   .dropdown-content.show {
@@ -349,6 +406,8 @@ body.no-scroll {
     background: #262626;
     flex-direction: column;
     margin-top: 10px;
+    margin-left: 15px;
+    margin-right: 20px;
     padding: 0.5rem 0;
     border-radius: 4px;
   }
@@ -495,6 +554,7 @@ body.no-scroll {
   flex-direction: column;
   gap: 40px;
   z-index: 1;
+  overflow: hidden;   /* hide the 150%-wide gradient overflow */
 }
 
 .content-wrapper::before {

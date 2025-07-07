@@ -86,52 +86,60 @@ document.addEventListener("DOMContentLoaded", () => {
   const mainLinks    = document.getElementById("main-links");
   const body         = document.body;
 
-  toggleButton.addEventListener("click", (e) => {
-    e.stopPropagation();
+toggleButton.addEventListener("click", e => {
+  e.stopPropagation();
 
-    // Toggle menu & page scroll
-    const isOpen = mainLinks.classList.toggle("show");
-    body.classList.toggle("no-scroll");
+  const isOpen = mainLinks.classList.toggle("show");
+  body.classList.toggle("no-scroll");
 
-    // Swap icon and toggle .open class
-    if (isOpen) {
-      toggleButton.innerHTML = "&times;";        // ×
-      toggleButton.classList.add("open");
-    } else {
-      toggleButton.innerHTML = "&#9776;";        // ☰
-      toggleButton.classList.remove("open");
-    }
-  });
+  // ① If nav is opening, collapse all dropdowns
+  if (isOpen) {
+    document.querySelectorAll(".dropdown-content.show")
+      .forEach(el => el.classList.remove("show"));
+    document.querySelectorAll(".dropbtn.open")
+      .forEach(btn => btn.classList.remove("open"));
+  }
+
+  // ② Swap hamburger icon
+  if (isOpen) {
+    toggleButton.innerHTML = "&times;";
+    toggleButton.classList.add("open");
+  } else {
+    toggleButton.innerHTML = "&#9776;";
+    toggleButton.classList.remove("open");
+  }
+});
+
 
   
 
 
   // Dropdown buttons → toggle submenus AND arrows
-  const dropbtns = document.querySelectorAll(".dropdown > .dropbtn");
-  dropbtns.forEach((btn) => {
-    btn.addEventListener("click", (e) => {
-      e.preventDefault();
-      e.stopPropagation();
+  const dropbtns = document.querySelectorAll(".dropdown > .dropbtn").forEach(btn => {
+  btn.addEventListener("click", e => {
+    e.preventDefault();
+    e.stopPropagation();
 
-      const submenu = btn.parentElement.querySelector(".dropdown-content");
-      const isOpen  = submenu.classList.contains("show");
+    const submenu = btn.parentElement.querySelector(".dropdown-content");
+    const isOpen  = submenu.classList.contains("show");
 
-      // Close all other submenus & reset their arrows
-      document.querySelectorAll(".dropdown-content.show").forEach((open) => {
-        open.classList.remove("show");
-        open.parentElement.querySelector(".dropbtn").classList.remove("active");
-      });
+    // close all others
+    document.querySelectorAll(".dropdown-content.show")
+      .forEach(m => m.classList.remove("show"));
+    document.querySelectorAll(".dropbtn.open")
+      .forEach(b => b.classList.remove("open"));
 
-      // Toggle this submenu & its arrow
-      if (isOpen) {
-        submenu.classList.remove("show");
-        btn.classList.remove("active");
-      } else {
-        submenu.classList.add("show");
-        btn.classList.add("active");
-      }
-    });
+    if (isOpen) {
+      submenu.classList.remove("show");
+      btn.classList.remove("open");
+    } else {
+      submenu.classList.add("show");
+      btn.classList.add("open");
+    }
   });
+});
+
+
 
   // (Optional) close-menu button
   const closeButton = document.getElementById("close-menu");
@@ -184,6 +192,7 @@ document.addEventListener("DOMContentLoaded", () => {
       });
     });
   }
+  
 
   // Mark active and position indicator
   if (activeLink) {

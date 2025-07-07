@@ -236,7 +236,15 @@ h2 {
   display: none;
 }
 
+/* This color is for page match (active link) */
+.main-links .dropbtn.active {
+  color: #FF00E6 !important;
+}
 
+/* Optional: visual cue on click (like rotate arrow, show submenu) */
+.main-links .dropbtn.open .arrow {
+  transform: rotate(180deg);
+}
 
 body.no-scroll {
   overflow: hidden;
@@ -298,6 +306,10 @@ body.no-scroll {
     z-index: 1000;
   }
 
+  .dropbtn.active .arrow {
+  transform: translateY(-50%) rotate(0deg) !important;
+}
+
 
   .nav-links .dropbtn .arrow {
     display: block;
@@ -313,15 +325,27 @@ body.no-scroll {
     transform: translateY(-50%) rotate(180deg);
   }
   
+
+   .dropbtn {
+    position: relative; /* parent for absolute arrow */
+  }
+
   .dropbtn .arrow {
-    display: inline-block;
-    margin-left: 0.4rem;
+    display: block;
+    position: absolute;
+    top: 50%;
+    right: 1rem;
+    transform: translateY(-50%);
+    transform-origin: center;
     transition: transform 0.3s ease;
   }
 
-  .dropbtn.active .arrow {
-    transform: rotate(180deg); /* flips the arrow when dropdown is active */
+  /* 3. Rotate only when submenu is open */
+  .dropbtn.open .arrow {
+    transform: translateY(-50%) rotate(180deg) !important;
   }
+
+  
 
 .background{
     background: linear-gradient(
@@ -522,7 +546,6 @@ body.no-scroll {
         #FF00E6 97%
     );
   }
-
 
 }
 

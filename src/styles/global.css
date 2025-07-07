@@ -311,15 +311,20 @@ body.no-scroll {
   transform: translateY(-50%) rotate(0deg) !important;
 }
 
+.nav-links .dropdown > .dropbtn {
+  position: relative;
+  display: inline-block;
+  padding: 0 2rem 0 .75rem;   /* extra right padding to make room for arrow */
+}
 
-  .nav-links .dropbtn .arrow {
-    display: block;
-    position: absolute;
-    top: 50%;
-    right: 1rem;              /* same for every item */
-    transform: translateY(-50%);
-    transition: transform .3s ease;
-  }
+.nav-links .dropbtn .arrow {
+  display: block;
+  position: absolute;
+  top: 50%;
+  right: .5rem;                 /* adjust to taste */
+  transform: translateY(-50%);
+  transition: transform .3s ease;
+}
 
   /* when JS adds .active, rotate around the same anchor point */
   .nav-links .dropbtn.active .arrow {

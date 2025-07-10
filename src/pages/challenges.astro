@@ -59,14 +59,14 @@ import Footer from "@/components/Footer.astro";
             </ul>
           </div>
 
-          <!-- Mobile-only filter -->
+
           <select id="mobile-filter" class="filter-dropdown">
             <option value="All">All</option>
             <option value="Linear Regression">Linear Regression</option>
             <option value="Logistic Regression">Logistic Regression</option>
             <option value="K-Nearest Neighbours">K-Nearest Neighbours</option>
             <option value="Convoluted Neural Networks">Convoluted Neural Networks</option>
-            <option value="Random Forests">Random Forests</option>
+            <option value="Random Forest">Random Forests</option>       <!-- ← sync value -->
             <option value="Clustering">Clustering</option>
             <option value="Transformers">Transformers</option>
             <option value="Reinforcement Learning">Reinforcement Learning</option>
@@ -381,4 +381,27 @@ import Footer from "@/components/Footer.astro";
 
   // INITIAL DISPLAY
   filterRows();
+
+
+    document.addEventListener('DOMContentLoaded', () => {
+    const dropdown = document.getElementById('mobile-filter');
+    const buttons  = document.querySelectorAll('.filter-btn');
+    const rows     = document.querySelectorAll('tbody tr[data-topic]');
+
+    dropdown.addEventListener('change', e => {
+      const topic = e.target.value;
+
+      // 1) update button active state
+      buttons.forEach(btn => {
+        btn.classList.toggle('active', btn.dataset.topic === topic);
+      });
+
+      // 2) show/hide rows just like your buttons do
+      rows.forEach(row => {
+        const matches = topic === 'All' || row.dataset.topic === topic;
+        row.style.display = matches ? '' : 'none';
+      });
+    });
+  });
+
 </script>

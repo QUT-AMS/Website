@@ -1,0 +1,117 @@
+---
+import "@/styles/stylesheets/global.css"
+import "@/styles/stylesheets/ml_practice.css"
+import Navigation from "../../../components/Navigation.astro";
+import Footer from "../../../components/Footer.astro";
+---
+
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <meta name="viewport" content="width=device-width" />
+    <title>K-Nearest Neighbours • QUT AI & ML Society</title>
+  </head>
+
+  <body class="dark background-non-curved-v2">
+    <Navigation />
+
+    <div class="hero-section">
+      <img
+        src="../../src/styles/graphics/network.jpg"
+        alt="Illustration of K-Nearest Neighbours classification"
+        class="hero-background"
+      />
+      <div class="hero-overlay"></div>
+      <h1 class="hero-heading">K-Nearest Neighbours</h1>
+    </div>
+
+    <main class="tutorials">
+
+      <!-- Step-by-Step Tutorials -->
+      <h2>Step-by-Step Tutorials</h2>
+      <div class="tutorial-grid">
+        <div class="tutorial-box">
+          <h3>KNN Classification with scikit-learn</h3>
+          <p>Build your first K-Nearest Neighbours model using scikit-learn and explore how distance metrics shape predictions.</p>
+          <a
+            href="https://scikit-learn.org/stable/modules/neighbors.html#classification"
+            target="_blank"
+            class="link-button"
+          >
+            Read Tutorial
+          </a>
+        </div>
+
+        <div class="tutorial-box">
+          <h3>Implementing KNN from Scratch in Python</h3>
+          <p>Learn to code KNN by hand—covering distance calculations, majority voting, and evaluation metrics step by step.</p>
+          <a
+            href="https://towardsdatascience.com/k-nearest-neighbors-knn-algorithm-for-machine-learning-e883219c8f26"
+            target="_blank"
+            class="link-button"
+          >
+            Read Tutorial
+          </a>
+        </div>
+
+        <div class="tutorial-box">
+          <h3>Understanding KNN — GeeksforGeeks</h3>
+          <p>Deep dive into the KNN algorithm, parameter tuning, and typical use cases in pattern recognition.</p>
+          <a
+            href="https://www.geeksforgeeks.org/k-nearest-neighbors-knn-simple-implementation/"
+            target="_blank"
+            class="link-button"
+          >
+            Read Tutorial
+          </a>
+        </div>
+      </div>
+
+      <hr class="divider" />
+
+      <!-- Video Tutorials -->
+      <h2>Video Tutorials</h2>
+      <div class="tutorial-grid">
+        <div class="tutorial-box">
+          <h3>StatQuest: K-Nearest Neighbors</h3>
+          <p>Josh Starmer breaks down KNN classification, distance measures, and hyperparameter selection.</p>
+          <a
+            href="https://www.youtube.com/watch?v=HVXime0nQeI"
+            target="_blank"
+            class="link-button"
+          >
+            Watch Video
+          </a>
+        </div>
+
+        <div class="tutorial-box">
+          <h3>Data School: KNN in Python</h3>
+          <p>Kevin Markham walks through a clean implementation of KNN and shows how to optimize performance.</p>
+          <a
+            href="https://www.youtube.com/watch?v=4HKqjENq9OU"
+            target="_blank"
+            class="link-button"
+          >
+            Watch Video
+          </a>
+        </div>
+
+        <div class="tutorial-box">
+          <h3>Tech With Tim: K-Nearest Neighbours Tutorial</h3>
+          <p>An approachable guide to using KNN for classification tasks, including code examples and tips.</p>
+          <a
+            href="https://www.youtube.com/watch?v=4jYaXoXpH2I"
+            target="_blank"
+            class="link-button"
+          >
+            Watch Video
+          </a>
+        </div>
+      </div>
+
+    </main>
+
+    <Footer />
+  </body>
+</html>

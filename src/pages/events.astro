@@ -1,5 +1,6 @@
 ---
-import "@/styles/global.css";
+import "@/styles/stylesheets/global.css"
+import "@/styles/stylesheets/events.css"
 import Navigation from "@/components/Navigation.astro";
 import Footer from "@/components/Footer.astro";
 ---
@@ -17,34 +18,37 @@ import Footer from "@/components/Footer.astro";
 
       <div class="hero-section">
         <img
-          src="../../src/styles/network.jpg"
+          src="../../src/styles/graphics/network.jpg"
           alt="Header background"
           class="hero-background"
         />
         <div class="hero-overlay"></div>
-        <h1 class="hero-heading">AI Tools & Resources</h1>
+        <h1 class="hero-heading">Our Events</h1>
       </div> 
       
 			<main class="min-h-160 items-center p-12">
 
       <div style="display: flex; flex-direction: column; align-items: center; padding-bottom: 400px">
-        <div class="difficulty-switch">
-          <div class="difficulty-indicator"></div>
+        <div class="toggleNights-switch">
+          <div class="toggleNights-indicator"></div>
 
-          <button class="difficulty-btn active" data-tab="beginner">
-            Beginner
+          <button class="toggleNights-btn active" data-tab="projects">
+            Project Nights
           </button>
-          <button class="difficulty-btn" data-tab="industry">
-            Intermediate
+          <button class="toggleNights-btn" data-tab="industry">
+            Industry Nights
           </button>
-          <button class="difficulty-btn" data-tab="social">
-            Advanced
+          <button class="toggleNights-btn" data-tab="social">
+            Social Nights
+          </button>
+          <button class="toggleNights-btn" data-tab="study">
+            Study Nights
           </button>
         </div>
 
 
-        <div id="beginner" class="difficulty-content active">
-            <h1>Beginner</h1>
+        <div id="projects" class="toggleNights-content active">
+            <h1>Project Nights</h1>
             <p>
               Our Project Nights are an opportunity for our members to learn about AI 
               and get hands on experience building. We provide topics for our 
@@ -63,8 +67,8 @@ import Footer from "@/components/Footer.astro";
             </p>
           </div>
 
-          <div id="intermediate" class="difficulty-content">
-            <h1>Intermediate</h1>
+          <div id="industry" class="toggleNights-content">
+            <h1>Industry Nights</h1>
             <p>
               Our Industry Nights are an opportunity for our members to gain valuable 
               insights and guidance directly from alumni, professionals, and leaders in 
@@ -85,8 +89,8 @@ import Footer from "@/components/Footer.astro";
           </div>
 
 
-          <div id="advanced" class="difficulty-content">
-            <h1>Advanced</h1>
+          <div id="social" class="toggleNights-content">
+            <h1>Social Nights</h1>
             <p>
                 Our Social Nights are designed to give our members a chance to unwind, 
                 relax, and take a well-deserved break from the pressures of studies and 
@@ -103,6 +107,24 @@ import Footer from "@/components/Footer.astro";
               while balancing the demands of student life.
             </p>
           </div>  
+          <div id="study" class="toggleNights-content">
+            <h1>Study Nights</h1>
+            <p>
+                Our Study Nights are dedicated sessions where members come together 
+                to focus, stay motivated, and support each other during busy assessment 
+                periods. These nights create a collaborative and productive environment 
+                that helps you stay on track with your coursework while working alongside 
+                peers who understand the challenges you’re facing.
+            </p>
+            <br>
+            <p>
+                Whether you’re revising for exams, tackling assignments, or seeking 
+                advice on tricky topics, Study Nights offer the perfect space for sharing 
+                ideas and keeping each other accountable. It’s a great way to make 
+                studying less stressful and more enjoyable, all while building a supportive 
+                academic community.
+            </p>
+          </div>
         </div>
     </main>
     <Footer />
@@ -111,9 +133,9 @@ import Footer from "@/components/Footer.astro";
 
     <script>
 document.addEventListener('DOMContentLoaded', () => {
-  const buttons   = document.querySelectorAll('.difficulty-btn');
-  const indicator = document.querySelector('.difficulty-indicator');
-  const contents  = document.querySelectorAll('.difficulty-content');
+  const buttons   = document.querySelectorAll('.toggleNights-btn');
+  const indicator = document.querySelector('.toggleNights-indicator');
+  const contents  = document.querySelectorAll('.toggleNights-content');
   const count     = buttons.length;
   const stepPct   = 100 / count;
 

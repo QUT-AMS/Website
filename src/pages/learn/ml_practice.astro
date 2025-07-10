@@ -1,5 +1,6 @@
 ---
-import "@/styles/global.css";
+import "@/styles/stylesheets/global.css"
+import "@/styles/stylesheets/ml_practice.css"
 import Navigation from "@/components/Navigation.astro";
 import Footer from "@/components/Footer.astro";
 ---
@@ -17,12 +18,12 @@ import Footer from "@/components/Footer.astro";
 
       <div class="hero-section">
         <img
-          src="../../src/styles/network.jpg"
+          src="../src/styles/graphics/network.jpg"
           alt="Header background"
           class="hero-background"
         />
         <div class="hero-overlay"></div>
-        <h1 class="hero-heading">Machine Learning Fundamentals</h1>
+        <h1 class="hero-heading">Machine Learning Topics</h1>
       </div> 
       
 			<main class="min-h-160 items-center p-12">
@@ -51,7 +52,7 @@ import Footer from "@/components/Footer.astro";
               <h1>Beginner</h1>
 
               <!-- Linear Regression -->
-              <a href="/learn/theory/linear-regression" class="ml-card">
+              <a href="/learn/ml_topics/linear-regression" class="ml-card">
                 <img src="/src/styles/topics/linear_regression.png" alt="Linear Regression Icon" class="ml-card__image">
                 <div class="ml-card__body">
                   <div class="ml-card__title">Linear Regression</div>
@@ -60,35 +61,37 @@ import Footer from "@/components/Footer.astro";
                 <div class="ml-card__arrow">→</div>
               </a>
 
-              <!-- Clustering -->
-              <a href="/learn/theory/clustering" class="ml-card">
-                <img src="/src/styles/topics/clustering.jpg" alt="Clustering Icon" class="ml-card__image">
+              <!-- Logistic Regression -->
+              <a href="/learn/ml_topics/logistic-regression" class="ml-card">
+                <img src="/src/styles/topics/logistic-regression.jpg" alt="Logistic Regression Icon" class="ml-card__image">
                 <div class="ml-card__body">
-                  <div class="ml-card__title">Clustering</div>
-                  <div class="ml-card__description">Reveal hidden groups in your data without any labels. Whether you're exploring behavior patterns or discovering naturally occurring clusters, clustering helps uncover structure and meaning.</div>
+                  <div class="ml-card__title">Logistic Regression</div>
+                  <div class="ml-card__description">
+                    Learn how this powerful classification algorithm predicts binary outcomes using a sigmoid function. Logistic regression helps model probabilities and make decisions in areas like spam detection and medical diagnosis.
+                  </div>
                 </div>
                 <div class="ml-card__arrow">→</div>
               </a>
 
-              <!-- Principal Component Analysis -->
-              <a href="/learn/theory/pca" class="ml-card">
-                <img src="/src/styles/topics/PCA.png" alt="PCA Icon" class="ml-card__image">
+              <!-- K-Nearest Neighbours -->
+              <a href="/learn/ml_topics/k-nearest-neighbours" class="ml-card">
+                <img src="/src/styles/topics/KNN.png" alt="KNN Icon" class="ml-card__image">
                 <div class="ml-card__body">
-                  <div class="ml-card__title">Principal Component Analysis</div>
-                  <div class="ml-card__description">Simplify complex datasets by highlighting what is most important. PCA helps you focus on the big picture while reducing noise in high volume information.</div>
+                  <div class="ml-card__title">K-Nearest Neighbours</div>
+                  <div class="ml-card__description">
+                    Discover how KNN classifies data by comparing similarity. It looks at the closest examples and lets them vote on what new data should be — no training required. Great for recommendation systems and pattern recognition.
+                  </div>
                 </div>
                 <div class="ml-card__arrow">→</div>
               </a>
             </div>
 
 
-
-
           <div id="intermediate" class="difficulty-content">
             <h1>Intermediate</h1>
 
             <!-- CNN -->
-              <a href="/learn/theory/cnn" class="ml-card">
+              <a href="/learn/ml_topics/convoluted-neural-networks" class="ml-card">
               <img src="/src/styles/topics/CNN.png" alt="CNN Icon" class="ml-card__image">
               <div class="ml-card__body">
                 <div class="ml-card__title">Convolutional Neural Networks</div>
@@ -97,18 +100,8 @@ import Footer from "@/components/Footer.astro";
               <div class="ml-card__arrow">→</div>
             </a>
 
-            <!-- SVM -->
-              <a href="/learn/theory/svm" class="ml-card">
-              <img src="/src/styles/topics/SVM.png" alt="SVM Icon" class="ml-card__image">
-              <div class="ml-card__body">
-                <div class="ml-card__title">Support Vector Machines</div>
-                <div class="ml-card__description">Draw clear boundaries between categories of data. SVMs are reliable for tasks like handwriting recognition, bioinformatics, and classification challenges.</div>
-              </div>
-              <div class="ml-card__arrow">→</div>
-            </a>
-
             <!-- Random Forest -->
-              <a href="/learn/theory/random-forest" class="ml-card">
+              <a href="/learn/ml_topics/random-forest" class="ml-card">
               <img src="/src/styles/topics/random_forest.png" alt="Random Forest Icon" class="ml-card__image">
               <div class="ml-card__body">
                 <div class="ml-card__title">Random Forests</div>
@@ -116,26 +109,25 @@ import Footer from "@/components/Footer.astro";
               </div>
               <div class="ml-card__arrow">→</div>
             </a>
+
+             <!-- Clustering -->
+              <a href="/learn/ml_topics/clustering" class="ml-card">
+                <img src="/src/styles/topics/clustering.jpg" alt="Clustering Icon" class="ml-card__image">
+                <div class="ml-card__body">
+                  <div class="ml-card__title">Clustering</div>
+                  <div class="ml-card__description">Reveal hidden groups in your data without any labels. Whether you're exploring behavior patterns or discovering naturally occurring clusters, clustering helps uncover structure and meaning.</div>
+                </div>
+                <div class="ml-card__arrow">→</div>
+              </a>
+              
           </div>
 
 
          <div id="advanced" class="difficulty-content">
             <h1>Advanced</h1>
 
-            <!-- Transfer Learning -->
-              <a href="/learn/theory/transfer-learning" class="ml-card">
-              <img src="/src/styles/topics/transfer_learning.png" alt="Transfer Learning Icon" class="ml-card__image">
-              <div class="ml-card__body">
-                <div class="ml-card__title">Transfer Learning</div>
-                <div class="ml-card__description">
-                  Boost performance by reusing knowledge learned from one task on a different but related one. This approach saves training time and works well with limited data.
-                </div>
-              </div>
-              <div class="ml-card__arrow">→</div>
-            </a>
-
             <!-- Reinforcement Learning -->
-              <a href="/learn/theory/reinforcement-learning" class="ml-card">
+              <a href="/learn/ml_topics/reinforcement-learning" class="ml-card">
               <img src="/src/styles/topics/reinforcement_learning.jpg" alt="Reinforcement Learning Icon" class="ml-card__image">
               <div class="ml-card__body">
                 <div class="ml-card__title">Reinforcement Learning</div>
@@ -147,7 +139,7 @@ import Footer from "@/components/Footer.astro";
             </a>
 
             <!-- Transformers -->
-              <a href="/learn/theory/transformers" class="ml-card">
+              <a href="/learn/ml_topics/transformers" class="ml-card">
               <img src="/src/styles/topics/transformers.png" alt="Transformers Icon" class="ml-card__image">
               <div class="ml-card__body">
                 <div class="ml-card__title">Transformers</div>
@@ -158,8 +150,8 @@ import Footer from "@/components/Footer.astro";
               <div class="ml-card__arrow">→</div>
             </a>
           </div>
-                    </div>
 
+          </div>
         </div>
       </div>
     </main>

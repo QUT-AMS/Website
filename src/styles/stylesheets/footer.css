@@ -1,0 +1,65 @@
+
+
+.ams-footer {
+  margin-top: 80px;
+  padding: 40px 20px;
+  text-align: center;
+  background-color: #FF00E6;
+  color: #ccc;
+  font-size: 0.9rem;
+}
+
+.footer-social {
+  display: flex;
+  justify-content: center;
+  gap: 16px;
+  margin-bottom: 24px;
+}
+
+.footer-note {
+  margin: 0.2rem 0;
+}
+
+/* Ensure clean icon rendering */
+.footer-social svg {
+  outline: none;
+  stroke: none;
+  box-shadow: none;
+}
+
+.logo-section {
+  padding-top: 94px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.white-heading {
+  padding-top: 30px;
+  color: white;
+}
+
+.button-group {
+  display: flex;
+  justify-content: center;
+  gap: 1.5rem; /* 24px spacing */
+  margin-top: 1rem;
+}
+
+.button-outline-pink {
+  display: inline-flex;         /* use flex for easy centering */
+  justify-content: center;      /* center horizontally */
+  align-items: center;          /* center vertically */
+  text-align: center;           /* ensure text itself is centered */
+  color: #FF00E6;
+  border: 1px solid #FF00E6;
+  background: transparent;
+  padding: 0.75rem 2.5rem;
+  border-radius: 2rem;
+  font-weight: 600;
+  transition: all 0.3s ease;
+}
+
+.button-outline-pink:hover {
+  background-color: rgba(194, 194, 194, 0.2);
+}

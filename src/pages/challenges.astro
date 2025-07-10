@@ -1,5 +1,6 @@
 ---
-import "@/styles/global.css";
+import "@/styles/stylesheets/global.css"
+import "@/styles/stylesheets/challenges.css"
 import Navigation from "@/components/Navigation.astro";
 import Footer from "@/components/Footer.astro";
 ---
@@ -16,41 +17,47 @@ import Footer from "@/components/Footer.astro";
     <Navigation />
 
     <div class="hero-section">
-      <img src="../../src/styles/network.jpg" alt="Header background" class="hero-background" />
+      <img src="../../src/styles/graphics/network.jpg" alt="Header background" class="hero-background" />
       <div class="hero-overlay"></div>
       <h1 class="hero-heading">Challenges</h1>
     </div>
 
     <main class="min-h-screen py-12">
       <section class="challenge-table-section">
-        <!-- Controls: Search | Filter | Sort -->
-        <div class="controls-wrapper flex flex-wrap items-center gap-4 justify-between px-6 mb-8">
-          <input
-            type="text"
-            id="searchInput"
-            placeholder="Search challenge name..."
-            class="search-bar"
-          />
-
-          <div class="filter-buttons flex gap-3">
-            <!-- Dropdown trigger -->
-            <div class="sort-dropdown-container relative">
-              <button id="sortDropdownBtn" class="sort-dropdown-toggle">Sort by ▾</button>
-              <ul id="sortDropdown" class="sort-dropdown-list hidden absolute z-10 mt-2 bg-[#1f1f1f] border border-[#444] rounded-md w-48 text-left text-white">
-                <li class="sort-dropdown-item px-4 py-2 cursor-pointer hover:bg-[#333]" data-index="0" data-type="number">Number</li>
-                <li class="sort-dropdown-item px-4 py-2 cursor-pointer hover:bg-[#333]" data-index="1" data-type="string">Name</li>
-                <li class="sort-dropdown-item px-4 py-2 cursor-pointer hover:bg-[#333]" data-index="2" data-type="difficulty">Difficulty</li>
-                <li class="sort-dropdown-item px-4 py-2 cursor-pointer hover:bg-[#333]" data-index="3" data-type="string">Topic</li>
-              </ul>
-            </div>
-
+        <div class="filter-buttons flex gap-4 mb-8">
             <button class="filter-btn active" data-topic="All">All</button>
             <button class="filter-btn" data-topic="Linear Regression">Linear Regression</button>
-            <button class="filter-btn" data-topic="CNN">CNN</button>
+            <button class="filter-btn" data-topic="Logistic Regression">Logistic Regression</button>
+            <button class="filter-btn" data-topic="K-Nearest Neighbours">K-Nearest Neighbours</button>
+            <button class="filter-btn" data-topic="Convoluted Neural Networks">Convoluted Neural Networks</button>
+            <button class="filter-btn" data-topic="Random Forest">Random Forests</button>
             <button class="filter-btn" data-topic="Clustering">Clustering</button>
-            <button class="filter-btn" data-topic="PCA">PCA</button>
-            <button class="filter-btn" data-topic="Random Forest">Random Forest</button>
+            <button class="filter-btn" data-topic="Transformers">Transformers</button>
+            <button class="filter-btn" data-topic="Reinforcement Learning<">Reinforcement Learning</button>
+        </div>
+
+        <!-- Controls: Search | Filter | Sort -->
+        <div class="controls-wrapper flex flex-wrap items-center gap-4 justify-between px-6 mt-12 mb-8">
+
+          <!-- Search box -->
+          <input type="text" id="searchInput" placeholder="Search challenge name..." class="search-bar" />
+
+          <!-- Dropdown trigger -->
+          <div class="sort-dropdown-container relative">
+            <button id="sortDropdownBtn" class="sort-dropdown-toggle">Sort by ▾</button>
+            <ul id="sortDropdown" 
+                class="sort-dropdown-list hidden absolute z-10 mt-2 bg-[#1f1f1f] border border-[#444] rounded-md w-48 text-left text-white">
+              <li class="sort-dropdown-item px-4 py-2 cursor-pointer hover:bg-[#333]" 
+                  data-index="0" data-type="number">Number</li>
+              <li class="sort-dropdown-item px-4 py-2 cursor-pointer hover:bg-[#333]" 
+                  data-index="1" data-type="string">Name</li>
+              <li class="sort-dropdown-item px-4 py-2 cursor-pointer hover:bg-[#333]" 
+                  data-index="2" data-type="difficulty">Difficulty</li>
+              <li class="sort-dropdown-item px-4 py-2 cursor-pointer hover:bg-[#333]" 
+                  data-index="3" data-type="string">Topic</li>
+            </ul>
           </div>
+
         </div>
 
         <!-- Table -->
@@ -63,109 +70,192 @@ import Footer from "@/components/Footer.astro";
               <col style="width: 20%;" />    <!-- Topic -->
             </colgroup>
            <tbody>
-              <tr data-topic="Linear Regression" onclick="window.location.href='https://TESTLINK.com';" style="cursor: pointer;">
-                <td>1</td>
-                <td>Best Selling Games of All Time</td>
-                <td style="color:forestgreen">Beginner</td>
-                <td>Linear Regression</td>
-              </tr>
-              <tr data-topic="Linear Regression" onclick="window.location.href='https://TESTLINK.com';" style="cursor: pointer;">
-                <td>2</td>
-                <td>Formula 1 World Championships</td>
-                <td style="color:forestgreen">Beginner</td>
-                <td>Linear Regression</td>
-              </tr>
-              <tr data-topic="Linear Regression" onclick="window.location.href='https://TESTLINK.com';" style="cursor: pointer;">
-                <td>3</td>
-                <td>Global Job Market</td>
-                <td style="color:forestgreen">Beginner</td>
-                <td>Linear Regression</td>
-              </tr>
-              <tr data-topic="Linear Regression" onclick="window.location.href='https://TESTLINK.com';" style="cursor: pointer;">
-                <td>4</td>
-                <td>Smartphone Feature Analysis</td>
-                <td style="color:forestgreen">Beginner</td>
-                <td>Linear Regression</td>
-              </tr>
-              <tr data-topic="Linear Regression" onclick="window.location.href='https://TESTLINK.com';" style="cursor: pointer;">
-                <td>5</td>
-                <td>Retail Market Trends</td>
-                <td style="color:forestgreen">Beginner</td>
-                <td>Linear Regression</td>
-              </tr>
-              <tr data-topic="CNN" onclick="window.location.href='https://TESTLINK.com';" style="cursor: pointer;">
-                <td>6</td>
-                <td>Concrete Crack Detection</td>
-                <td style="color:goldenrod">Intermediate</td>
-                <td>CNN</td>
-              </tr>
-              <tr data-topic="CNN" onclick="window.location.href='https://TESTLINK.com';" style="cursor: pointer;">
-                <td>7</td>
-                <td>Cats vs Dogs</td>
-                <td style="color:goldenrod">Intermediate</td>
-                <td>CNN</td>
-              </tr>
-              <tr data-topic="CNN" onclick="window.location.href='https://TESTLINK.com';" style="cursor: pointer;">
-                <td>8</td>
-                <td>Garbage Detection</td>
-                <td style="color:goldenrod">Intermediate</td>
-                <td>CNN</td>
-              </tr>
-              <tr data-topic="CNN" onclick="window.location.href='https://TESTLINK.com';" style="cursor: pointer;">
-                <td>9</td>
-                <td>Vehicle Detection</td>
-                <td style="color:goldenrod">Intermediate</td>
-                <td>CNN</td>
-              </tr>
-              <tr data-topic="CNN" onclick="window.location.href='https://TESTLINK.com';" style="cursor: pointer;">
-                <td>10</td>
-                <td>Early Disease Detection</td>
-                <td style="color:goldenrod">Intermediate</td>
-                <td>CNN</td>
-              </tr>
-              <tr data-topic="PCA" onclick="window.location.href='https://TESTLINK.com';" style="cursor: pointer;">
-                <td>11</td>
-                <td>Climate Pattern Analysis</td>
-                <td style="color:forestgreen">Beginner</td>
-                <td>PCA</td>
-              </tr>
-              <tr data-topic="Clustering" onclick="window.location.href='https://TESTLINK.com';" style="cursor: pointer;">
-                <td>12</td>
-                <td>Cybersecurity Attack</td>
-                <td style="color:forestgreen">Beginner</td>
-                <td>Clustering</td>
-              </tr>
-              <tr data-topic="CNN" onclick="window.location.href='https://TESTLINK.com';" style="cursor: pointer;">
-                <td>13</td>
-                <td>Traffic SIgn Detection</td>
-                <td style="color:goldenrod">Intermediate</td>
-                <td>CNN</td>
-              </tr>
-              <tr data-topic="CNN" onclick="window.location.href='https://TESTLINK.com';" style="cursor: pointer;">
-                <td>14</td>
-                <td>Traffic SIgn Detection</td>
-                <td style="color:goldenrod">Intermediate</td>
-                <td>CNN</td>
-              </tr>
-              <tr data-topic="Random Forest" onclick="window.location.href='https://TESTLINK.com';" style="cursor: pointer;">
-                <td>15</td>
-                <td>Movie Genre Classification</td>
-                <td style="color:goldenrod">Intermediate</td>
-                <td>Random Forest</td>
-              </tr>
-              <tr data-topic="Random Forest" onclick="window.location.href='https://TESTLINK.com';" style="cursor: pointer;">
-                <td>16</td>
-                <td>Customer Churn Predictions</td>
-                <td style="color:goldenrod">Intermediate</td>
-                <td>Random Forest</td>
-              </tr>
-              <tr data-topic="Random Forest" onclick="window.location.href='https://TESTLINK.com';" style="cursor: pointer;">
-                <td>17</td>
-                <td>Air Quality Predictions</td>
-                <td style="color:goldenrod">Intermediate</td>
-                <td>Random Forest</td>
-              </tr>
-            </tbody>
+
+            <!-- Linear Regression (Beginner) -->
+            <tr data-topic="Linear Regression" onclick="window.location.href='https://github.com/QUT-AMS/Linear-Regression';" style="cursor: pointer;">
+              <td>1</td>
+              <td>Best Selling Video Games</td>
+              <td style="color:forestgreen">Beginner</td>
+              <td>Linear Regression</td>
+            </tr>
+            <tr data-topic="Linear Regression" onclick="window.location.href='https://github.com/QUT-AMS/Linear-Regression';" style="cursor: pointer;">
+              <td>2</td>
+              <td>Energy Consumption</td>
+              <td style="color:forestgreen">Beginner</td>
+              <td>Linear Regression</td>
+            </tr>
+            <tr data-topic="Linear Regression" onclick="window.location.href='https://github.com/QUT-AMS/Linear-Regression';" style="cursor: pointer;">
+              <td>3</td>
+              <td>Formula 1</td>
+              <td style="color:forestgreen">Beginner</td>
+              <td>Linear Regression</td>
+            </tr>
+            <tr data-topic="Linear Regression" onclick="window.location.href='https://github.com/QUT-AMS/Linear-Regression';" style="cursor: pointer;">
+              <td>4</td>
+              <td>Pokemon</td>
+              <td style="color:forestgreen">Beginner</td>
+              <td>Linear Regression</td>
+            </tr>
+            <tr data-topic="Linear Regression" onclick="window.location.href='https://github.com/QUT-AMS/Linear-Regression';" style="cursor: pointer;">
+              <td>5</td>
+              <td>Retail Sales Trends</td>
+              <td style="color:forestgreen">Beginner</td>
+              <td>Linear Regression</td>
+            </tr>
+
+            <!-- Logistic Regression (Beginner) -->
+            <tr data-topic="Logistic Regression" onclick="window.location.href='https://github.com/QUT-AMS/Logistic-Regression';" style="cursor: pointer;">
+              <td>6</td>
+              <td>Asteroids NASA</td>
+              <td style="color:forestgreen">Beginner</td>
+              <td>Logistic Regression</td>
+            </tr>
+            <tr data-topic="Logistic Regression" onclick="window.location.href='https://github.com/QUT-AMS/Logistic-Regression';" style="cursor: pointer;">
+              <td>7</td>
+              <td>Bank Loans</td>
+              <td style="color:forestgreen">Beginner</td>
+              <td>Logistic Regression</td>
+            </tr>
+            <tr data-topic="Logistic Regression" onclick="window.location.href='https://github.com/QUT-AMS/Logistic-Regression';" style="cursor: pointer;">
+              <td>8</td>
+              <td>Fake News</td>
+              <td style="color:forestgreen">Beginner</td>
+              <td>Logistic Regression</td>
+            </tr>
+            <tr data-topic="Logistic Regression" onclick="window.location.href='https://github.com/QUT-AMS/Logistic-Regression';" style="cursor: pointer;">
+              <td>9</td>
+              <td>Heart Disease Predictions</td>
+              <td style="color:forestgreen">Beginner</td>
+              <td>Logistic Regression</td>
+            </tr>
+
+            <!-- K-Nearest Neighbours (Beginner) -->
+            <tr data-topic="K-Nearest Neighbours" onclick="window.location.href='https://github.com/QUT-AMS/K-Nearest-Neighbours';" style="cursor: pointer;">
+              <td>10</td>
+              <td>Glass Classification</td>
+              <td style="color:forestgreen">Beginner</td>
+              <td>K-Nearest Neighbours</td>
+            </tr>
+            <tr data-topic="K-Nearest Neighbours" onclick="window.location.href='https://github.com/QUT-AMS/K-Nearest-Neighbours';" style="cursor: pointer;">
+              <td>11</td>
+              <td>Adult Income</td>
+              <td style="color:forestgreen">Beginner</td>
+              <td>K-Nearest Neighbours</td>
+            </tr>
+            <tr data-topic="K-Nearest Neighbours" onclick="window.location.href='https://github.com/QUT-AMS/K-Nearest-Neighbours';" style="cursor: pointer;">
+              <td>12</td>
+              <td>Physical Activity</td>
+              <td style="color:forestgreen">Beginner</td>
+              <td>K-Nearest Neighbours</td>
+            </tr>
+
+            <!-- Convolutional Neural Networks (Intermediate) -->
+            <tr data-topic="Convoluted Neural Networks" onclick="window.location.href='https://github.com/QUT-AMS/Convoluted-Neural-Networks';" style="cursor: pointer;">
+              <td>13</td>
+              <td>Cats vs Dogs</td>
+              <td style="color:goldenrod">Intermediate</td>
+              <td>CNN</td>
+            </tr>
+            <tr data-topic="Convoluted Neural Networks" onclick="window.location.href='https://github.com/QUT-AMS/Convoluted-Neural-Networks';" style="cursor: pointer;">
+              <td>14</td>
+              <td>Concrete Cracks</td>
+              <td style="color:goldenrod">Intermediate</td>
+              <td>CNN</td>
+            </tr>
+            <tr data-topic="Convoluted Neural Networks" onclick="window.location.href='https://github.com/QUT-AMS/Convoluted-Neural-Networks';" style="cursor: pointer;">
+              <td>15</td>
+              <td>Garbage Type</td>
+              <td style="color:goldenrod">Intermediate</td>
+              <td>CNN</td>
+            </tr>
+            <tr data-topic="Convoluted Neural Networks" onclick="window.location.href='https://github.com/QUT-AMS/Convoluted-Neural-Networks';" style="cursor: pointer;">
+              <td>16</td>
+              <td>Musical Instruments</td>
+              <td style="color:goldenrod">Intermediate</td>
+              <td>CNN</td>
+            </tr>
+            <tr data-topic="Convoluted Neural Networks" onclick="window.location.href='https://github.com/QUT-AMS/Convoluted-Neural-Networks';" style="cursor: pointer;">
+              <td>17</td>
+              <td>Vehicle Type</td>
+              <td style="color:goldenrod">Intermediate</td>
+              <td>CNN</td>
+            </tr>
+
+            <!-- Random Forests (Intermediate) -->
+            <tr data-topic="Random Forest" onclick="window.location.href='https://github.com/QUT-AMS/Random-Forests';" style="cursor: pointer;">
+              <td>18</td>
+              <td>Cybersecurity Attacks</td>
+              <td style="color:goldenrod">Intermediate</td>
+              <td>Random Forest</td>
+            </tr>
+            <tr data-topic="Random Forest" onclick="window.location.href='https://github.com/QUT-AMS/Random-Forests';" style="cursor: pointer;">
+              <td>19</td>
+              <td>Customer Churn</td>
+              <td style="color:goldenrod">Intermediate</td>
+              <td>Random Forest</td>
+            </tr>
+            <tr data-topic="Random Forest" onclick="window.location.href='https://github.com/QUT-AMS/Random-Forests';" style="cursor: pointer;">
+              <td>20</td>
+              <td>Marine Engine</td>
+              <td style="color:goldenrod">Intermediate</td>
+              <td>Random Forest</td>
+            </tr>
+
+            <!-- Clustering (Beginner) -->
+            <tr data-topic="Clustering" onclick="window.location.href='https://github.com/QUT-AMS/Clustering';" style="cursor: pointer;">
+              <td>21</td>
+              <td>Customer Groups</td>
+              <td style="color:goldenrod">Intermediate</td>
+              <td>Clustering</td>
+            </tr>
+            <tr data-topic="Clustering" onclick="window.location.href='https://github.com/QUT-AMS/Clustering';" style="cursor: pointer;">
+              <td>22</td>
+              <td>Penguin Species</td>
+              <td style="color:goldenrod">Intermediate</td>
+              <td>Clustering</td>
+            </tr>
+            <tr data-topic="Clustering" onclick="window.location.href='https://github.com/QUT-AMS/Clustering';" style="cursor: pointer;">
+              <td>23</td>
+              <td>Social Networks</td>
+              <td style="color:goldenrod">Intermediate</td>
+              <td>Clustering</td>
+            </tr>
+            <tr data-topic="Clustering" onclick="window.location.href='https://github.com/QUT-AMS/Clustering';" style="cursor: pointer;">
+              <td>24</td>
+              <td>General Clustering Exercises</td>
+              <td style="color:goldenrod">Intermediate</td>
+              <td>Clustering</td>
+            </tr>
+
+            <!-- Transformers (Advanced) -->
+            <tr data-topic="Transformers" onclick="window.location.href='https://github.com/QUT-AMS/Transformers';" style="cursor: pointer;">
+              <td>25</td>
+              <td>Action Recognition</td>
+              <td style="color:crimson">Advanced</td>
+              <td>Transformers</td>
+            </tr>
+            <tr data-topic="Transformers" onclick="window.location.href='https://github.com/QUT-AMS/Transformers';" style="cursor: pointer;">
+              <td>26</td>
+              <td>Reddit Breakup Stories</td>
+              <td style="color:crimson">Advanced</td>
+              <td>Transformers</td>
+            </tr>
+            <tr data-topic="Transformers" onclick="window.location.href='https://github.com/QUT-AMS/Transformers';" style="cursor: pointer;">
+              <td>27</td>
+              <td>YouTube Videos</td>
+              <td style="color:crimson">Advanced</td>
+              <td>Transformers</td>
+            </tr>
+
+            <!-- Reinforcement Learning (Advanced) -->
+            <tr data-topic="Reinforcement Learning" onclick="window.location.href='https://github.com/QUT-AMS/Reinforcement-Learning';" style="cursor: pointer;">
+              <td>28</td>
+              <td>Nokia Snake</td>
+              <td style="color:crimson">Advanced</td>
+              <td>Reinforcement Learning</td>
+            </tr>
+          </tbody>
+
 
           </table>
         </div>
@@ -175,88 +265,103 @@ import Footer from "@/components/Footer.astro";
     <Footer />
   </body>
 </html>
-
-
-
 <script>
-  const filterButtons = document.querySelectorAll('.filter-btn[data-topic]');
-  const searchInput = document.getElementById('searchInput');
-  const tbody = document.querySelector('.challenge-table tbody');
-  const dropdownBtn = document.querySelector('.sort-dropdown-toggle');
-  const dropdown = document.querySelector('.sort-dropdown-list');
-  const sortOptions = dropdown.querySelectorAll('.sort-dropdown-item');
-  const rows = () => Array.from(tbody.querySelectorAll('tr'));
-  const headers = ['number', 'name', 'difficulty', 'topic']; // purely for sort labels
+  // ELEMENTS
+  const searchInput    = document.getElementById('searchInput');
+  const dropdownBtn    = document.getElementById('sortDropdownBtn');
+  const dropdown       = document.getElementById('sortDropdown');
+  const sortOptions    = dropdown.querySelectorAll('.sort-dropdown-item');
+  const filterButtons  = document.querySelectorAll('.filter-btn');
+  const tbody          = document.querySelector('.challenge-table tbody');
+  const rows           = () => Array.from(tbody.querySelectorAll('tr'));
 
-  let activeTopic = 'All';
-  let sortState = {};
+  // STATE
+  let activeTopic      = 'All';
+  const sortState      = {};  
+  const difficultyOrder = { Beginner:1, Intermediate:2, Advanced:3 };
 
-  const difficultyOrder = { Beginner: 1, intermediate: 2, advanced: 3 };
-
+  // FILTER + SEARCH
   function filterRows() {
-    const query = searchInput.value.toLowerCase();
+    const query = searchInput.value.trim().toLowerCase();
     rows().forEach(row => {
-      const topic = row.getAttribute('data-topic');
-      const name = row.cells[1].textContent.toLowerCase();
-      const topicMatch = activeTopic === 'All' || topic === activeTopic;
-      const searchMatch = name.includes(query);
-      row.style.display = topicMatch && searchMatch ? '' : 'none';
+      const name  = row.cells[1].textContent.toLowerCase();
+      const topic = row.dataset.topic;
+      const showByText  = name.includes(query);
+      const showByTopic = activeTopic === 'All' || topic === activeTopic;
+      row.style.display = (showByText && showByTopic) ? '' : 'none';
     });
   }
 
-  function sortTable(index, type) {
-    const rowList = rows();
-    const isAsc = sortState[index] === 'asc';
-    sortState = {}; // Reset other sort states
-    sortState[index] = isAsc ? 'desc' : 'asc';
+  // SORTING
+  function sortTable(idx, type, dir) {
+    const sorted = rows().sort((a, b) => {
+      let aVal = a.cells[idx].textContent.trim();
+      let bVal = b.cells[idx].textContent.trim();
 
-    rowList.sort((a, b) => {
-      const aVal = a.cells[index].textContent.trim().toLowerCase();
-      const bVal = b.cells[index].textContent.trim().toLowerCase();
-
-      if (type === 'number') return isAsc ? bVal - aVal : aVal - bVal;
-      if (type === 'difficulty') {
-        return isAsc
-          ? difficultyOrder[bVal] - difficultyOrder[aVal]
-          : difficultyOrder[aVal] - difficultyOrder[bVal];
+      if (type === 'number') {
+        aVal = Number(aVal); bVal = Number(bVal);
+        return dir==='asc' ? aVal - bVal : bVal - aVal;
       }
-
-      return isAsc
-        ? bVal.localeCompare(aVal)
-        : aVal.localeCompare(bVal);
+      if (type === 'difficulty') {
+        return dir==='asc'
+          ? difficultyOrder[aVal] - difficultyOrder[bVal]
+          : difficultyOrder[bVal] - difficultyOrder[aVal];
+      }
+      // string fallback
+      return dir==='asc'
+        ? aVal.localeCompare(bVal)
+        : bVal.localeCompare(aVal);
     });
 
-    rowList.forEach(row => tbody.appendChild(row));
-    filterRows(); // Preserve filters post-sort
+    sorted.forEach(r => tbody.appendChild(r));
+    filterRows();  // reapply filters after sorting
   }
 
+  // WIRE UP SEARCH
+  searchInput.addEventListener('input', filterRows);
+
+  // WIRE UP TOPIC FILTER BUTTONS
   filterButtons.forEach(btn => {
     btn.addEventListener('click', () => {
       document.querySelector('.filter-btn.active')?.classList.remove('active');
       btn.classList.add('active');
-      activeTopic = btn.getAttribute('data-topic');
+      activeTopic = btn.dataset.topic;
       filterRows();
     });
   });
 
-  searchInput.addEventListener('input', filterRows);
-
-  dropdownBtn.addEventListener('click', () => {
+  // DROPDOWN SHOW/HIDE
+  dropdownBtn.addEventListener('click', e => {
+    e.stopPropagation();
     dropdown.classList.toggle('show');
   });
-
-  sortOptions.forEach(option => {
-    option.addEventListener('click', () => {
-      const index = parseInt(option.getAttribute('data-index'));
-      const type = option.getAttribute('data-type');
-      sortTable(index, type);
-      dropdown.classList.remove('show');
-    });
-  });
-
   document.addEventListener('click', e => {
     if (!dropdown.contains(e.target) && e.target !== dropdownBtn) {
       dropdown.classList.remove('show');
     }
   });
+
+  // WIRE UP SORT OPTIONS
+  sortOptions.forEach(opt => {
+    // stash base label for arrow reset
+    opt.dataset.label = opt.textContent.trim();
+
+    opt.addEventListener('click', () => {
+      const idx  = Number(opt.dataset.index);
+      const type = opt.dataset.type;
+      const prev = sortState[idx];
+      const dir  = prev === 'asc' ? 'desc' : 'asc';
+      sortState[idx] = dir;
+
+      // reset all labels, then add arrow
+      sortOptions.forEach(o => o.textContent = o.dataset.label);
+      opt.textContent = opt.dataset.label + (dir==='asc' ? ' ▲' : ' ▼');
+
+      sortTable(idx, type, dir);
+      dropdown.classList.remove('show');
+    });
+  });
+
+  // INITIAL DISPLAY
+  filterRows();
 </script>

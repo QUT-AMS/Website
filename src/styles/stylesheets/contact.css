@@ -1,0 +1,44 @@
+/* Center the “Reach out to us here” button */
+.button-outline-pink {
+  display: block;      /* fills available width so auto margins work */
+  margin: 1rem auto;   /* 2rem top/bottom, auto left/right */
+  text-align: center;  /* center the text inside the button */
+  font-size: 1.5rem;
+}
+
+/* Make the social icons much larger and center them */
+.footer-social {
+  display: flex;
+  justify-content: center;  /* center the row */
+  gap: 1.5rem;              /* space between icons */
+  margin-top: 1rem;         /* a little breathing room */
+}
+
+/* Target the SVGs inside your Button components */
+.footer-social svg {
+  width: 3rem;              /* adjust as needed */
+  height: 3rem;             /* keep square aspect */
+  display: block;
+}
+
+.contact-center {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1rem;
+  padding-top: 3rem;
+}
+
+.white-divider {
+  border: 0;
+  height: 1px;
+  background-color: #fff;
+  width: 60%;         /* or whatever length you like */
+  margin: 3rem auto;  /* vertical spacing + center */
+}
+
+.socials-heading {
+  text-align: center;
+  margin-top: 2rem;
+  color: #fff;        /* ensure it’s visible on dark bg */
+}

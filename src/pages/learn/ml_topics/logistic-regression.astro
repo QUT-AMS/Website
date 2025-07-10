@@ -1,0 +1,117 @@
+---
+import "@/styles/stylesheets/global.css"
+import "@/styles/stylesheets/ml_practice.css"
+import Navigation from "../../../components/Navigation.astro";
+import Footer from "../../../components/Footer.astro";
+---
+
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <meta name="viewport" content="width=device-width" />
+    <title>Logistic Regression • QUT AI & ML Society</title>
+  </head>
+
+  <body class="dark background-non-curved-v2">
+    <Navigation />
+
+    <div class="hero-section">
+      <img
+        src="../../src/styles/graphics/network.jpg"
+        alt="Logistic regression visualization"
+        class="hero-background"
+      />
+      <div class="hero-overlay"></div>
+      <h1 class="hero-heading">Logistic Regression</h1>
+    </div>
+
+    <main class="tutorials">
+
+      <!-- Step-by-Step Tutorials -->
+      <h2>Step-by-Step Tutorials</h2>
+      <div class="tutorial-grid">
+        <div class="tutorial-box">
+          <h3>Logistic Regression with scikit-learn in Python</h3>
+          <p>Build and evaluate a logistic regression classifier on the Iris dataset using scikit-learn.</p>
+          <a
+            href="https://scikit-learn.org/stable/modules/linear_model.html#logistic-regression"
+            target="_blank"
+            class="link-button"
+          >
+            Read Tutorial
+          </a>
+        </div>
+
+        <div class="tutorial-box">
+          <h3>Real-World Logistic Regression Tutorial</h3>
+          <p>Walk through model fitting, probability thresholds, and performance metrics in Python.</p>
+          <a
+            href="https://realpython.com/logistic-regression-python/"
+            target="_blank"
+            class="link-button"
+          >
+            Read Tutorial
+          </a>
+        </div>
+
+        <div class="tutorial-box">
+          <h3>Binary Classification with Logistic Regression</h3>
+          <p>Understand odds, log-odds, and decision boundaries on a real dataset.</p>
+          <a
+            href="https://www.datacamp.com/community/tutorials/understanding-logistic-regression-python"
+            target="_blank"
+            class="link-button"
+          >
+            Read Tutorial
+          </a>
+        </div>
+      </div>
+
+      <hr class="divider" />
+
+      <!-- Video Tutorials -->
+      <h2>Video Tutorials</h2>
+      <div class="tutorial-grid">
+        <div class="tutorial-box">
+          <h3>StatQuest: Logistic Regression Explained</h3>
+          <p>Cleary break down of logistic function, cost function, and gradient descent.</p>
+          <a
+            href="https://www.youtube.com/watch?v=yIYKR4sgzI8"
+            target="_blank"
+            class="link-button"
+          >
+            Watch Video
+          </a>
+        </div>
+
+        <div class="tutorial-box">
+          <h3>Machine Learning by Andrew Ng: Logistic Regression</h3>
+          <p>Lecture excerpt on binary classification, feature scaling, and regularization.</p>
+          <a
+            href="https://www.youtube.com/watch?v=Z_JDdXkJzdY"
+            target="_blank"
+            class="link-button"
+          >
+            Watch Video
+          </a>
+        </div>
+
+        <div class="tutorial-box">
+          <h3>CrashCourse Stats: Logistic Regression</h3>
+          <p>Animated introduction to how logistic regression makes probability-based predictions.</p>
+          <a
+            href="https://www.youtube.com/watch?v=azaJfObjj4I"
+            target="_blank"
+            class="link-button"
+          >
+            Watch Video
+          </a>
+        </div>
+      </div>
+
+    </main>
+
+    <Footer />
+  </body>
+</html>

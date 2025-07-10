@@ -1,0 +1,116 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=Share+Tech&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Rajdhani:wght@400;600&display=swap');
+@import "tailwindcss";
+
+@theme {
+  --color-primary: #FF00E6;
+  --color-secondary: #FF8BF4;
+  --color-background: #090909;
+  --font-body: "Inter", sans-serif;
+  --font-heading: "Share Tech", sans-serif;
+}
+
+.background {
+    background: radial-gradient(125% 125% at 50% -10%, #090909 20%, #090909 55%, #FF00E6 75%);
+}
+
+.background-non-curved {
+    background: linear-gradient(
+        to bottom,
+        #090909 0%,
+        #090909 85%,
+        #FF00E6 95%
+    );
+}
+
+
+.background-non-curved-v2 {
+    background: linear-gradient(
+        to bottom,
+        #090909 0%,
+        #090909 65%,
+        #FF00E6 83%
+    );
+}
+
+
+
+/* ----------------------------- */
+/*           MAIN HTML           */
+/* ----------------------------- */
+
+* { 
+  margin:0; 
+  padding:0; 
+  box-sizing:border-box; 
+  color: white;
+  font-size: 20px;
+}
+
+/* Heading 1 */
+h1 {
+  font-size: 42px;
+  font-weight: bold;
+  color: #FF00E6;
+}
+
+h2 {
+  font-size: 38px;
+  font-weight: bold;
+  color: white;
+}
+
+
+.image-style {
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  opacity: 0.3;
+}
+
+
+
+  
+/* ----------------------------- */
+/*         HEADER GRAPHIC        */
+/* ----------------------------- */
+  
+
+.hero-section {
+  position: relative;
+  height: 300px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  text-align: center;
+  padding: 10px 20px;
+  z-index: 0;
+}
+
+.hero-background {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  z-index: 0;
+}
+
+.hero-overlay {
+  position: absolute;
+  inset: 0;
+  background-color: rgba(0, 0, 0, 0.5); /* 80% dark opacity */
+  z-index: 0;
+}
+
+.hero-heading {
+  position: relative;
+  z-index: 2;
+  color: white;
+  font-size: 2.5rem;
+  margin: 0;
+  z-index: 0;
+}

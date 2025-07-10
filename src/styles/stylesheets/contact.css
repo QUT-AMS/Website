@@ -40,6 +40,15 @@
   opacity: 1;
 }
 
+.footer-social.footer-larger {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 1rem;           /* space between buttons */
+  margin: 0 auto;      /* center the whole group */
+  padding: 1rem 0;     /* optional vertical padding */
+}
+
 
 /* Target the SVGs inside your Button components */
 .footer-larger svg {

@@ -142,3 +142,113 @@ th.sortable::after {
   padding: 10px 75px;
   margin-bottom: 200px;
 }
+
+
+
+/* 1. Base: allow horizontal scroll on very narrow screens */
+.table-wrapper {
+  overflow-x: auto;
+}
+
+/* Default: show buttons, hide select */
+.filter-buttons { display: flex; }
+.filter-dropdown { display: none; }
+
+/* 2. Mobile breakpoint */
+@media (max-width: 600px) {
+
+  .filter-buttons { display: none; }
+
+  .filter-dropdown {
+    display: block;
+    width: 100%;
+    padding: 0.75rem 1rem;
+    margin-bottom: 1rem;
+    background-color: #1f1f1f;
+    color: #fff;
+    border: 1px solid #444;
+    border-radius: 0.375rem;
+    font-size: 1rem;
+  }
+
+   .challenge-table {
+    min-width: 0 !important;
+    width: 100%;
+  }
+
+    /* Remove all horizontal padding around the table */
+  .challenge-table-section,
+  .section-padding {
+    padding-left: 10px !important;
+    padding-right: 10px !important;
+  }
+
+  /* If you’re using the px-6 utility on your wrapper, override it */
+  .table-wrapper.px-6 {
+    padding-left: 0 !important;
+    padding-right: 0 !important;
+  }
+
+  /* Ensure the wrapper itself doesn’t introduce new padding */
+  .table-wrapper {
+    padding: 0;      /* remove any custom padding */
+    margin: 0 auto;  /* keep centering if desired */
+  }
+
+  /* a) Make all table elements display as blocks */
+  .challenge-table,
+  .challenge-table thead,
+  .challenge-table tbody,
+  .challenge-table th,
+  .challenge-table td,
+  .challenge-table tr {
+    display: block;
+  }
+
+  /* b) Hide the table header row (we’ll show labels inside each cell) */
+  .challenge-table thead tr {
+    position: absolute;
+    top: -9999px;
+    left: -9999px;
+  }
+
+  /* c) Give each row a “card” look */
+  .challenge-table tr {
+    border: 1px solid #444;
+    border-radius: 0.5rem;
+    margin-bottom: 1rem;
+    padding: 0.5rem;
+    background: #2d2d2d;
+  }
+
+  /* d) Style each cell with a label before its content */
+  .challenge-table td {
+    position: relative;
+    padding: 0.75rem 0.75rem 0.75rem 6rem; /* leave space for the label */
+    text-align: left;
+    border: none;
+    border-bottom: 1px solid #444;
+  }
+
+  /* Remove bottom border on last cell */
+  .challenge-table tr td:last-child {
+    border-bottom: none;
+  }
+
+  /* e) Inject the label via ::before */
+  .challenge-table td:before {
+    position: absolute;
+    top: 50%;
+    left: 0.75rem;
+    width: 4rem;
+    transform: translateY(-50%);
+    font-weight: bold;
+    white-space: nowrap;
+  }
+
+  /* f) Define labels for each column */
+  .challenge-table td:nth-of-type(1):before { content: "ID"; }
+  .challenge-table td:nth-of-type(2):before { content: "Project"; }
+  .challenge-table td:nth-of-type(3):before { content: "Difficulty"; }
+  .challenge-table td:nth-of-type(4):before { content: "Topic"; }
+}

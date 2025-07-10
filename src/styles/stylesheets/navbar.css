@@ -65,6 +65,10 @@
   color:#FF8BF4; 
 }
 
+/* Style for the secondary Contact Us link when active */
+.secondary-links a.active {
+  color: #FF00E6;          
+}
 
 .main-links a.active { 
   color:#FF00E6; 
@@ -173,6 +177,7 @@ body.no-scroll {
 .dropbtn .arrow {
   display: none;
 }
+
 
 
 @media (max-width:1200px) {
@@ -473,20 +478,3 @@ body.no-scroll {
     z-index: 50;
 }
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-

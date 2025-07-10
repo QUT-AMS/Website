@@ -77,7 +77,6 @@
   min-height: 160px;
   display: flex;
   justify-content: center;
-  padding: 3rem;
 }
 
 .ml-wrapper {
@@ -113,49 +112,10 @@
 }
 
 .ml-card__arrow {
-  font-size: 2rem;
+  font-size: 4rem;
   color: #FF00E6;
   margin-left: 24px;
 }
-
-@media (max-width: 480px) {
-  .difficulty-switch {
-    width: 100%;
-    border-radius: 1.5rem;
-    margin-bottom: 2rem;
-  }
-
-  .difficulty-btn {
-    padding: 0.5rem 0;
-    font-size: 0.9rem;
-  }
-
-  .difficulty-indicator {
-    height: calc(100% - 0.5rem);
-  }
-
-  .ml-card {
-    padding: 0.75rem;
-    margin: 1rem 0;
-  }
-
-  .ml-card__image {
-    max-width: 120px;
-  }
-
-  .ml-card__title {
-    font-size: 1.1rem;
-  }
-
-  .ml-card__description {
-    font-size: 0.95rem;
-  }
-
-  .ml-card__arrow {
-    font-size: 1.25rem;
-  }
-}
-
 
 
 
@@ -223,4 +183,113 @@
   border: none;
   border-top: 1px solid #444444;
   margin: 3rem 0;
+}
+
+
+/* Desktop by default */
+.ml-container {
+  max-width: 60vw;
+  margin: 0 auto;
+}
+
+
+
+@media (max-width: 480px) {
+
+  .tutorials{
+    padding: 5px 40px;
+  }
+  
+    /* Remove horizontal padding from ML sections and parent wrapper */
+  .ml-main,
+  .ml-wrapper,
+  .ml-container {
+    padding-left: 0 !important;
+    padding-right: 0 !important;
+  }
+
+  /* Stack the buttons vertically */
+  .difficulty-switch {
+    flex-direction: column;
+    width: 100%;
+    padding: 5px;
+    border-radius: 1.5rem;
+    margin-top: 1.25rem;
+    margin-bottom: 2rem;
+    height: auto;           /* let content define height */
+    overflow: hidden;
+  }
+
+  /* Make each button span full width */
+  .difficulty-btn {
+    width: 100%;
+    padding: 0.5rem 0;
+    font-size: 0.9rem;
+    text-align: center;
+  }
+
+  /* Indicator spans full width, height is handled by JS (stepPct%) */
+  .difficulty-indicator {
+    top: 5px;
+    left: 5px;
+    width: calc(100% - 10px);
+    /* height is set via JS: `${stepPct}%` */
+    transition: transform 0.3s ease;
+  }
+
+  .ml-card {
+    padding: 0.75rem;
+    margin: 1rem 0;
+    flex-direction: column;
+    align-items: flex-start;   /* Left-align title & description */
+  }
+
+  .ml-card__image {
+    max-width: 120px;
+  }
+
+  .ml-card__title {
+    font-size: 1.1rem;
+  }
+
+  .ml-card__description {
+    font-size: 0.95rem;
+    order: 2;
+    margin-bottom: 1rem;
+  }
+
+  .ml-card__arrow {
+    font-size: 3rem;
+    order: 4;
+    align-self: center;      /* push arrow to the right */
+    margin: 0px !important;
+
+  }
+
+  .ml-container {
+    max-width: 100%;
+  }
+
+   .ml-card__image {
+    /* fill nearly the full container width */
+    width: 100%;
+    order: 3;
+    max-width: 95vw;  
+    height: auto;     /* preserve aspect ratio */
+    margin: 0 0 1rem; /* space below */
+    border-radius: 12px;
+  }
+  
+  /* 1. Heading */
+  .ml-card__title {
+    order: 1;
+    margin-bottom: 0.5rem;
+  }
+
+  /* Remove any leftover side-margins */
+  .ml-card__image,
+  .ml-card__body {
+    margin-right: 0;
+  }
+
 }

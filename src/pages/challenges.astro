@@ -13,7 +13,7 @@ import Footer from "@/components/Footer.astro";
     <title>QUT AI & ML Society</title>
   </head>
 
-  <body class="dark background-non-curved-v2">
+  <body class="dark background-non-curved">
     <Navigation />
 
     <div class="hero-section">
@@ -22,9 +22,10 @@ import Footer from "@/components/Footer.astro";
       <h1 class="hero-heading">Challenges</h1>
     </div>
 
-    <main class="min-h-screen py-12">
-      <section class="challenge-table-section">
-        <div class="filter-buttons flex gap-4 mb-8">
+    <main class="min-h-screen py-12 section-padding">
+
+      <div class="controls-spacing">
+        <div class="filter-buttons flex">
             <button class="filter-btn active" data-topic="All">All</button>
             <button class="filter-btn" data-topic="Linear Regression">Linear Regression</button>
             <button class="filter-btn" data-topic="Logistic Regression">Logistic Regression</button>
@@ -33,11 +34,11 @@ import Footer from "@/components/Footer.astro";
             <button class="filter-btn" data-topic="Random Forest">Random Forests</button>
             <button class="filter-btn" data-topic="Clustering">Clustering</button>
             <button class="filter-btn" data-topic="Transformers">Transformers</button>
-            <button class="filter-btn" data-topic="Reinforcement Learning<">Reinforcement Learning</button>
+            <button class="filter-btn" data-topic="Reinforcement Learning">Reinforcement Learning</button>
         </div>
 
         <!-- Controls: Search | Filter | Sort -->
-        <div class="controls-wrapper flex flex-wrap items-center gap-4 justify-between px-6 mt-12 mb-8">
+        <div class="controls-wrapper">
 
           <!-- Search box -->
           <input type="text" id="searchInput" placeholder="Search challenge name..." class="search-bar" />
@@ -59,7 +60,10 @@ import Footer from "@/components/Footer.astro";
           </div>
 
         </div>
-
+      </div>
+        
+      <section class="challenge-table-section">
+    
         <!-- Table -->
         <div class="table-wrapper px-6">
           <table class="challenge-table w-full">

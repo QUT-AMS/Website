@@ -1,6 +1,5 @@
 .challenge-table-section {
   padding: 2rem 1rem;
-  background-color: #0e0e0e;
 }
 
 .table-wrapper {
@@ -40,9 +39,15 @@
 }
 
 .controls-wrapper {
+  display: flex;
   flex-wrap: wrap;
-  gap: 1rem;
-  margin-bottom: 2rem;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem; /* equivalent to Tailwind’s gap-4 */
+}
+
+.controls-spacing {
+  padding: 10px 20px;
 }
 
 .search-bar {
@@ -105,7 +110,11 @@ th.sortable::after {
 .filter-buttons {
   display: flex;
   flex-wrap: wrap;
+  justify-content: center;    /* center items on each row */
+  align-content: center;      /* center rows if container has extra height */
   gap: 0.75rem;
+  padding: 10px 20px;
+  margin-bottom: 10px;
 }
 
 .filter-btn {
@@ -128,3 +137,8 @@ th.sortable::after {
   border-color: #FF00E6;
 }
 
+
+.section-padding {
+  padding: 10px 75px;
+  margin-bottom: 200px;
+}

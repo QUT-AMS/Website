@@ -1,8 +1,6 @@
-
-
 .ams-footer {
-  margin-top: 80px;
-  padding: 40px 20px;
+  margin-top: 5rem;
+  padding: 2.5rem 1.25rem;
   text-align: center;
   background-color: rgba(0, 0, 0, 0.2);
   color: #a7a7a7;
@@ -12,9 +10,9 @@
 .footer-social {
   display: flex;
   justify-content: center;
-  gap: 16px;
-  font-size: 30px !important;
-  margin-bottom: 24px;
+  gap: 1rem;
+  font-size: 1.875rem !important;
+  margin-bottom: 1.5rem;
 }
 
 .footer-note {
@@ -27,7 +25,7 @@
   color: #000000;
   fill: #000000 !important;   
   stroke: #000000 !important;
-  width: 1.5rem;    /* 64px */
+  width: 1.5rem;    
   height: 1.5rem;
   outline: none;
   stroke: none;
@@ -35,21 +33,21 @@
 }
 
 .logo-section {
-  padding-top: 94px;
+  padding-top: 5.875rem;
   display: flex;
   flex-direction: column;
   align-items: center;
 }
 
 .white-heading {
-  padding-top: 30px;
+  padding-top: 1.875rem;
   color: white;
 }
 
 .button-group {
   display: flex;
   justify-content: center;
-  gap: 1.5rem; /* 24px spacing */
+  gap: 1.5rem;
   margin-top: 1rem;
 }
 
@@ -59,7 +57,7 @@
   align-items: center;          /* center vertically */
   text-align: center;           /* ensure text itself is centered */
   color: #FF00E6;
-  border: 1px solid #FF00E6;
+  border: 0.0625rem solid #FF00E6;
   background: transparent;
   padding: 0.75rem 2.5rem;
   border-radius: 2rem;

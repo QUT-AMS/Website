@@ -6,18 +6,26 @@
 
 /* ── Navbar Desktop Layout ── */
 .navbar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 1000;          /* sit above all other content */
+  
   display: flex;
   align-items: center;
   justify-content: space-between;
   padding: 1rem 4rem;
-  background:transparent; 
-  color:#fff;
+  background-color: rgba(0, 0, 0, 0.8);
+  color: #fff;
   font-family: 'Rajdhani', sans-serif;
   font-size: 1rem;
   font-weight: bold;
   text-transform: uppercase;
   letter-spacing: 0.02em;
 }
+
+
 
 .brand .logo { 
   width:46px; 
@@ -248,10 +256,30 @@ body.no-scroll {
     );
 }
 
-  main {
-    margin-top: 4rem;
-    padding: 10px 40px;
-  }
+    /* 1. Make each dropdown li full-width, flex column and center its contents */
+    .main-links .dropdown {
+      width: 100%;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      padding-left: 0.8rem;
+    }
+
+
+
+    /* 3. Center the dropdown menu container and its items */
+    .main-links .dropdown-content {
+      width: 100%;
+      align-items: center;  /* flex items will center horizontally */
+      text-align: center;   /* fallback for any non-flex children */
+    }
+
+    /* 4. Make sure each link in the opened menu is centered */
+    .main-links .dropdown-content.show a {
+      width: 100%;
+      text-align: center;
+    }
+
 
 
   /* Give that spacing back to the mobile header */
@@ -337,6 +365,7 @@ body.no-scroll {
     bottom: 0;    /* stretch to the bottom */
     background: black;
     display: flex;
+    align-items: center;      /* <— add this */
     flex-direction: column;
     padding: 1.5rem;
     overflow: auto;        /* allow scrolling if content > 100vh */
@@ -410,14 +439,17 @@ body.no-scroll {
 
   .pink-button {
     background: #FF00E6;
-    padding:.6rem 0rem;
+    margin-top: 2.5rem;
+    padding:1rem 2.5rem;
     border: 1px solid #FF00E6;
     border-radius:25px; 
     font-size: 1rem;
+    text-align: center;
   }
 
   .contact-button {
     padding-bottom: 1.5rem;
+    text-align: center;
   }
 
 
@@ -449,6 +481,22 @@ body.no-scroll {
 /* Desktop hover */
 @media (min-width:1201px) {
 
+   /* Hide any “.show” classes desktop might’ve left behind */
+  .dropdown-content.show {
+    display: none !important;
+  }
+
+  /* On hover, reveal the submenu */
+  .dropdown:hover .dropdown-content {
+    display: flex;
+    flex-direction: column;
+  }
+
+  /* Prevent the arrow‐flip/open styles if you have them */
+  .dropbtn.open .arrow {
+    transform: none !important;
+  }
+  
   .main-links .dropdown:hover > .dropbtn {
     color: var(--color-secondary);
   }
@@ -476,5 +524,40 @@ body.no-scroll {
     border-radius: 1px;
     pointer-events: none;
     z-index: 50;
+  }
+
+  /* make the Contact Us container a positioning context */
+  .secondary-links {
+    position: relative;
+  }
+
+  /* ensure the link itself can carry an absolutely-positioned pseudo */
+  .secondary-links a.contact {
+    position: relative;
+    /* optional: padding-top so the bar has breathing room */
+    padding-top: 0.5rem;
+  }
+
+  /* the hidden “bar” above the text */
+  .secondary-links a.contact::after {
+    content: "";
+    position: absolute;
+    bottom: 100%;          /* sit just above the text */
+    left: 0;
+    width: 100%;
+    height: 2px;           /* match your main indicator’s thickness */
+    background: #FF00E6;   /* match your indicator color */
+    transform: scaleX(0);
+    transform-origin: left center;
+    transition: transform 0.3s ease;
+  }
+
+  /* on hover—grow it into view */
+  .secondary-links a.contact:hover::after {
+    transform: scaleX(1);
+  }
+
 }
-}
+
+
+

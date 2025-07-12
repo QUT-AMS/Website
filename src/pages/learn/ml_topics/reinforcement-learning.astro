@@ -1,8 +1,8 @@
 ---
 import "@/styles/stylesheets/global.css"
-import "@/styles/stylesheets/ml_practice.css"
-import Navigation from "../../../components/Navigation.astro";
-import Footer from "../../../components/Footer.astro";
+import "@/styles/stylesheets/ml-topics.css"
+import Navigation from "@/components/Navigation.astro"
+import Footer from '@/components/Footer.astro';
 ---
 
 <html lang="en">
@@ -12,104 +12,102 @@ import Footer from "../../../components/Footer.astro";
     <meta name="viewport" content="width=device-width" />
     <title>QUT AI & ML Society</title>
   </head>
-
-  <body class="dark background-non-curved-v2">
+  <body class="background-network">
     <Navigation />
 
-    <div class="hero-section">
-      <img
-        src="../../src/styles/graphics/network.jpg"
-        alt="Header background"
-        class="hero-background"
-      />
-      <div class="hero-overlay"></div>
-      <h1 class="hero-heading">Reinforcement Learning</h1>
-    </div>
-
-    <main class="tutorials">
-
-      <!-- Step-by-Step Tutorials -->
-      <h2>Step-by-Step Tutorials</h2>
-      <div class="tutorial-grid">
-        <div class="tutorial-box">
-          <h3>Reinforcement Learning: An Introduction With Python Examples</h3>
-          <p>Learn RL fundamentals—agent, environment, actions, states—through Python code.</p>
-          <a
-            href="https://www.datacamp.com/tutorial/reinforcement-learning-python-introduction"
-            target="_blank"
-            class="link-button"
-          >
-            Read Tutorial
-          </a>
-        </div>
-
-        <div class="tutorial-box">
-          <h3>How to Learn Reinforcement Learning: A Step-by-step Guide</h3>
-          <p>A curated RL learning roadmap covering dynamic programming, Q-learning, and policy gradients.</p>
-          <a
-            href="https://github.com/anhOfTheStars/RLStudyGuide"
-            target="_blank"
-            class="link-button"
-          >
-            Read Tutorial
-          </a>
-        </div>
-
-        <div class="tutorial-box">
-          <h3>OpenAI Spinning Up in Deep RL: Introduction</h3>
-          <p>Official guide to core RL concepts and first exercises using Spinning Up resources.</p>
-          <a
-            href="https://spinningup.openai.com/en/latest/spinningup/rl_intro.html"
-            target="_blank"
-            class="link-button"
-          >
-            Read Tutorial
-          </a>
-        </div>
+    <main class="main-content">
+      <div class="page-header">
+        <h1 class="page-title">Clustering</h1>
       </div>
 
-      <hr class="divider" />
+      <div class="content-wrapper">
 
-      <!-- Video Tutorials -->
-      <h2>Video Tutorials</h2>
-      <div class="tutorial-grid">
-        <div class="tutorial-box">
-          <h3>Reinforcement Learning Course - Full Tutorial</h3>
-          <p>freeCodeCamp’s comprehensive course covering Q-learning, DQN, policy gradients, and more.</p>
+        <!-- Step-by-Step Tutorials -->
+        <h2>Step-by-Step Tutorials</h2>
+        <div class="tutorial-grid">
+
           <a
-            href="https://www.youtube.com/watch?v=ELE2_Mftqoc"
+            href="https://www.statology.org/performing-cluster-analysis-in-python-a-step-by-step-tutorial/"
             target="_blank"
-            class="link-button"
+            class="tutorial-box"
           >
-            Watch Video
+            <h3>Performing Cluster Analysis in Python</h3>
+            <p>Walk through data prep, K-Means implementation, visualization and evaluation on a real dataset.</p>
+            <span class="tutorial-arrow">→</span>
           </a>
+
+          <a
+            href="https://www.analyticsvidhya.com/blog/2021/04/k-means-clustering-simplified-in-python/"
+            target="_blank"
+            class="tutorial-box"
+          >
+            <h3>K-Means Clustering Simplified in Python</h3>
+            <p>Step-by-step code for K-Means: choose K, run the algorithm, use the elbow method and evaluate clusters.</p>
+            <span class="tutorial-arrow">→</span>
+          </a>
+
+          <a
+            href="https://codezup.com/unsupervised-learning-clustering-tutorial-k-means-hierarchical/"
+            target="_blank"
+            class="tutorial-box"
+          >
+            <h3>Unsupervised Clustering with K-Means & Hierarchical</h3>
+            <p>Hands-on coding of both K-Means and hierarchical clustering using scikit-learn and SciPy.</p>
+            <span class="tutorial-arrow">→</span>
+          </a>
+
         </div>
 
-        <div class="tutorial-box">
-          <h3>David Silver’s RL Lecture 1: Introduction to Reinforcement Learning</h3>
-          <p>Foundations of RL from DeepMind’s lead researcher—MDPs, rewards, and learning paradigms.</p>
-          <a
-            href="https://www.youtube.com/watch?v=2pWv7GOvuf0"
-            target="_blank"
-            class="link-button"
-          >
-            Watch Video
-          </a>
-        </div>
+        <hr class="divider" />
 
-        <div class="tutorial-box">
-          <h3>What Is Reinforcement Learning? | MATLAB & Simulink</h3>
-          <p>Engineer-focused overview of RL concepts and workflow from MathWorks.</p>
-          <a
-            href="https://www.mathworks.com/videos/reinforcement-learning-part-1-what-is-reinforcement-learning-1551974943006.html"
-            target="_blank"
-            class="link-button"
-          >
-            Watch Video
-          </a>
-        </div>
+        <!-- Video Tutorials -->
+        <section class="video-section">
+          <h2>Video Tutorials</h2>
+          <div class="tutorial-grid">
+
+            <div class="tutorial-box">
+              <div class="video-wrapper">
+                <iframe
+                  src="https://www.youtube.com/embed/4b5d3muPQmA"
+                  title="K-Means Clustering in Python with scikit-learn"
+                  allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                  allowfullscreen>
+                </iframe>
+              </div>
+              <h3>K-Means Clustering in Python with scikit-learn</h3>
+              <p>Live coding: load data, fit K-Means, and plot clusters using scikit-learn.</p>
+            </div>
+
+            <div class="tutorial-box">
+              <div class="video-wrapper">
+                <iframe
+                  src="https://www.youtube.com/embed/b4_sDu05DoM"
+                  title="Hierarchical Clustering with SciPy in Python"
+                  allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                  allowfullscreen>
+                </iframe>
+              </div>
+              <h3>Hierarchical Clustering with SciPy</h3>
+              <p>Beginner’s guide to agglomerative clustering: compute linkage, draw dendrograms, extract labels.</p>
+            </div>
+
+            <div class="tutorial-box">
+              <div class="video-wrapper">
+                <iframe
+                  src="https://www.youtube.com/embed/a5G9lUY2kVo"
+                  title="DBSCAN Clustering in Python with scikit-learn"
+                  allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                  allowfullscreen>
+                </iframe>
+              </div>
+              <h3>DBSCAN Clustering in Python</h3>
+              <p>Hands-on implementation of DBSCAN: tune eps/min_samples, fit the model, and visualize core vs noise points.</p>
+            </div>
+
+          </div>
+        </section>
+
       </div>
-
     </main>
 
     <Footer />

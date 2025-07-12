@@ -1,8 +1,8 @@
 ---
 import "@/styles/stylesheets/global.css"
-import "@/styles/stylesheets/events.css"
-import Navigation from "@/components/Navigation.astro";
-import Footer from "@/components/Footer.astro";
+import "@/styles/stylesheets/ml-topics.css"
+import Navigation from "@/components/Navigation.astro"
+import Footer from '@/components/Footer.astro';
 ---
 
 <html lang="en">
@@ -12,51 +12,35 @@ import Footer from "@/components/Footer.astro";
     <meta name="viewport" content="width=device-width" />
     <title>QUT AI & ML Society</title>
   </head>
+  <body class="background-network">
+    <Navigation />
 
-	<body class="dark background-non-curved-v2">
-		<Navigation />
+    <main class="main-content">
+      <div class="page-header">
+        <h1 class="page-title">Events</h1>
+      </div>
 
-      <div class="hero-section">
-        <img
-          src="../../src/styles/graphics/network.jpg"
-          alt="Header background"
-          class="hero-background"
-        />
-        <div class="hero-overlay"></div>
-        <h1 class="hero-heading">Our Events</h1>
-      </div> 
+      <div class="tab-switch">
+        <button class="tab-btn active" data-tab="projects">Project Nights</button>
+        <button class="tab-btn" data-tab="industry">Industry Nights</button>
+        <button class="tab-btn" data-tab="social">Social Nights</button>
+        <button class="tab-btn" data-tab="study">Study Nights</button>
+      </div>
+
+      <div class="content-wrapper tab-panels">
+        <div id="projects" class="tab-panel active">
       
-			<main class="min-h-160 items-center p-12">
-
-      <div style="display: flex; flex-direction: column; align-items: center; padding-bottom: 400px">
-        <div class="toggleNights-switch">
-          <div class="toggleNights-indicator"></div>
-
-          <button class="toggleNights-btn active" data-tab="projects">
-            Project Nights
-          </button>
-          <button class="toggleNights-btn" data-tab="industry">
-            Industry Nights
-          </button>
-          <button class="toggleNights-btn" data-tab="social">
-            Social Nights
-          </button>
-          <button class="toggleNights-btn" data-tab="study">
-            Study Nights
-          </button>
-        </div>
-
-
-        <div id="projects" class="toggleNights-content active">
-            <h1>Project Nights</h1>
-            <p>
+          <!-- Project Nights panel -->
+          <section class="info-panel">
+            <h2 class="section-title">Project Nights</h2>
+            <p class="section-content">
               Our Project Nights are an opportunity for our members to learn about AI 
               and get hands on experience building. We provide topics for our 
               members to learn about and work on, from beginner, to intermediate, 
               and then to advanced difficulty.
             </p>
             <br>
-            <p>
+            <p class="section-content">
               Members will work on these topics in pairs, ideally with one IT and one 
               non-IT student. This way, IT students can reinforce their knowledge while 
               non-IT students get the support they need. This makes it rewarding for 
@@ -65,11 +49,15 @@ import Footer from "@/components/Footer.astro";
               solution. Members then complete three challenge projects to build the 
               ML model themselves.
             </p>
-          </div>
+          </section>
+        </div>
 
-          <div id="industry" class="toggleNights-content">
-            <h1>Industry Nights</h1>
-            <p>
+        <div id="industry" class="tab-panel">
+          
+          <!-- Industry Nights panel -->
+          <section class="info-panel">
+            <h2 class="section-title">Industry Nights</h2>
+            <p class="section-content">
               Our Industry Nights are an opportunity for our members to gain valuable 
               insights and guidance directly from alumni, professionals, and leaders in 
               the AI and ML industry. These events help bridge the gap between academic 
@@ -78,7 +66,7 @@ import Footer from "@/components/Footer.astro";
               the field.
             </p>
             <br>
-            <p>
+            <p class="section-content">
               Industry Nights also provide a welcoming space to connect and network 
               with fellow students, researchers, and professionals within the AI, ML, 
               and broader tech community. These connections can lead to 
@@ -86,97 +74,72 @@ import Footer from "@/components/Footer.astro";
               members grow their professional network and stay informed about the 
               evolving landscape of AI and machine learning.
             </p>
-          </div>
+          </section>
+        </div>
 
+        <div id="social" class="tab-panel">
 
-          <div id="social" class="toggleNights-content">
-            <h1>Social Nights</h1>
-            <p>
-                Our Social Nights are designed to give our members a chance to unwind, 
-                relax, and take a well-deserved break from the pressures of studies and 
-                assessments. These nights bring everyone together in a fun, casual 
-                environment where you can enjoy activities that help you de-stress and 
-                recharge.
+          <!-- Social Nights panel -->
+          <section class="info-panel">
+            <h2 class="section-title">Social Nights</h2>
+            <p class="section-content">
+              Our Social Nights are designed to give our members a chance to unwind, 
+              relax, and take a well-deserved break from the pressures of studies and 
+              assessments. These nights bring everyone together in a fun, casual 
+              environment where you can enjoy activities that help you de-stress and 
+              recharge.
             </p>
             <br>
-            <p>
+            <p class="section-content">
               Whether you’re solving puzzles, teaming up for friendly games, or 
               testing your wits in lively group challenges, Social Nights are all about 
               building connections and having a good time. They’re the perfect way to 
               meet new people, strengthen friendships, and create lasting memories 
               while balancing the demands of student life.
             </p>
-          </div>  
-          <div id="study" class="toggleNights-content">
-            <h1>Study Nights</h1>
-            <p>
-                Our Study Nights are dedicated sessions where members come together 
-                to focus, stay motivated, and support each other during busy assessment 
-                periods. These nights create a collaborative and productive environment 
-                that helps you stay on track with your coursework while working alongside 
-                peers who understand the challenges you’re facing.
+          </section>
+        </div>
+
+        <div id="study" class="tab-panel">
+          <!-- Social Nights panel -->
+          <section class="info-panel">
+            <h2 class="section-title">Study Nights</h2>
+            <p class="section-content">
+              Our Study Nights are dedicated sessions where members come together 
+              to focus, stay motivated, and support each other during busy assessment 
+              periods. These nights create a collaborative and productive environment 
+              that helps you stay on track with your coursework while working alongside 
+              peers who understand the challenges you’re facing.
             </p>
             <br>
-            <p>
-                Whether you’re revising for exams, tackling assignments, or seeking 
-                advice on tricky topics, Study Nights offer the perfect space for sharing 
-                ideas and keeping each other accountable. It’s a great way to make 
-                studying less stressful and more enjoyable, all while building a supportive 
-                academic community.
+            <p class="section-content">
+              Whether you’re revising for exams, tackling assignments, or seeking 
+              advice on tricky topics, Study Nights offer the perfect space for sharing 
+              ideas and keeping each other accountable. It’s a great way to make 
+              studying less stressful and more enjoyable, all while building a supportive 
+              academic community.
             </p>
-          </div>
+          </section>
         </div>
+      </div>
     </main>
     <Footer />
-    </body>
-
-
-    <script>
-document.addEventListener('DOMContentLoaded', () => {
-  const buttons   = document.querySelectorAll('.toggleNights-btn');
-  const indicator = document.querySelector('.toggleNights-indicator');
-  const contents  = document.querySelectorAll('.toggleNights-content');
-  const count     = buttons.length;
-  const stepPct   = 100 / count;
-
-  // Helper to size indicator on load & resize
-  function sizeIndicator() {
-    const isMobile = window.matchMedia('(max-width: 600px)').matches;
-    if (isMobile) {
-      indicator.style.width  = 'calc(100% - 10px)';
-      indicator.style.height = `${stepPct}%`;
-    } else {
-      indicator.style.width  = `${stepPct}%`;
-      indicator.style.height = 'calc(100% - 10px)';
-    }
-  }
-
-  // Initial size + on window resize
-  sizeIndicator();
-  window.addEventListener('resize', sizeIndicator);
-
-  buttons.forEach((btn, i) => {
-    btn.addEventListener('click', () => {
-      // 1) update active state
-      buttons.forEach(b => b.classList.remove('active'));
-      btn.classList.add('active');
-
-      // 2) move indicator
-      const isMobile = window.matchMedia('(max-width: 600px)').matches;
-      if (isMobile) {
-        indicator.style.transform = `translateY(${i * 100}%)`;
-      } else {
-        indicator.style.transform = `translateX(${i * 100}%)`;
-      }
-
-      // 3) show matching content
-      const target = btn.dataset.tab;
-      contents.forEach(c =>
-        c.classList.toggle('active', c.id === target)
-      );
-    });
-  });
-});
-</script>
-
+  </body>
 </html>
+
+<script type="module">
+    const tabs = document.querySelectorAll('.tab-btn');
+    const panels = document.querySelectorAll('.tab-panel');
+
+    tabs.forEach(tab => {
+      tab.addEventListener('click', () => {
+        // deactivate all
+        tabs.forEach(t => t.classList.remove('active'));
+        panels.forEach(p => p.classList.remove('active'));
+
+        // activate clicked + matching panel
+        tab.classList.add('active');
+        document.getElementById(tab.dataset.tab).classList.add('active');
+      });
+    });
+</script>

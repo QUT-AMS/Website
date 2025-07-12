@@ -11,26 +11,41 @@
 }
 
 .background {
-    background: radial-gradient(125% 125% at 50% -10%, #090909 20%, #090909 55%, #FF00E6 75%);
-}
-
-.background-non-curved {
-    background: linear-gradient(
-        to bottom,
-        #090909 0%,
-        #090909 85%,
-        #FF00E6 95%
-    );
+    background: radial-gradient(125% 125% at 50% 5%, #090909 20%, #090909 55%, #FF00E6 75%);
 }
 
 
-.background-non-curved-v2 {
-    background: linear-gradient(
-        to bottom,
-        #090909 0%,
-        #090909 65%,
-        #FF00E6 83%
-    );
+.background-network {
+  position: relative;
+  width: 100%;
+  min-height: 100vh;
+  
+}
+
+/* 1) Background image behind everything */
+.background-network::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: 
+    url("../graphics/network3.jpg") 
+    center/cover no-repeat fixed;
+  z-index: -2;
+}
+
+/* 2) Black overlay at 90% opacity */
+.background-network::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background-color: rgba(0, 0, 0, 0.3);
+  z-index: -1;
+}
+
+/* Ensure your nav, main, footer sit above these layers */
+.background-network > * {
+  position: relative;
+  z-index: 0;
 }
 
 
@@ -47,70 +62,81 @@
   font-size: 20px;
 }
 
+main {
+  padding-top: 6rem !important;
+  padding-left: 1rem;
+  padding-right: 1rem;
+}
+
 /* Heading 1 */
 h1 {
   font-size: 42px;
   font-weight: bold;
-  color: #FF00E6;
 }
 
 h2 {
   font-size: 38px;
   font-weight: bold;
+}
+
+
+
+/* ---------------------------------- */
+/*   Layout & Spacing for <main>      */
+/* ---------------------------------- */
+.main-content {
+  min-height: 40rem;       
+  padding: 3rem 1rem;      
+  margin: 0 auto;
+  max-width: 1200px;       
+}
+
+/* ---------------------------------- */
+/*     Page Header (Title Block)      */
+/* ---------------------------------- */
+.page-header {
+  padding-top: 2rem;
+  margin-bottom: 2rem;
+}
+
+.page-title {
+  font-size: 2.625rem;     
+  font-weight: bold;
   color: white;
-}
-
-
-.image-style {
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  opacity: 0.3;
-}
-
-
-
-  
-/* ----------------------------- */
-/*         HEADER GRAPHIC        */
-/* ----------------------------- */
-  
-
-.hero-section {
-  position: relative;
-  height: 300px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  overflow: hidden;
-  text-align: center;
-  padding: 10px 20px;
-  z-index: 0;
-}
-
-.hero-background {
-  position: absolute;
-  inset: 0;
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  z-index: 0;
-}
-
-.hero-overlay {
-  position: absolute;
-  inset: 0;
-  background-color: rgba(0, 0, 0, 0.5); /* 80% dark opacity */
-  z-index: 0;
-}
-
-.hero-heading {
-  position: relative;
-  z-index: 2;
-  color: white;
-  font-size: 2.5rem;
   margin: 0;
-  z-index: 0;
+}
+
+/* ---------------------------------- */
+/*     Content Wrapper & Panels       */
+/* ---------------------------------- */
+.content-wrapper {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 2rem;
+  max-width: 100%;
+  overflow: visible;
+}
+
+.info-panel {
+  background-color: #272727;
+  border-radius: 10px;
+  padding: 30px;
+  box-shadow: 8px 8px 0 #1B1B1B;
+  color: white;
+  width: 100%;
+}
+
+.section-title {
+  font-size: 1.5rem;
+  margin-bottom: 0.75rem;
+}
+
+.section-content {
+  line-height: 1.6;
+}
+
+.section-list {
+  list-style: disc;
+  padding-left: 1.25rem;
+  line-height: 1.6;
 }

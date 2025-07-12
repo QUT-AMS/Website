@@ -1,8 +1,8 @@
 ---
 import "@/styles/stylesheets/global.css"
-import "@/styles/stylesheets/ml_practice.css"
-import Navigation from "../../../components/Navigation.astro";
-import Footer from "../../../components/Footer.astro";
+import "@/styles/stylesheets/ml-topics.css"
+import Navigation from "@/components/Navigation.astro"
+import Footer from '@/components/Footer.astro';
 ---
 
 <html lang="en">
@@ -12,104 +12,120 @@ import Footer from "../../../components/Footer.astro";
     <meta name="viewport" content="width=device-width" />
     <title>QUT AI & ML Society</title>
   </head>
-
-  <body class="dark background-non-curved-v2">
+  <body class="background-network">
     <Navigation />
 
-    <div class="hero-section">
-      <img
-        src="../../src/styles/graphics/network.jpg"
-        alt="Header background"
-        class="hero-background"
-      />
-      <div class="hero-overlay"></div>
-      <h1 class="hero-heading">Transformers</h1>
-    </div>
-
-    <main class="tutorials">
-
-      <!-- Step-by-Step Tutorials -->
-      <h2>Step-by-Step Tutorials</h2>
-      <div class="tutorial-grid">
-        <div class="tutorial-box">
-          <h3>Getting Started with Transformers</h3>
-          <p>Introduction to transformer architecture, self-attention, and basic use-cases.</p>
-          <a
-            href="https://www.geeksforgeeks.org/machine-learning/getting-started-with-transformers/"
-            target="_blank"
-            class="link-button"
-          >
-            Read Tutorial
-          </a>
-        </div>
-
-        <div class="tutorial-box">
-          <h3>How Transformers Work: A Detailed Exploration</h3>
-          <p>Deep dive into multi-head attention, positional encoding, and encoder/decoder stacks.</p>
-          <a
-            href="https://www.datacamp.com/tutorial/how-transformers-work"
-            target="_blank"
-            class="link-button"
-          >
-            Read Tutorial
-          </a>
-        </div>
-
-        <div class="tutorial-box">
-          <h3>Transformers Crash Course</h3>
-          <p>A hands-on collection of notebooks covering basics through advanced topics.</p>
-          <a
-            href="https://github.com/syarahmadi/transformers-crash-course"
-            target="_blank"
-            class="link-button"
-          >
-            Read Tutorial
-          </a>
-        </div>
+    <main class="main-content">
+      <div class="page-header">
+        <h1 class="page-title">Transformers</h1>
       </div>
 
-      <hr class="divider" />
+      <div class="content-wrapper">
 
-      <!-- Video Tutorials -->
-      <h2>Video Tutorials</h2>
-      <div class="tutorial-grid">
-        <div class="tutorial-box">
-          <h3>Illustrated Guide to Transformers</h3>
-          <p>Step-by-step visual explanation of how transformers process sequences.</p>
+        <!-- Step-by-Step Tutorials -->
+        <h2>Step-by-Step Tutorials</h2>
+        <div class="tutorial-grid">
+
           <a
-            href="https://www.youtube.com/watch?v=4Bdc55j80l8"
+            href="https://markaicode.com/getting-started-transformers-tutorial/"
             target="_blank"
-            class="link-button"
+            class="tutorial-box"
           >
-            Watch Video
+            <h3>Getting Started with Transformers: Your First 10 Minutes</h3>
+            <p>
+              Build your first Transformer model in Python using Hugging Face’s
+              pipeline—tokenize, infer, and explore outputs with minimal code.
+            </p>
+            <span class="tutorial-arrow">→</span>
           </a>
+
+          <a
+            href="https://discuss.huggingface.co/t/tutorial-implementing-transformer-from-scratch-a-step-by-step-guide/132158"
+            target="_blank"
+            class="tutorial-box"
+          >
+            <h3>Implementing Transformer from Scratch</h3>
+            <p>
+              Hands-on guide to coding positional embeddings, multi-head
+              attention, encoder/decoder layers, and training loop in Python.
+            </p>
+            <span class="tutorial-arrow">→</span>
+          </a>
+
+          <a
+            href="https://pylessons.com/transformers-introduction"
+            target="_blank"
+            class="tutorial-box"
+          >
+            <h3>Introduction to Transformers – PyLessons</h3>
+            <p>
+              Learn how to implement embedding layers, self-attention, and
+              build a basic Transformer model in TensorFlow step by step.
+            </p>
+            <span class="tutorial-arrow">→</span>
+          </a>
+
         </div>
 
-        <div class="tutorial-box">
-          <h3>Transformers in Machine Learning</h3>
-          <p>Overview of transformer models, self-attention, and applications.</p>
-          <a
-            href="https://www.geeksforgeeks.org/videos/transformers-in-machine-learning/"
-            target="_blank"
-            class="link-button"
-          >
-            Watch Video
-          </a>
-        </div>
+        <hr class="divider" />
 
-        <div class="tutorial-box">
-          <h3>Attention Is All You Need (Paper Explained)</h3>
-          <p>Walk through the landmark “Attention Is All You Need” paper with intuition and math.</p>
-          <a
-            href="https://www.youtube.com/watch?v=KFiQPAsVh6Q"
-            target="_blank"
-            class="link-button"
-          >
-            Watch Video
-          </a>
-        </div>
+        <!-- Video Tutorials -->
+        <section class="video-section">
+          <h2>Video Tutorials</h2>
+          <div class="tutorial-grid">
+
+            <div class="tutorial-box">
+              <div class="video-wrapper">
+                <iframe
+                  src="https://www.youtube.com/embed/gm8DUJJhmY4"
+                  title="Hugging Face Transformers in 40 Lines of Code"
+                  allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                  allowfullscreen>
+                </iframe>
+              </div>
+              <h3>Hugging Face Transformers in 40 Lines of Code</h3>
+              <p>
+                Live coding demo: load a pretrained model, tokenize text, and
+                run inference in under 40 lines with Hugging Face.
+              </p>
+            </div>
+
+            <div class="tutorial-box">
+              <div class="video-wrapper">
+                <iframe
+                  src="https://www.youtube.com/embed/M6uPTYuhdjo"
+                  title="Transformer From Scratch in Python (PyTorch)"
+                  allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                  allowfullscreen>
+                </iframe>
+              </div>
+              <h3>Transformer From Scratch in Python (PyTorch)</h3>
+              <p>
+                Step-by-step PyTorch implementation: positional encoding,
+                multi-head attention, encoder blocks and training loop.
+              </p>
+            </div>
+
+            <div class="tutorial-box">
+              <div class="video-wrapper">
+                <iframe
+                  src="https://www.youtube.com/embed/8CIjLwZIxO8"
+                  title="Fine-tune BERT for Text Classification with Hugging Face"
+                  allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                  allowfullscreen>
+                </iframe>
+              </div>
+              <h3>Fine-tune BERT for Text Classification</h3>
+              <p>
+                Hands-on guide: load a pre-trained BERT model, fine-tune on your
+                dataset, and evaluate performance using Hugging Face Transformers.
+              </p>
+            </div>
+
+          </div>
+        </section>
+
       </div>
-
     </main>
 
     <Footer />

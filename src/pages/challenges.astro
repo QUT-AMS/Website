@@ -1,8 +1,8 @@
 ---
 import "@/styles/stylesheets/global.css"
 import "@/styles/stylesheets/challenges.css"
-import Navigation from "@/components/Navigation.astro";
-import Footer from "@/components/Footer.astro";
+import Navigation from "@/components/Navigation.astro"
+import Footer from '@/components/Footer.astro';
 ---
 
 <html lang="en">
@@ -12,69 +12,77 @@ import Footer from "@/components/Footer.astro";
     <meta name="viewport" content="width=device-width" />
     <title>QUT AI & ML Society</title>
   </head>
-
-  <body class="dark background-non-curved">
+  <body class="background-network">
     <Navigation />
 
-    <div class="hero-section">
-      <img src="../../src/styles/graphics/network.jpg" alt="Header background" class="hero-background" />
-      <div class="hero-overlay"></div>
-      <h1 class="hero-heading">Challenges</h1>
-    </div>
-
-    <main class="min-h-screen py-12 section-padding">
+    <main class="main-content">
+      <div class="page-header">
+        <h1 class="page-title">Challenges</h1>
+      </div>
 
       <div class="controls-spacing">
-        <div class="filter-buttons flex">
-            <button class="filter-btn active" data-topic="All">All</button>
-            <button class="filter-btn" data-topic="Linear Regression">Linear Regression</button>
-            <button class="filter-btn" data-topic="Logistic Regression">Logistic Regression</button>
-            <button class="filter-btn" data-topic="K-Nearest Neighbours">K-Nearest Neighbours</button>
-            <button class="filter-btn" data-topic="Convoluted Neural Networks">Convoluted Neural Networks</button>
-            <button class="filter-btn" data-topic="Random Forest">Random Forests</button>
-            <button class="filter-btn" data-topic="Clustering">Clustering</button>
-            <button class="filter-btn" data-topic="Transformers">Transformers</button>
-            <button class="filter-btn" data-topic="Reinforcement Learning">Reinforcement Learning</button>
+        <div class="filter-buttons grid">
+          <button type="button" class="filter-btn active" data-topic="All">All</button>
+          <button type="button" class="filter-btn" data-topic="Linear Regression">
+            Linear Regression
+          </button>
+          <button type="button" class="filter-btn" data-topic="Logistic Regression">
+            Logistic Regression
+          </button>
+          <button type="button" class="filter-btn" data-topic="K-Nearest Neighbours">
+            K-Nearest Neighbours
+          </button>
+          <button type="button" class="filter-btn" data-topic="Convoluted Neural Networks">
+            Convoluted Neural Networks
+          </button>
+          <button type="button" class="filter-btn" data-topic="Random Forest">
+            Random Forests
+          </button>
+          <button type="button" class="filter-btn" data-topic="Clustering">
+            Clustering
+          </button>
+          <button type="button" class="filter-btn" data-topic="Transformers">
+            Transformers
+          </button>
+          <button type="button" class="filter-btn" data-topic="Reinforcement Learning">
+            Reinforcement Learning
+          </button>
         </div>
+
 
         <!-- Controls: Search | Filter | Sort -->
         <div class="controls-wrapper">
-
           <!-- Search box -->
-          <input type="text" id="searchInput" placeholder="Search challenge name..." class="search-bar" />
+          <input type="text"
+                id="searchInput"
+                placeholder="Search challenge name..."
+                class="search-bar" />
 
-          <!-- Dropdown trigger -->
-          <div class="sort-dropdown-container relative">
-            <button id="sortDropdownBtn" class="sort-dropdown-toggle">Sort by ▾</button>
-            <ul id="sortDropdown" 
-                class="sort-dropdown-list hidden absolute z-10 mt-2 bg-[#1f1f1f] border border-[#444] rounded-md w-48 text-left text-white">
-              <li class="sort-dropdown-item px-4 py-2 cursor-pointer hover:bg-[#333]" 
-                  data-index="0" data-type="number">Number</li>
-              <li class="sort-dropdown-item px-4 py-2 cursor-pointer hover:bg-[#333]" 
-                  data-index="1" data-type="string">Name</li>
-              <li class="sort-dropdown-item px-4 py-2 cursor-pointer hover:bg-[#333]" 
-                  data-index="2" data-type="difficulty">Difficulty</li>
-              <li class="sort-dropdown-item px-4 py-2 cursor-pointer hover:bg-[#333]" 
-                  data-index="3" data-type="string">Topic</li>
+          <!-- Sort dropdown: we'll only show this on mobile -->
+          <div class="sort-dropdown-container">
+            <button id="sortDropdownBtn"
+                    class="sort-dropdown-toggle">
+              Sort by ▾
+            </button>
+            <ul id="sortDropdown"
+                class="sort-dropdown-list hidden">
+              <li class="sort-dropdown-item" data-index="0" data-type="number">
+                Number
+              </li>
+              <li class="sort-dropdown-item" data-index="1" data-type="string">
+                Challenge
+              </li>
+              <li class="sort-dropdown-item" data-index="2" data-type="difficulty">
+                Difficulty
+              </li>
+              <li class="sort-dropdown-item" data-index="3" data-type="string">
+                Topic
+              </li>
             </ul>
           </div>
-
-
-          <select id="mobile-filter" class="filter-dropdown">
-            <option value="All">All</option>
-            <option value="Linear Regression">Linear Regression</option>
-            <option value="Logistic Regression">Logistic Regression</option>
-            <option value="K-Nearest Neighbours">K-Nearest Neighbours</option>
-            <option value="Convoluted Neural Networks">Convoluted Neural Networks</option>
-            <option value="Random Forest">Random Forests</option>       <!-- ← sync value -->
-            <option value="Clustering">Clustering</option>
-            <option value="Transformers">Transformers</option>
-            <option value="Reinforcement Learning">Reinforcement Learning</option>
-          </select>
-
         </div>
       </div>
-        
+                
       <section class="challenge-table-section">
     
         <!-- Table -->
@@ -86,8 +94,15 @@ import Footer from "@/components/Footer.astro";
               <col style="width: 15%;" />    <!-- Difficulty -->
               <col style="width: 30%;" />    <!-- Topic -->
             </colgroup>
+            <thead>
+            <tr>
+              <th class="sortable" data-index="0" data-type="number">#</th>
+              <th class="sortable" data-index="1" data-type="string">Challenge</th>
+              <th class="sortable" data-index="2" data-type="difficulty">Difficulty</th>
+              <th class="sortable" data-index="3" data-type="string">Topic</th>
+            </tr>
+          </thead>
            <tbody>
-
             <!-- Linear Regression (Beginner) -->
             <tr data-topic="Linear Regression" onclick="window.location.href='https://github.com/QUT-AMS/Linear-Regression';" style="cursor: pointer;">
               <td>1</td>
@@ -277,131 +292,84 @@ import Footer from "@/components/Footer.astro";
           </table>
         </div>
       </section>
-      </main>
+    </main>
 
     <Footer />
   </body>
 </html>
+
 <script>
-  // ELEMENTS
-  const searchInput    = document.getElementById('searchInput');
-  const dropdownBtn    = document.getElementById('sortDropdownBtn');
-  const dropdown       = document.getElementById('sortDropdown');
-  const sortOptions    = dropdown.querySelectorAll('.sort-dropdown-item');
-  const filterButtons  = document.querySelectorAll('.filter-btn');
-  const tbody          = document.querySelector('.challenge-table tbody');
-  const rows           = () => Array.from(tbody.querySelectorAll('tr'));
+  const searchInput   = document.getElementById('searchInput');
+  const filterButtons = document.querySelectorAll('.filter-btn');
+  const tbodyRows     = () => document.querySelectorAll('.challenge-table tbody tr');
 
-  // STATE
-  let activeTopic      = 'All';
-  const sortState      = {};  
-  const difficultyOrder = { Beginner:1, Intermediate:2, Advanced:3 };
+  // gather all topics except “All”
+  const allTopics = Array.from(filterButtons)
+    .map(b => b.dataset.topic)
+    .filter(t => t !== 'All');
 
-  // FILTER + SEARCH
-  function filterRows() {
-    const query = searchInput.value.trim().toLowerCase();
-    rows().forEach(row => {
-      const name  = row.cells[1].textContent.toLowerCase();
-      const topic = row.dataset.topic;
-      const showByText  = name.includes(query);
-      const showByTopic = activeTopic === 'All' || topic === activeTopic;
-      row.style.display = (showByText && showByTopic) ? '' : 'none';
-    });
-  }
+  // initialize: mark every button active
+  filterButtons.forEach(b => b.classList.add('active'));
 
-  // SORTING
-  function sortTable(idx, type, dir) {
-    const sorted = rows().sort((a, b) => {
-      let aVal = a.cells[idx].textContent.trim();
-      let bVal = b.cells[idx].textContent.trim();
-
-      if (type === 'number') {
-        aVal = Number(aVal); bVal = Number(bVal);
-        return dir==='asc' ? aVal - bVal : bVal - aVal;
-      }
-      if (type === 'difficulty') {
-        return dir==='asc'
-          ? difficultyOrder[aVal] - difficultyOrder[bVal]
-          : difficultyOrder[bVal] - difficultyOrder[aVal];
-      }
-      // string fallback
-      return dir==='asc'
-        ? aVal.localeCompare(bVal)
-        : bVal.localeCompare(aVal);
-    });
-
-    sorted.forEach(r => tbody.appendChild(r));
-    filterRows();  // reapply filters after sorting
-  }
-
-  // WIRE UP SEARCH
-  searchInput.addEventListener('input', filterRows);
-
-  // WIRE UP TOPIC FILTER BUTTONS
-  filterButtons.forEach(btn => {
-    btn.addEventListener('click', () => {
-      document.querySelector('.filter-btn.active')?.classList.remove('active');
-      btn.classList.add('active');
-      activeTopic = btn.dataset.topic;
-      filterRows();
-    });
-  });
-
-  // DROPDOWN SHOW/HIDE
-  dropdownBtn.addEventListener('click', e => {
-    e.stopPropagation();
-    dropdown.classList.toggle('show');
-  });
-  document.addEventListener('click', e => {
-    if (!dropdown.contains(e.target) && e.target !== dropdownBtn) {
-      dropdown.classList.remove('show');
+  // derive active topics for filtering
+  function getActiveTopics() {
+    const allBtn = document.querySelector('.filter-btn[data-topic="All"]');
+    if (allBtn.classList.contains('active')) {
+      return allTopics.slice();  // return a copy of allTopics
     }
-  });
+    return Array.from(filterButtons)
+      .filter(b => b.classList.contains('active'))
+      .map(b => b.dataset.topic);
+  }
 
-  // WIRE UP SORT OPTIONS
-  sortOptions.forEach(opt => {
-    // stash base label for arrow reset
-    opt.dataset.label = opt.textContent.trim();
+  // show/hide rows
+  function applyFilters() {
+    const q      = searchInput.value.trim().toLowerCase();
+    const active = getActiveTopics();
 
-    opt.addEventListener('click', () => {
-      const idx  = Number(opt.dataset.index);
-      const type = opt.dataset.type;
-      const prev = sortState[idx];
-      const dir  = prev === 'asc' ? 'desc' : 'asc';
-      sortState[idx] = dir;
-
-      // reset all labels, then add arrow
-      sortOptions.forEach(o => o.textContent = o.dataset.label);
-      opt.textContent = opt.dataset.label + (dir==='asc' ? ' ▲' : ' ▼');
-
-      sortTable(idx, type, dir);
-      dropdown.classList.remove('show');
+    tbodyRows().forEach(row => {
+      const name  = row.cells[1].textContent.toLowerCase();
+      const top   = row.dataset.topic;
+      const okText  = name.includes(q);
+      const okTopic = active.includes(top);
+      row.style.display = (okText && okTopic) ? '' : 'none';
     });
-  });
+  }
 
-  // INITIAL DISPLAY
-  filterRows();
+  // click handler
+  function handleFilterClick(btn) {
+    const topic  = btn.dataset.topic;
+    const allBtn = document.querySelector('.filter-btn[data-topic="All"]');
+    const specific = Array.from(filterButtons).filter(b => b.dataset.topic !== 'All');
 
+    if (topic === 'All') {
+      // toggle “All” on/off → mirror to every button
+      const turnOn = !allBtn.classList.contains('active');
+      filterButtons.forEach(b => b.classList.toggle('active', turnOn));
+    } else {
+      // toggle this one
+      btn.classList.toggle('active');
+      // ensure “All” is off
+      allBtn.classList.remove('active');
+    }
 
-    document.addEventListener('DOMContentLoaded', () => {
-    const dropdown = document.getElementById('mobile-filter');
-    const buttons  = document.querySelectorAll('.filter-btn');
-    const rows     = document.querySelectorAll('tbody tr[data-topic]');
+    // if *all* specific are now active, switch back to only “All”
+    if (specific.every(b => b.classList.contains('active'))) {
+      // Clear all .active classes first
+      filterButtons.forEach(b => b.classList.remove('active'));
+      // Then activate only the “All” button
+      allBtn.classList.add('active');
+    }
 
-    dropdown.addEventListener('change', e => {
-      const topic = e.target.value;
+    applyFilters();
+  }
 
-      // 1) update button active state
-      buttons.forEach(btn => {
-        btn.classList.toggle('active', btn.dataset.topic === topic);
-      });
+  // wire up
+  filterButtons.forEach(b =>
+    b.addEventListener('click', () => handleFilterClick(b))
+  );
+  searchInput.addEventListener('input', applyFilters);
 
-      // 2) show/hide rows just like your buttons do
-      rows.forEach(row => {
-        const matches = topic === 'All' || row.dataset.topic === topic;
-        row.style.display = matches ? '' : 'none';
-      });
-    });
-  });
-
+  // initial pass
+  applyFilters();
 </script>

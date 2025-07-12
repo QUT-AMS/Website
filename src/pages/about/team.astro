@@ -12,121 +12,133 @@ import Footer from '@/components/Footer.astro';
     <meta name="viewport" content="width=device-width" />
     <title>QUT AI & ML Society</title>
   </head>
-  <body class="dark background-non-curved">
+  <body class="background-network">
     <Navigation />
 
-    <div class="hero-section">
-      <img src="../../src/styles/graphics/network.jpg"  alt="Header background"  class="hero-background"/>
-      <div class="hero-overlay"></div>
-      <h1 class="hero-heading">Executive Team 2025</h1>
-    </div>
+    <main class="main-content">
+      <div class="page-header">
+        <h1 class="page-title">Executive Team 2025</h1>
+      </div>
 
-    <main class="min-h-screen py-12">
-      
-      <!-- Admin Team -->
-      <section class="team-section">
-        <h1>Admin Team</h1>
-          <div class="team-wrapper">
-            <div class="team-card">
-              <img src="/src/styles/graphics/guy_icon.png" alt="Zac Knight" />
-                <h2>Zac Knight</h2>
-                <p>President</p>
-            </div>
-            <div class="team-card">
-              <img src="/src/styles/graphics/guy_icon.png" alt="Zac Knight" />
-                <h2>Niam Nayani</h2>
-                <p>Vice President</p>
-            </div>
-            <div class="team-card">
-              <img src="/src/styles/graphics/guy_icon.png" alt="Zac Knight" />
-              <h2>Jackson Riding</h2>
-              <p>Secretary</p>
-            </div>      
-             <div class="team-card">
-                <img src="/src/styles/graphics/guy_icon.png" alt="Zac Knight" />
-                  <h2>Declan Whitty</h2>
-                  <p>Treasurer</p>
-              </div>   
-            </div>   
-      </section>
-
-      <!-- Projects Team -->
-      <section class="team-section">
-        <h1>Projects Team</h1>
-          <div class="team-wrapper">
-            <div class="team-card">
-              <img src="/src/styles/graphics/guy_icon.png" alt="Zac Knight" />
-                <h2>Steve Hun</h2>
-                <p>Projects Director</p>
-            </div>
-            <div class="team-card">
-              <img src="/src/styles/graphics/guy_icon.png" alt="Zac Knight" />
-                <h2>Iwan Kaczmar-Donaghue</h2>
-                <p>Projects Officer</p>
-            </div>
-            <div class="team-card">
-              <img src="/src/styles/graphics/girl_icon.png" alt="Zac Knight" />
-              <h2>Valerie Annabella</h2>
-              <p>Projects Officer</p>
-            </div>      
-          </div>
-      </section>
-
-        <!-- Marketing Team -->
-        <section class="team-section">
-          <h1>Marketing Team</h1>
+      <div class="content-wrapper">
+        <!-- Admin Team -->
+        <section class="info-panel">
+          <h2 class="section-title">Admin Team</h2>
+          <p class="section-content">
             <div class="team-wrapper">
               <div class="team-card">
                 <img src="/src/styles/graphics/guy_icon.png" alt="Zac Knight" />
+                  <h2>Zac Knight</h2>
+                  <p>President</p>
+              </div>
+              <div class="team-card">
+                <img src="/src/styles/graphics/guy_icon.png" alt="Niam Nayani" />
+                  <h2>Niam Nayani</h2>
+                  <p>Vice President</p>
+              </div>
+              <div class="team-card">
+                <img src="/src/styles/graphics/guy_icon.png" alt="Jackson Riding" />
+                  <h2>Jackson Riding</h2>
+                  <p>Secretary</p>
+              </div>
+              <div class="team-card">
+                <img src="/src/styles/graphics/guy_icon.png" alt="Declan Whitty" />
+                  <h2>Declan Whitty</h2>
+                  <p>Treasurer</p>
+              </div>
+            </div>  
+          </p>
+        </section>
+
+        <!-- Projects Team -->
+        <section class="info-panel">
+          <h2 class="section-title">Projects Team</h2>
+          <p class="section-content">
+            <div class="team-wrapper">
+              <div class="team-card">
+                <img src="/src/styles/graphics/guy_icon.png" alt="Steve Hun" />
+                  <h2>Steve Hun</h2>
+                  <p>Projects Director</p>
+              </div>
+              <div class="team-card">
+                <img src="/src/styles/graphics/guy_icon.png" alt="Iwan Kaczmar-Donaghue" />
+                  <h2>Iwan Kaczmar-Donaghue</h2>
+                  <p>Projects Officer</p>
+              </div>
+              <div class="team-card">
+                <img src="/src/styles/graphics/girl_icon.png" alt="Valerie Annabella" />
+                  <h2>Valerie Annabella</h2>
+                  <p>Projects Officer</p>
+              </div>
+            </div>  
+          </p>
+        </section>
+
+        <!-- Marketing Team -->
+        <section class="info-panel">
+          <h2 class="section-title">Marketing Team</h2>
+          <p class="section-content">
+            <div class="team-wrapper">
+              <div class="team-card">
+                <img src="/src/styles/graphics/guy_icon.png" alt="Amos Wat" />
                   <h2>Amos Wat</h2>
                   <p>Marketing Director</p>
               </div>
               <div class="team-card">
-                <img src="/src/styles/graphics/girl_icon.png" alt="Zac Knight" />
+                <img src="/src/styles/graphics/girl_icon.png" alt="Belinda Zhou" />
                   <h2>Belinda Zhou</h2>
                   <p>Marketing Officer</p>
-              </div>      
-          </div>  
-      </section>
+              </div>
+            </div>  
+          </p>
+        </section>
 
         <!-- Events Team -->
-        <section class="team-section">
-          <h1>Events Team</h1>
-          <div class="team-wrapper">
+        <section class="info-panel">
+          <h2 class="section-title">Events Team</h2>
+          <p class="section-content">
+            <div class="team-wrapper">
               <div class="team-card">
-                <img src="/src/styles/graphics/girl_icon.png" alt="Zac Knight" />
+                <img src="/src/styles/graphics/girl_icon.png" alt="Gemma O'Driscoll" />
                   <h2>Gemma O'Driscoll</h2>
                   <p>Events Director</p>
               </div>
               <div class="team-card">
-                <img src="/src/styles/graphics/girl_icon.png" alt="Zac Knight" />
+                <img src="/src/styles/graphics/girl_icon.png" alt="Sophia Sweet" />
                   <h2>Sophia Sweet</h2>
                   <p>Events Officer</p>
-            </div>
-          </div>  
+              </div>
+            </div>  
+          </p>
+        </section>
 
         <!-- General Executives -->
-        <section class="team-section" style="margin-bottom: 500px">
-          <h1>General Executives</h1>
+        <section class="info-panel">
+          <h2 class="section-title">General Executives</h2>
+          <p class="section-content">
             <div class="team-wrapper">
               <div class="team-card">
-                <img src="/src/styles/graphics/guy_icon.png" alt="Zac Knight" />
-                  <h2>Ethan Regnart</h2>
+                <img src="/src/styles/graphics/girl_icon.png" alt="Leonora Van De Sande" />
+                  <h2>Leonora Van De Sande</h2>
                   <p>General Executive</p>
               </div>
               <div class="team-card">
-                <img src="/src/styles/graphics/girl_icon.png" alt="Zac Knight" />
-                  <h2>Leonora Van De Sande</h2>
-                  <p>General Executive</p>
-              </div>   
-              <div class="team-card">
-                <img src="/src/styles/graphics/guy_icon.png" alt="Zac Knight" />
+                <img src="/src/styles/graphics/guy_icon.png" alt="Mandeep Gautam" />
                   <h2>Mandeep Gautam</h2>
                   <p>General Executive</p>
-              </div>      
-        </div>  
+              </div>
+              <div class="team-card">
+                <img src="/src/styles/graphics/guy_icon.png" alt="Ethan Regnart" />
+                  <h2>Ethan Regnart</h2>
+                  <p>General Executive</p>
+              </div>
+            </div>  
+          </p>
+        </section>
 
+      </div>
     </main>
-	<Footer />
+
+    <Footer />
   </body>
 </html>

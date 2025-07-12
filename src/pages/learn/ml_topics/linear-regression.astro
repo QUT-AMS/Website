@@ -1,8 +1,8 @@
 ---
 import "@/styles/stylesheets/global.css"
-import "@/styles/stylesheets/ml_practice.css"
-import Navigation from "../../../components/Navigation.astro";
-import Footer from "../../../components/Footer.astro";
+import "@/styles/stylesheets/ml-topics.css"
+import Navigation from "@/components/Navigation.astro"
+import Footer from '@/components/Footer.astro';
 ---
 
 <html lang="en">
@@ -12,109 +12,89 @@ import Footer from "../../../components/Footer.astro";
     <meta name="viewport" content="width=device-width" />
     <title>QUT AI & ML Society</title>
   </head>
+  <body class="background-network">
+    <Navigation />
 
-	<body class="dark background-non-curved-v2">
-		<Navigation />
+    <main class="main-content">
+      <div class="page-header">
+        <h1 class="page-title">Linear Regression</h1>
+      </div>
 
-      <div class="hero-section">
-        <img
-          src="../../src/styles/graphics/network.jpg"
-          alt="Header background"
-          class="hero-background"
-        />
-        <div class="hero-overlay"></div>
-        <h1 class="hero-heading">Linear Regression</h1>
-      </div> 
-
-      
-      <main class="tutorials">
+      <div class="content-wrapper">
 
         <!-- Step-by-Step Tutorials -->
         <h2>Step-by-Step Tutorials</h2>
         <div class="tutorial-grid">
-          <div class="tutorial-box">
+          <a href="https://www.statology.org/step-by-step-guide-to-linear-regression-in-r/" target="_blank" class="tutorial-box">
             <h3>Introduction to Linear Regression</h3>
             <p>Understand the goals of regression models and how linear equations form the foundation.</p>
-            <a
-              href="https://www.statology.org/step-by-step-guide-to-linear-regression-in-r/"
-              target="_blank"
-              class="link-button"
-            >
-              Read Tutorial
-            </a>
-          </div>
+            <span class="tutorial-arrow">→</span>
+          </a>
 
-          <div class="tutorial-box">
+          <a href="https://www.datacamp.com/tutorial/simple-linear-regression" target="_blank" class="tutorial-box">
             <h3>Sklearn Linear Regression Guide</h3>
             <p>Learn model fitting, evaluation metrics, and real-world examples using Python’s scikit-learn.</p>
-            <a
-              href="https://www.datacamp.com/tutorial/simple-linear-regression"
-              target="_blank"
-              class="link-button"
-            >
-              Read Tutorial
-            </a>
-          </div>
+            <span class="tutorial-arrow">→</span>
+          </a>
 
-          <div class="tutorial-box">
+          <a href="https://www.scribbr.com/statistics/linear-regression-in-r/" target="_blank" class="tutorial-box">
             <h3>Linear Regression with scikit-learn</h3>
             <p>A beginner-friendly walkthrough with Python code and visualizations.</p>
-            <a
-              href="https://www.scribbr.com/statistics/linear-regression-in-r/"
-              target="_blank"
-              class="link-button"
-            >
-              Read Tutorial
-            </a>
-          </div>
+            <span class="tutorial-arrow">→</span>
+          </a>
         </div>
 
         <hr class="divider" />
 
-        <!-- Video Tutorials -->
-        <h2>Video Tutorials</h2>
-        <div class="tutorial-grid">
-          <div class="tutorial-box">
-            <h3>Intro to Simple Linear Regression</h3>
-            <p>A clear walkthrough of regression goals and how linear equations apply to real data.</p>
-            <a
-              href="https://www.youtube.com/watch?v=owI7zxCqNY0"
-              target="_blank"
-              class="link-button"
-            >
-              Watch Video
-            </a>
+        <section class="video-section">
+          <h2>Video Tutorials</h2>
+          <div class="tutorial-grid">
+          
+            <div class="tutorial-box">
+              <div class="video-wrapper">
+                <iframe
+                  src="https://www.youtube.com/embed/owI7zxCqNY0"
+                  title="Intro to Simple Linear Regression"
+                  allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                  allowfullscreen>
+                </iframe>
+              </div>
+              <h3>Intro to Simple Linear Regression</h3>
+              <p>A clear walkthrough of regression goals and how linear equations apply to real data.</p>
+            </div>
+
+            <div class="tutorial-box">
+              <div class="video-wrapper">
+                <iframe
+                  src="https://www.youtube.com/embed/ZkjP5RJLQF4?start=9"
+                  title="Statistics 101: Linear Regression"
+                  allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                  allowfullscreen>
+                </iframe>
+              </div>
+              <h3>Statistics 101: Linear Regression</h3>
+              <p>Foundational concepts explained with visuals and examples for beginners.</p>
+            </div>
+
+            <div class="tutorial-box">
+              <div class="video-wrapper">
+                <iframe
+                  src="https://www.youtube.com/embed/WkVvZreJtmU"
+                  title="Linear Regression Made Easy"
+                  allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                  allowfullscreen>
+                </iframe>
+              </div>
+              <h3>Linear Regression Made Easy</h3>
+              <p>Breaks down coefficients, R², and hypothesis testing in a simple visual style.</p>
+            </div>
+
           </div>
-
-          <div class="tutorial-box">
-            <h3>Statistics 101: Linear Regression</h3>
-            <p>Foundational concepts explained with visuals and examples for beginners.</p>
-            <a
-              href="https://www.youtube.com/watch?v=ZkjP5RJLQF4&t=9s"
-              target="_blank"
-              class="link-button"
-            >
-              Watch Video
-            </a>
-          </div>
-
-          <div class="tutorial-box">
-            <h3>Linear Regression Made Easy</h3>
-            <p>Breaks down coefficients, R², and hypothesis testing in a simple visual style.</p>
-            <a
-              href="https://www.youtube.com/watch?v=WkVvZreJtmU"
-              target="_blank"
-              class="link-button"
-            >
-              Watch Video
-            </a>
-          </div>
-        </div>
-
-      </main>
+        </section>
 
 
+    </main>
 
     <Footer />
-    </body>
+  </body>
 </html>

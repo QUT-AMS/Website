@@ -37,10 +37,10 @@
 
 /* panel wrapper */
 .tab-panels {
-  border: none;                    
-  border-top: 1px solid #444;  
+  border: none;
+  border-top: 0.0625rem solid #444;         
   border-radius: 0 0.25rem 0.25rem 0.25rem;  
-  padding: 1rem;
+  padding: 1rem;                           
   background: transparent;
 }
 
@@ -58,7 +58,7 @@
 /*  RESPONSIVE: STACK ON SMALL SCREENS  */
 /* ------------------------------------ */
 
-@media (max-width: 600px) {
+@media (max-width: 37.5rem) {
 
   .tab-switch {
     flex-direction: column;
@@ -91,7 +91,6 @@
   .tab-panels {
     margin: 1rem 0 0;
     border-radius: 0 0.25rem 0.25rem 0.25rem;  
-    border-radius: 4px;
     padding: 1rem;
     background: transparent;
   }
@@ -197,23 +196,23 @@
 /* ----------------------------- */
 .tutorial-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(17.5rem, 1fr)); /* 280px → 17.5rem */
   gap: 1.5rem;
-  padding-bottom: 2rem;         /* extra space below cards */
-  overflow: visible;            /* prevents hover overflow clipping */
+  padding-bottom: 2rem;
+  overflow: visible;
 }
 
 .tutorial-box {
   background-color: #2d2d2d;
-  padding: 1.5rem 1.5rem 3rem 1.5rem; /* bottom padding for arrow */
+  padding: 1.5rem 1.5rem 3rem 1.5rem;
   border-radius: 0.5rem;
-  box-shadow: 0 4px 6px rgba(0,0,0,0.5);
+  box-shadow: 0 0.25rem 0.375rem rgba(0, 0, 0, 0.5); /* 4px 6px → 0.25rem 0.375rem */
   text-decoration: none;
   color: inherit;
   transition: transform 0.3s ease;
   position: relative;
   display: block;
-  height: 100%;                     /* keep card height stable */
+  height: 100%;
 }
 
 .tutorial-box:hover {

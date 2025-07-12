@@ -50,11 +50,38 @@
 }
 
 
-/* Target the SVGs inside your Button components */
+/* enlarge your icons */
 .footer-larger svg {
-  width: 3rem;              /* adjust as needed */
-  height: 3rem;             /* keep square aspect */
-  display: block;
+  width: 3rem !important;    /* bigger than default */
+  height: 3rem !important;
+}
+
+/* tooltips */
+.footer-larger .tooltip {
+  position: relative;
+  display: inline-block;
+  cursor: pointer;
+}
+
+.footer-larger .tooltip::after {
+  content: attr(data-tooltip);
+  position: absolute;
+  bottom: 100%;           /* sit above the icon */
+  left: 50%;
+  transform: translateX(-50%);
+  background: #222;
+  color: #fff;
+  padding: 0.25rem 0.5rem;
+  font-size: 0.75rem;
+  white-space: nowrap;
+  border-radius: 0.25rem;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.2s;
+}
+
+.footer-larger .tooltip:hover::after {
+  opacity: 1;
 }
 
 .contact-center {
@@ -67,7 +94,7 @@
 
 .white-divider {
   border: 0;
-  height: 1px;
+  height: 0.0625rem;
   background-color: #fff;
   width: 60%;         /* or whatever length you like */
   margin: 3rem auto;  /* vertical spacing + center */

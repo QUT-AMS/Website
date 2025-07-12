@@ -189,6 +189,59 @@
   margin-bottom: 0;
 }
 
+/* ----------------------------- */
+/*  SELECTION AREA - RESPONSIVE  */
+/* ----------------------------- */
+
+@media (max-width: 40rem) {
+
+  /* Remove right padding on panels */
+  .selection-panel {
+    /* top | right | bottom | left */
+    padding: 1.875rem 1.875rem 1.875rem 1.875rem;
+  }
+
+  /* Stack text first, then image */
+  .selection-inner {
+    flex-direction: column;
+  }
+  .selection-text {
+    order: 1;
+    /* full width so it lines up */
+    flex: none;
+    width: 100%;
+    max-width: 100%;
+    margin-bottom: 1rem; /* gap to the image */
+  }
+  .selection-media {
+    order: 2;
+    flex: none;
+    width: 100%;
+    max-width: 100%;
+  }
+
+  .selection-image {
+  height: 8rem;        /* fixed small height */
+  max-height: 8rem;
+  width: auto;         /* maintain aspect ratio */
+  display: block;
+}
+
+  .selection-panel::after {
+    content: '→';
+    position: static;
+    display: block;
+    text-align: center;
+    font-size: 3.5rem;
+    color: #FF00E6;
+    margin: 1rem auto 0;
+    opacity: 1 !important;
+    transform: none !important;
+    pointer-events: none;
+  }
+}
+
+
 
 
 /* ----------------------------- */

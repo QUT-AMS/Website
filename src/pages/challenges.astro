@@ -297,17 +297,26 @@ import Footer from '@/components/Footer.astro';
     <Footer />
   </body>
 </html>
-<script>
-  const searchInput   = document.getElementById('searchInput');
-  const filterButtons = document.querySelectorAll('.filter-btn');
-  const tbody         = document.querySelector('.challenge-table tbody');
-  const tbodyRows     = () => Array.from(tbody.querySelectorAll('tr'));
-  const headers       = document.querySelectorAll('.challenge-table thead th.sortable');
 
+<script>
+  const searchInput        = document.getElementById('searchInput');
+  const filterButtons      = document.querySelectorAll('.filter-btn');
+  const tbody              = document.querySelector('.challenge-table tbody');
+  const tbodyRows          = () => Array.from(tbody.querySelectorAll('tr'));
+  const headers            = document.querySelectorAll('.challenge-table thead th.sortable');
+
+  // NEW: mobile-sort dropdown elements
+  const sortDropdownBtn    = document.getElementById('sortDropdownBtn');
+  const sortDropdown       = document.getElementById('sortDropdown');
+  const sortDropdownItems  = document.querySelectorAll('.sort-dropdown-item');
+
+  let currentSortIndex     = null;
+  let sortDirectionAsc     = true;
+
+  // Topics filter setup (unchanged)
   const allTopics = Array.from(filterButtons)
     .map(b => b.dataset.topic)
     .filter(t => t !== 'All');
-
   filterButtons.forEach(b => b.classList.add('active'));
 
   function getActiveTopics() {
@@ -323,90 +332,99 @@ import Footer from '@/components/Footer.astro';
   function applyFilters() {
     const q      = searchInput.value.trim().toLowerCase();
     const active = getActiveTopics();
-
     tbodyRows().forEach(row => {
-      const name  = row.cells[1].textContent.toLowerCase();
-      const top   = row.dataset.topic;
+      const name    = row.cells[1].textContent.toLowerCase();
+      const topic   = row.dataset.topic;
       const okText  = name.includes(q);
-      const okTopic = active.includes(top);
+      const okTopic = active.includes(topic);
       row.style.display = (okText && okTopic) ? '' : 'none';
     });
   }
 
-function handleFilterClick(btn) {
-  const topic        = btn.dataset.topic;
-  const allBtn       = document.querySelector('.filter-btn[data-topic="All"]');
-  const specificBtns = Array.from(filterButtons).filter(b => b.dataset.topic !== 'All');
+  function handleFilterClick(btn) {
+    const topic        = btn.dataset.topic;
+    const allBtn       = document.querySelector('.filter-btn[data-topic="All"]');
+    const specificBtns = Array.from(filterButtons)
+                             .filter(b => b.dataset.topic !== 'All');
 
-  if (topic === 'All') {
-    // Flip All on/off, then mirror to every specific
-    const newState = !allBtn.classList.contains('active');
-    allBtn.classList.toggle('active', newState);
-    specificBtns.forEach(b => b.classList.toggle('active', newState));
+    if (topic === 'All') {
+      const newState = !allBtn.classList.contains('active');
+      allBtn.classList.toggle('active', newState);
+      specificBtns.forEach(b => b.classList.toggle('active', newState));
+    } else {
+      btn.classList.toggle('active');
+      const allSelected = specificBtns.every(b => b.classList.contains('active'));
+      allBtn.classList.toggle('active', allSelected);
+    }
+    applyFilters();
   }
-  else {
-    // Toggle this one button
-    btn.classList.toggle('active');
-
-    // If every specific is now on, switch All on; otherwise ensure it's off
-    const allSelected = specificBtns.every(b => b.classList.contains('active'));
-    allBtn.classList.toggle('active', allSelected);
-  }
-
-  applyFilters();
-}
-
 
   filterButtons.forEach(b =>
     b.addEventListener('click', () => handleFilterClick(b))
   );
   searchInput.addEventListener('input', applyFilters);
-
   applyFilters();
 
-  // Sorting logic
-  let currentSortIndex = null;
-  let sortDirectionAsc = true;
+  // REFACTORED: central sort function
+  function sortRows(index, type) {
+    // toggle direction or reset to asc
+    if (currentSortIndex === index) {
+      sortDirectionAsc = !sortDirectionAsc;
+    } else {
+      currentSortIndex = index;
+      sortDirectionAsc = true;
+    }
 
-  headers.forEach(th => {
-    th.addEventListener('click', () => {
-      const index = parseInt(th.dataset.index);
-      const type  = th.dataset.type;
+    const difficultyOrder = { beginner: 0, intermediate: 1, advanced: 2 };
 
-      if (currentSortIndex === index) {
-        sortDirectionAsc = !sortDirectionAsc;
-      } else {
-        currentSortIndex = index;
-        sortDirectionAsc = true;
+    const sorted = tbodyRows().sort((a, b) => {
+      const aText = a.cells[index].textContent.trim().toLowerCase();
+      const bText = b.cells[index].textContent.trim().toLowerCase();
+
+      if (type === 'number') {
+        return sortDirectionAsc ? aText - bText : bText - aText;
       }
-
-      const difficultyOrder = {
-        beginner: 0,
-        intermediate: 1,
-        advanced: 2
-      };
-
-      const sortedRows = tbodyRows().sort((a, b) => {
-        const aText = a.cells[index].textContent.trim().toLowerCase();
-        const bText = b.cells[index].textContent.trim().toLowerCase();
-
-        if (type === 'number') {
-          return sortDirectionAsc ? aText - bText : bText - aText;
-        } else if (type === 'difficulty') {
-          return sortDirectionAsc
-            ? difficultyOrder[aText] - difficultyOrder[bText]
-            : difficultyOrder[bText] - difficultyOrder[aText];
-        } else {
-          return sortDirectionAsc
-            ? aText.localeCompare(bText)
-            : bText.localeCompare(aText);
-        }
-      });
-
-
-      // Clear and re-append rows
-      tbody.innerHTML = '';
-      sortedRows.forEach(row => tbody.appendChild(row));
+      if (type === 'difficulty') {
+        return sortDirectionAsc
+          ? difficultyOrder[aText] - difficultyOrder[bText]
+          : difficultyOrder[bText] - difficultyOrder[aText];
+      }
+      return sortDirectionAsc
+        ? aText.localeCompare(bText)
+        : bText.localeCompare(aText);
     });
+
+    // re-render
+    tbody.innerHTML = '';
+    sorted.forEach(r => tbody.appendChild(r));
+  }
+
+  // hook up header clicks
+  headers.forEach(th =>
+    th.addEventListener('click', () =>
+      sortRows(
+        parseInt(th.dataset.index),
+        th.dataset.type
+      )
+    )
+  );
+
+  // toggle dropdown visibility
+  sortDropdownBtn.addEventListener('click', () => {
+    sortDropdown.classList.toggle('show');
   });
+
+  // hook up each dropdown item
+  sortDropdownItems.forEach(item =>
+    item.addEventListener('click', () => {
+      const idx  = parseInt(item.dataset.index);
+      const type = item.dataset.type;
+
+      // perform sort
+      sortRows(idx, type);
+
+      // hide dropdown again
+      sortDropdown.classList.remove('show');
+    })
+  );
 </script>

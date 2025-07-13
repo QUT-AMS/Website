@@ -37,15 +37,14 @@
 /* 1) Make each row a positioning context and add a smooth transform */
 .challenge-table tbody tr {
   position: relative;
-  transition: background-color 0.2s ease,
-              transform         0.2s ease;
   cursor: pointer;
+  transform-origin: left center; /* grow from left edge */
 }
 
-/* 2) On hover, scale up slightly */
 .challenge-table tbody tr:hover {
   background-color: #292929;
 }
+
 
 /* 3) Create a right‐side pink arrow pseudo element */
 .challenge-table tbody tr::after {
@@ -79,6 +78,8 @@
 }
 
 .search-bar {
+  margin-left: 20px;
+  margin-right: 20px;
   padding: 0.5rem 1rem;
   border: 1px solid #444;
   border-radius: 0.375rem;
@@ -86,12 +87,13 @@
   color: #fff;
   font-size: 1rem;
   flex-grow: 1;
-  min-width: 240px;
 }
 
 .search-bar::placeholder {
   color: #999;
 }
+
+
 th.sortable {
   cursor: pointer;
   position: relative;
@@ -103,36 +105,6 @@ th.sortable::after {
   position: absolute;
   right: 0.5rem;
   color: #777;
-}
-
-.sort-dropdown-list {
-  display: none;
-}
-
-.sort-dropdown-list.show {
-  display: block;
-}
-
-.sort-dropdown-item {
-  border-bottom: 1px solid #333;
-}
-
-.sort-dropdown-item:last-child {
-  border-bottom: none;
-}
-
-.sort-dropdown-toggle {
-  background-color: #1f1f1f;
-  color: #eaeaea;
-  padding: 0.5rem 1rem;
-  border: 1px solid #444;
-  border-radius: 0.375rem;
-  cursor: pointer;
-  transition: all 0.2s ease;
-}
-
-.sort-dropdown-toggle:hover {
-  background-color: #2d2d2d;
 }
 
 /* Remove gaps between all filter buttons */
@@ -194,16 +166,17 @@ th.sortable::after {
 .filter-buttons { display: flex; }
 .filter-dropdown { display: none; }
 
+
+
+
+/* -------------------------------------------------------------------
+   Base: hide mobile sort dropdown on desktop
+   ------------------------------------------------------------------- */
+
 .sort-dropdown-container {
-  display: none;  /* hidden by default */
+  display: none;
+  position: relative;    /* for absolutely positioned list */
 }
-
-
-
-
-
-
-
 
 
 
@@ -283,6 +256,10 @@ th.sortable::after {
     left: -9999px;
   }
 
+  .challenge-table {
+    background-color: transparent;
+  }
+
   /* c) Give each row a “card” look */
   .challenge-table tr {
     border: 1px solid #444;
@@ -322,6 +299,72 @@ th.sortable::after {
   .challenge-table td:nth-of-type(2):before { content: "Project"; }
   .challenge-table td:nth-of-type(3):before { content: "Difficulty"; }
   .challenge-table td:nth-of-type(4):before { content: "Topic"; }
+
+  .sort-dropdown-container {
+    display: block;
+    margin-bottom: 1rem;
+    margin-left: 20px;
+    margin-right: 20px;
+    width: 100%;
+  }
+
+  /* Dropdown button styling (unchanged) */
+.sort-dropdown-toggle {
+  background-color: #1f1f1f;
+  color: #eaeaea;
+  padding: 0.5rem 1rem;
+  border: 1px solid #444;
+  border-radius: 0.375rem;
+  cursor: pointer;
+  transition: background-color 0.2s ease;
+  width: 100%;           /* full‐width on mobile */
+  box-sizing: border-box;
+  text-align: left;
+
+}
+.sort-dropdown-toggle:hover {
+  background-color: #2d2d2d;
+}
+
+/* Dropdown list hidden by default */
+.sort-dropdown-list {
+  display: none;
+  position: absolute;
+  top: 100%;
+  left: 0;
+  width: 100%;
+  max-width: 240px;      /* limit width if you like */
+  margin-top: 0.25rem;
+  background-color: #1f1f1f;
+  border: 1px solid #444;
+  border-radius: 0.375rem;
+  list-style: none;
+  padding: 0;
+  z-index: 10;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.5);
+}
+
+/* Show when JS toggles .show */
+.sort-dropdown-list.show {
+  display: block;
+}
+
+/* Individual items */
+.sort-dropdown-item {
+  padding: 0.5rem 1rem;
+  color: #eaeaea;
+  cursor: pointer;
+  border-bottom: 1px solid #333;
+  transition: background-color 0.15s ease;
+}
+.sort-dropdown-item:last-child {
+  border-bottom: none;
+}
+.sort-dropdown-item:hover {
+  background-color: #2d2d2d;
+}
+
+
 }
 
 

@@ -210,8 +210,15 @@ toggleButton.addEventListener("click", e => {
 
   document.addEventListener('DOMContentLoaded', () => {
     const link = document.querySelector('.secondary-links a.contact');
-    if (window.location.pathname === '/contact') {
+    if (!link) return;
+
+    // Normalize: remove trailing slash & file extensions
+    let path = window.location.pathname.replace(/\/$/, '');
+    path = path.replace(/(\/index\.html)$/, '');
+
+    if (path === '/contact') {
       link.classList.add('active');
     }
   });
+
 </script>

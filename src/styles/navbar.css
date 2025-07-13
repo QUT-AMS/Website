@@ -507,11 +507,11 @@ body.no-scroll {
     transition: transform 0.3s ease;
   }
 
-  .secondary-links a.contact:hover::after {
+  .secondary-links a.contact:hover::after,
+  .secondary-links a.contact.active::after {
     transform: scaleX(1);
   }
-
-}
+  }
 
 
 

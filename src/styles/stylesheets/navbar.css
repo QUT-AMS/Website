@@ -433,6 +433,10 @@ body.no-scroll {
 /* Desktop hover */
 @media (min-width:1201px) {
 
+  .secondary-links a.contact.active::after {
+    transform: scaleX(1);
+  }
+
    /* Hide any “.show” classes desktop might’ve left behind */
   .dropdown-content.show {
     display: none !important;

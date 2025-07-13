@@ -194,7 +194,9 @@ th.sortable::after {
 .filter-buttons { display: flex; }
 .filter-dropdown { display: none; }
 
-
+.sort-dropdown-container {
+  display: none;  /* hidden by default */
+}
 
 
 
@@ -219,6 +221,12 @@ th.sortable::after {
 
 /* 2. Mobile breakpoint */
 @media (max-width: 600px) {
+
+  .sort-dropdown-container {
+  display: block; /* visible only on mobile */
+  margin-bottom: 1rem;
+}
+
 
   .filter-buttons { display: none; }
 

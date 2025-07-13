@@ -297,32 +297,29 @@ import Footer from '@/components/Footer.astro';
     <Footer />
   </body>
 </html>
-
 <script>
   const searchInput   = document.getElementById('searchInput');
   const filterButtons = document.querySelectorAll('.filter-btn');
-  const tbodyRows     = () => document.querySelectorAll('.challenge-table tbody tr');
+  const tbody         = document.querySelector('.challenge-table tbody');
+  const tbodyRows     = () => Array.from(tbody.querySelectorAll('tr'));
+  const headers       = document.querySelectorAll('.challenge-table thead th.sortable');
 
-  // gather all topics except “All”
   const allTopics = Array.from(filterButtons)
     .map(b => b.dataset.topic)
     .filter(t => t !== 'All');
 
-  // initialize: mark every button active
   filterButtons.forEach(b => b.classList.add('active'));
 
-  // derive active topics for filtering
   function getActiveTopics() {
     const allBtn = document.querySelector('.filter-btn[data-topic="All"]');
     if (allBtn.classList.contains('active')) {
-      return allTopics.slice();  // return a copy of allTopics
+      return [...allTopics];
     }
     return Array.from(filterButtons)
       .filter(b => b.classList.contains('active'))
       .map(b => b.dataset.topic);
   }
 
-  // show/hide rows
   function applyFilters() {
     const q      = searchInput.value.trim().toLowerCase();
     const active = getActiveTopics();
@@ -336,40 +333,80 @@ import Footer from '@/components/Footer.astro';
     });
   }
 
-  // click handler
-  function handleFilterClick(btn) {
-    const topic  = btn.dataset.topic;
-    const allBtn = document.querySelector('.filter-btn[data-topic="All"]');
-    const specific = Array.from(filterButtons).filter(b => b.dataset.topic !== 'All');
+function handleFilterClick(btn) {
+  const topic        = btn.dataset.topic;
+  const allBtn       = document.querySelector('.filter-btn[data-topic="All"]');
+  const specificBtns = Array.from(filterButtons).filter(b => b.dataset.topic !== 'All');
 
-    if (topic === 'All') {
-      // toggle “All” on/off → mirror to every button
-      const turnOn = !allBtn.classList.contains('active');
-      filterButtons.forEach(b => b.classList.toggle('active', turnOn));
-    } else {
-      // toggle this one
-      btn.classList.toggle('active');
-      // ensure “All” is off
-      allBtn.classList.remove('active');
-    }
+  if (topic === 'All') {
+    // Flip All on/off, then mirror to every specific
+    const newState = !allBtn.classList.contains('active');
+    allBtn.classList.toggle('active', newState);
+    specificBtns.forEach(b => b.classList.toggle('active', newState));
+  }
+  else {
+    // Toggle this one button
+    btn.classList.toggle('active');
 
-    // if *all* specific are now active, switch back to only “All”
-    if (specific.every(b => b.classList.contains('active'))) {
-      // Clear all .active classes first
-      filterButtons.forEach(b => b.classList.remove('active'));
-      // Then activate only the “All” button
-      allBtn.classList.add('active');
-    }
-
-    applyFilters();
+    // If every specific is now on, switch All on; otherwise ensure it's off
+    const allSelected = specificBtns.every(b => b.classList.contains('active'));
+    allBtn.classList.toggle('active', allSelected);
   }
 
-  // wire up
+  applyFilters();
+}
+
+
   filterButtons.forEach(b =>
     b.addEventListener('click', () => handleFilterClick(b))
   );
   searchInput.addEventListener('input', applyFilters);
 
-  // initial pass
   applyFilters();
+
+  // Sorting logic
+  let currentSortIndex = null;
+  let sortDirectionAsc = true;
+
+  headers.forEach(th => {
+    th.addEventListener('click', () => {
+      const index = parseInt(th.dataset.index);
+      const type  = th.dataset.type;
+
+      if (currentSortIndex === index) {
+        sortDirectionAsc = !sortDirectionAsc;
+      } else {
+        currentSortIndex = index;
+        sortDirectionAsc = true;
+      }
+
+      const difficultyOrder = {
+        beginner: 0,
+        intermediate: 1,
+        advanced: 2
+      };
+
+      const sortedRows = tbodyRows().sort((a, b) => {
+        const aText = a.cells[index].textContent.trim().toLowerCase();
+        const bText = b.cells[index].textContent.trim().toLowerCase();
+
+        if (type === 'number') {
+          return sortDirectionAsc ? aText - bText : bText - aText;
+        } else if (type === 'difficulty') {
+          return sortDirectionAsc
+            ? difficultyOrder[aText] - difficultyOrder[bText]
+            : difficultyOrder[bText] - difficultyOrder[aText];
+        } else {
+          return sortDirectionAsc
+            ? aText.localeCompare(bText)
+            : bText.localeCompare(aText);
+        }
+      });
+
+
+      // Clear and re-append rows
+      tbody.innerHTML = '';
+      sortedRows.forEach(row => tbody.appendChild(row));
+    });
+  });
 </script>

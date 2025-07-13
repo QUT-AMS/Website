@@ -1,8 +1,8 @@
 /* Center the “Reach out to us here” button */
 .button-outline-pink {
-  display: block;      /* fills available width so auto margins work */
-  margin: 1rem auto;   /* 2rem top/bottom, auto left/right */
-  text-align: center;  /* center the text inside the button */
+  display: block;     
+  margin: 1rem auto;  
+  text-align: center;  
   font-size: 1.5rem;
 }
 
@@ -35,7 +35,6 @@
   transition: opacity 0.2s ease-in-out;
 }
 
-/* 3. Reveal the tooltip on hover */
 .footer-larger .tooltip:hover::after {
   opacity: 1;
 }
@@ -44,15 +43,13 @@
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
-  gap: 1rem;           /* space between buttons */
-  margin: 0 auto;      /* center the whole group */
-  padding: 1rem 0;     /* optional vertical padding */
+  gap: 1rem;           
+  margin: 0 auto;      
+  padding: 1rem 0;     
 }
 
-
-/* enlarge your icons */
 .footer-larger svg {
-  width: 3rem !important;    /* bigger than default */
+  width: 3rem !important; 
   height: 3rem !important;
 }
 
@@ -66,7 +63,7 @@
 .footer-larger .tooltip::after {
   content: attr(data-tooltip);
   position: absolute;
-  bottom: 100%;           /* sit above the icon */
+  bottom: 100%;          
   left: 50%;
   transform: translateX(-50%);
   background: #222;
@@ -96,12 +93,12 @@
   border: 0;
   height: 0.0625rem;
   background-color: #fff;
-  width: 60%;         /* or whatever length you like */
-  margin: 3rem auto;  /* vertical spacing + center */
+  width: 60%;        
+  margin: 3rem auto; 
 }
 
 .socials-heading {
   text-align: center;
   margin-top: 2rem;
-  color: #fff;        /* ensure it’s visible on dark bg */
+  color: #fff;      
 }

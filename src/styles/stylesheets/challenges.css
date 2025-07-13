@@ -10,10 +10,10 @@
 
 .challenge-table {
   width: 100%;
-  border-collapse: separate;   /* allow rounding */
-  border-spacing: 0;           /* remove gaps */
-  border-radius: 0.75rem;      /* your desired curve */
-  overflow: hidden;            /* clip row backgrounds */
+  border-collapse: separate;  
+  border-spacing: 0;          
+  border-radius: 0.75rem;    
+  overflow: hidden;            
   background-color: #1a1a1a;
   color: #fff;
   min-width: 600px;
@@ -35,34 +35,29 @@
   color: #e5e5e5;
 }
 
-
-/* 1) Make each row a positioning context and add a smooth transform */
 .challenge-table tbody tr {
   position: relative;
   cursor: pointer;
-  transform-origin: left center; /* grow from left edge */
+  transition: background-color 0.2s ease;
 }
 
 .challenge-table tbody tr:hover {
   background-color: #292929;
 }
 
-
-/* 3) Create a right‐side pink arrow pseudo element */
 .challenge-table tbody tr::after {
   content: '➜';
   position: absolute;
   top: 50%;
   right: 1rem;
   transform: translateY(-50%);
-  font-size: 1.2rem;
+  font-size: 1.5rem;
   color: #FF00E6;
   opacity: 0;
   transition: opacity 0.2s ease;
   pointer-events: none;
 }
 
-/* 4) Fade the arrow in on hover */
 .challenge-table tbody tr:hover::after {
   opacity: 1;
 }
@@ -72,7 +67,7 @@
   flex-wrap: wrap;
   align-items: center;
   justify-content: space-between;
-  gap: 1rem; /* equivalent to Tailwind’s gap-4 */
+  gap: 1rem;
 }
 
 .controls-spacing {
@@ -112,7 +107,7 @@ th.sortable::after {
 /* Remove gaps between all filter buttons */
 .filter-buttons, 
 .filter-buttons.grid {
-  gap: 0;
+  gap: 0.25rem;      /* very small gap between items */
   padding: 10px 20px;    /* keep container padding if you want space around edges */
 }
 
@@ -136,19 +131,21 @@ th.sortable::after {
 .filter-btn {
   font-size: 15px;
   padding: 0.2rem 0.5rem;
-  border: 1px solid #ccc;
-  background: #272727;
+  border-radius: 10px;
+  border: 1px solid #444;
+  background: #292929;
   cursor: pointer;
   transition: background 0.2s, border-color 0.2s;
 }
 
 .filter-btn:hover {
-  background-color: #FF8BF4 !important;
+  background-color: #FF00E6 !important;
 }
 
 .filter-btn.active {
-  background-color: #FF00E6;
-  color: white;
+  background-color: #FF8BF4;
+  color: black;
+  border: 1px solid #FF00E6;
 }
 
 
@@ -157,48 +154,23 @@ th.sortable::after {
   margin-bottom: 200px;
 }
 
-
-
-/* 1. Base: allow horizontal scroll on very narrow screens */
 .table-wrapper {
   overflow-x: auto;
 }
 
-/* Default: show buttons, hide select */
 .filter-buttons { display: flex; }
 .filter-dropdown { display: none; }
 
-
-
-
-/* -------------------------------------------------------------------
-   Base: hide mobile sort dropdown on desktop
-   ------------------------------------------------------------------- */
-
 .sort-dropdown-container {
   display: none;
-  position: relative;    /* for absolutely positioned list */
+  position: relative;   
 }
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-/* 2. Mobile breakpoint */
 @media (max-width: 600px) {
 
   .sort-dropdown-container {
-  display: block; /* visible only on mobile */
+  display: block;
   margin-bottom: 1rem;
 }
 
@@ -222,26 +194,22 @@ th.sortable::after {
     width: 100%;
   }
 
-    /* Remove all horizontal padding around the table */
   .challenge-table-section,
   .section-padding {
     padding-left: 10px !important;
     padding-right: 10px !important;
   }
 
-  /* If you’re using the px-6 utility on your wrapper, override it */
   .table-wrapper.px-6 {
     padding-left: 0 !important;
     padding-right: 0 !important;
   }
 
-  /* Ensure the wrapper itself doesn’t introduce new padding */
   .table-wrapper {
-    padding: 0;      /* remove any custom padding */
-    margin: 0 auto;  /* keep centering if desired */
+    padding: 0;    
+    margin: 0 auto;  
   }
 
-  /* a) Make all table elements display as blocks */
   .challenge-table,
   .challenge-table thead,
   .challenge-table tbody,
@@ -251,7 +219,6 @@ th.sortable::after {
     display: block;
   }
 
-  /* b) Hide the table header row (we’ll show labels inside each cell) */
   .challenge-table thead tr {
     position: absolute;
     top: -9999px;
@@ -262,7 +229,6 @@ th.sortable::after {
     background-color: transparent;
   }
 
-  /* c) Give each row a “card” look */
   .challenge-table tr {
     border: 1px solid #444;
     border-radius: 0.5rem;
@@ -271,21 +237,18 @@ th.sortable::after {
     background: #2d2d2d;
   }
 
-  /* d) Style each cell with a label before its content */
   .challenge-table td {
     position: relative;
-    padding: 0.75rem 0.75rem 0.75rem 6rem; /* leave space for the label */
+    padding: 0.75rem 0.75rem 0.75rem 6rem; 
     text-align: left;
     border: none;
     border-bottom: 1px solid #444;
   }
 
-  /* Remove bottom border on last cell */
   .challenge-table tr td:last-child {
     border-bottom: none;
   }
 
-  /* e) Inject the label via ::before */
   .challenge-table td:before {
     position: absolute;
     top: 50%;
@@ -296,7 +259,6 @@ th.sortable::after {
     white-space: nowrap;
   }
 
-  /* f) Define labels for each column */
   .challenge-table td:nth-of-type(1):before { content: "ID"; }
   .challenge-table td:nth-of-type(2):before { content: "Project"; }
   .challenge-table td:nth-of-type(3):before { content: "Difficulty"; }
@@ -310,61 +272,57 @@ th.sortable::after {
     width: 100%;
   }
 
-  /* Dropdown button styling (unchanged) */
-.sort-dropdown-toggle {
-  background-color: #1f1f1f;
-  color: #eaeaea;
-  padding: 0.5rem 1rem;
-  border: 1px solid #444;
-  border-radius: 0.375rem;
-  cursor: pointer;
-  transition: background-color 0.2s ease;
-  width: 100%;           /* full‐width on mobile */
-  box-sizing: border-box;
-  text-align: left;
+  .sort-dropdown-toggle {
+    background-color: #1f1f1f;
+    color: #eaeaea;
+    padding: 0.5rem 1rem;
+    border: 1px solid #444;
+    border-radius: 0.375rem;
+    cursor: pointer;
+    transition: background-color 0.2s ease;
+    width: 100%;          
+    box-sizing: border-box;
+    text-align: left;
 
-}
-.sort-dropdown-toggle:hover {
-  background-color: #2d2d2d;
-}
+  }
+  .sort-dropdown-toggle:hover {
+    background-color: #2d2d2d;
+  }
 
-/* Dropdown list hidden by default */
-.sort-dropdown-list {
-  display: none;
-  position: absolute;
-  top: 100%;
-  left: 0;
-  width: 100%;
-  max-width: 240px;      /* limit width if you like */
-  margin-top: 0.25rem;
-  background-color: #1f1f1f;
-  border: 1px solid #444;
-  border-radius: 0.375rem;
-  list-style: none;
-  padding: 0;
-  z-index: 10;
-  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.5);
-}
+  .sort-dropdown-list {
+    display: none;
+    position: absolute;
+    top: 100%;
+    left: 0;
+    width: 100%;
+    max-width: 240px;     
+    margin-top: 0.25rem;
+    background-color: #1f1f1f;
+    border: 1px solid #444;
+    border-radius: 0.375rem;
+    list-style: none;
+    padding: 0;
+    z-index: 10;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.5);
+  }
 
-/* Show when JS toggles .show */
-.sort-dropdown-list.show {
-  display: block;
-}
+  .sort-dropdown-list.show {
+    display: block;
+  }
 
-/* Individual items */
-.sort-dropdown-item {
-  padding: 0.5rem 1rem;
-  color: #eaeaea;
-  cursor: pointer;
-  border-bottom: 1px solid #333;
-  transition: background-color 0.15s ease;
-}
-.sort-dropdown-item:last-child {
-  border-bottom: none;
-}
-.sort-dropdown-item:hover {
-  background-color: #2d2d2d;
-}
+  .sort-dropdown-item {
+    padding: 0.5rem 1rem;
+    color: #eaeaea;
+    cursor: pointer;
+    border-bottom: 1px solid #333;
+    transition: background-color 0.15s ease;
+  }
+  .sort-dropdown-item:last-child {
+    border-bottom: none;
+  }
+  .sort-dropdown-item:hover {
+    background-color: #2d2d2d;
+  }
 
 
 }

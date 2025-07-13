@@ -103,6 +103,12 @@ import Footer from '@/components/Footer.astro';
             </tr>
           </thead>
            <tbody>
+             <tr class="no-data" style="display: none;">
+              <td colspan="4" style="text-align: center; color: #ccc; font-style: italic;">
+                No matching challenges found.
+              </td>
+            </tr>
+            
             <!-- Linear Regression (Beginner) -->
             <tr data-topic="Linear Regression" onclick="window.location.href='https://github.com/QUT-AMS/Linear-Regression';" style="cursor: pointer;">
               <td>1</td>
@@ -304,6 +310,7 @@ import Footer from '@/components/Footer.astro';
   const tbody              = document.querySelector('.challenge-table tbody');
   const tbodyRows          = () => Array.from(tbody.querySelectorAll('tr'));
   const headers            = document.querySelectorAll('.challenge-table thead th.sortable');
+  const noDataRow         = tbody.querySelector('tr.no-data');  // grab our message row
 
   // NEW: mobile-sort dropdown elements
   const sortDropdownBtn    = document.getElementById('sortDropdownBtn');
@@ -312,6 +319,10 @@ import Footer from '@/components/Footer.astro';
 
   let currentSortIndex     = null;
   let sortDirectionAsc     = true;
+
+  function dataRows() {
+    return Array.from(tbody.querySelectorAll('tr:not(.no-data)'));
+  }
 
   // Topics filter setup (unchanged)
   const allTopics = Array.from(filterButtons)
@@ -332,14 +343,22 @@ import Footer from '@/components/Footer.astro';
   function applyFilters() {
     const q      = searchInput.value.trim().toLowerCase();
     const active = getActiveTopics();
-    tbodyRows().forEach(row => {
-      const name    = row.cells[1].textContent.toLowerCase();
-      const topic   = row.dataset.topic;
-      const okText  = name.includes(q);
-      const okTopic = active.includes(topic);
-      row.style.display = (okText && okTopic) ? '' : 'none';
+
+    // hide/show each real row
+    dataRows().forEach(row => {
+      const name  = row.cells[1].textContent.toLowerCase();
+      const topic = row.dataset.topic;
+      const ok    = name.includes(q) && active.includes(topic);
+      row.style.display = ok ? '' : 'none';
     });
+
+    // count how many real rows remain visible
+    const anyVisible = dataRows().some(r => r.style.display !== 'none');
+
+    // toggle our no-data message
+    noDataRow.style.display = anyVisible ? 'none' : '';
   }
+
 
   function handleFilterClick(btn) {
     const topic        = btn.dataset.topic;
@@ -394,9 +413,15 @@ import Footer from '@/components/Footer.astro';
         : bText.localeCompare(aText);
     });
 
-    // re-render
+    // clear & re-render only the data rows
     tbody.innerHTML = '';
     sorted.forEach(r => tbody.appendChild(r));
+
+    // re-attach the no-data row to the end
+    tbody.appendChild(noDataRow);
+
+    // rerun filters so our message appears (or not)
+    applyFilters();
   }
 
   // hook up header clicks

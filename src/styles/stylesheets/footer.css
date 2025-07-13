@@ -52,10 +52,10 @@
 }
 
 .button-outline-pink {
-  display: inline-flex;         /* use flex for easy centering */
-  justify-content: center;      /* center horizontally */
-  align-items: center;          /* center vertically */
-  text-align: center;           /* ensure text itself is centered */
+  display: inline-flex;   
+  justify-content: center;      
+  align-items: center;       
+  text-align: center;          
   color: #FF00E6;
   border: 0.0625rem solid #FF00E6;
   background: transparent;

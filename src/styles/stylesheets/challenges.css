@@ -10,11 +10,13 @@
 
 .challenge-table {
   width: 100%;
-  border-collapse: collapse;
-  color: #fff;
+  border-collapse: separate;   /* allow rounding */
+  border-spacing: 0;           /* remove gaps */
+  border-radius: 0.75rem;      /* your desired curve */
+  overflow: hidden;            /* clip row backgrounds */
   background-color: #1a1a1a;
+  color: #fff;
   min-width: 600px;
-  border-radius: 1%;
 }
 
 .challenge-table thead {

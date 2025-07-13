@@ -30,10 +30,13 @@
 }
 
 .team-card img {
-  width: 15rem;          
-  height: 15rem;        
+  width: 15rem;
+  height: 15rem;
   object-fit: cover;
-  border-radius: 0.75rem;
+  border-radius: 50%;
+  border: 2px solid #FF00E6;  
+  display: block;
+  box-sizing: border-box;   
 }
 
 .team-card h2 {

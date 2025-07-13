@@ -175,8 +175,8 @@ h2 {
 /* active tab */
 .tab-btn.active {
   background: #FF8BF4;
+  border: 1px solid #FF00E6;
   color: black;
-  border-color: #666;
 }
 
 /* panel wrapper */

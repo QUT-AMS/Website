@@ -100,10 +100,6 @@ toggleButton.addEventListener("click", e => {
   }
 });
 
-
-  
-
-
   // Dropdown buttons → toggle submenus AND arrows
   document.querySelectorAll(".dropdown > .dropbtn")
     .forEach(btn => {
@@ -134,9 +130,6 @@ toggleButton.addEventListener("click", e => {
       });
     });
 
-
-
-  // (Optional) close-menu button
   const closeButton = document.getElementById("close-menu");
   if (closeButton) {
     closeButton.addEventListener("click", (e) => {
@@ -147,10 +140,6 @@ toggleButton.addEventListener("click", e => {
   }
 });
 </script>
-
-
-
-
 
 
 <script type="module" client:load>
@@ -187,7 +176,6 @@ toggleButton.addEventListener("click", e => {
       });
     });
   }
-  
 
   // Mark active and position indicator
   if (activeLink) {
@@ -220,5 +208,10 @@ toggleButton.addEventListener("click", e => {
     }, 100);
   });
 
-  
+  document.addEventListener('DOMContentLoaded', () => {
+    const link = document.querySelector('.secondary-links a.contact');
+    if (window.location.pathname === '/contact') {
+      link.classList.add('active');
+    }
+  });
 </script>

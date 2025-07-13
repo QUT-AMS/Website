@@ -324,6 +324,15 @@ th.sortable::after {
     background-color: #2d2d2d;
   }
 
+  .challenge-table tr.no-data td:before {
+    content: none !important;
+  }
+
+  /* 2) Reset padding so the message isn’t indented */
+  .challenge-table tr.no-data td {
+    padding-left: 0.75rem !important;
+    padding-right: 0.75rem !important;
+  }
 
 }
 

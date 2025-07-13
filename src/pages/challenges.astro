@@ -384,45 +384,57 @@ import Footer from '@/components/Footer.astro';
   searchInput.addEventListener('input', applyFilters);
   applyFilters();
 
-  // REFACTORED: central sort function
-  function sortRows(index, type) {
-    // toggle direction or reset to asc
-    if (currentSortIndex === index) {
-      sortDirectionAsc = !sortDirectionAsc;
-    } else {
-      currentSortIndex = index;
-      sortDirectionAsc = true;
+  // REFACTORED: central sort function (fully handling the “no-data” row)
+function sortRows(index, type) {
+  // 1) Toggle sort direction if same column, otherwise reset to ascending
+  if (currentSortIndex === index) {
+    sortDirectionAsc = !sortDirectionAsc;
+  } else {
+    currentSortIndex   = index;
+    sortDirectionAsc   = true;
+  }
+
+  // 2) Define custom order for difficulty
+  const difficultyOrder = { beginner: 0, intermediate: 1, advanced: 2 };
+
+  // 3) Grab only the actual data rows (exclude the no-data placeholder)
+  const dataRows = Array.from(tbody.querySelectorAll('tr:not(.no-data)'));
+
+  // 4) Sort them based on type
+  const sorted = dataRows.sort((a, b) => {
+    const aText = a.cells[index].textContent.trim().toLowerCase();
+    const bText = b.cells[index].textContent.trim().toLowerCase();
+
+    if (type === 'number') {
+      return sortDirectionAsc
+        ? aText - bText
+        : bText - aText;
     }
 
-    const difficultyOrder = { beginner: 0, intermediate: 1, advanced: 2 };
-
-    const sorted = tbodyRows().sort((a, b) => {
-      const aText = a.cells[index].textContent.trim().toLowerCase();
-      const bText = b.cells[index].textContent.trim().toLowerCase();
-
-      if (type === 'number') {
-        return sortDirectionAsc ? aText - bText : bText - aText;
-      }
-      if (type === 'difficulty') {
-        return sortDirectionAsc
-          ? difficultyOrder[aText] - difficultyOrder[bText]
-          : difficultyOrder[bText] - difficultyOrder[aText];
-      }
+    if (type === 'difficulty') {
       return sortDirectionAsc
-        ? aText.localeCompare(bText)
-        : bText.localeCompare(aText);
-    });
+        ? difficultyOrder[aText] - difficultyOrder[bText]
+        : difficultyOrder[bText] - difficultyOrder[aText];
+    }
 
-    // clear & re-render only the data rows
-    tbody.innerHTML = '';
-    sorted.forEach(r => tbody.appendChild(r));
+    // string fallback
+    return sortDirectionAsc
+      ? aText.localeCompare(bText)
+      : bText.localeCompare(aText);
+  });
 
-    // re-attach the no-data row to the end
-    tbody.appendChild(noDataRow);
+  // 5) Clear out existing rows
+  tbody.innerHTML = '';
 
-    // rerun filters so our message appears (or not)
-    applyFilters();
-  }
+  // 6) Re-append sorted data rows
+  sorted.forEach(row => tbody.appendChild(row));
+
+  // 7) Always re-attach the no-data row at the end
+  tbody.appendChild(noDataRow);
+
+  // 8) Re-run filters so “no data” message visibility is correct
+  applyFilters();
+}
 
   // hook up header clicks
   headers.forEach(th =>

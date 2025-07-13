@@ -1,82 +1,102 @@
 ---
-import "@/styles/stylesheets/global.css"
-import "@/styles/stylesheets/contact.css"
-import Navigation from "@/components/Navigation.astro"
-import Footer from '../components/Footer.astro';
-import Button from "@/components/Button.astro"
-
+import "@/styles/stylesheets/global.css";
+import "@/styles/stylesheets/contact.css";
+import Navigation from "@/components/Navigation.astro";
+import Footer from "@/components/Footer.astro";
+import Button from "@/components/Button.astro";
 ---
-
 <html lang="en">
   <head>
     <meta charset="utf-8" />
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
     <meta name="viewport" content="width=device-width" />
     <title>QUT AI & ML Society</title>
-    <script src="https://www.google.com/recaptcha/api.js" async defer></script>
-  </head>
-  <body class="dark background">
-    <Navigation />
 
-    <main class="min-h-screen py-12 justify-items-center">
-      
-          <div class="contact-center">
-            <h1>Get in Touch</h1>
-            <!-- reCAPTCHA widget -->
-            <div
-              class="g-recaptcha"
-              data-sitekey="6Le7UYErAAAAADdKe_8IAKXK0kVk6Wb1nS1kCjOw"
-              data-callback="enableButton"
-              data-expired-callback="disableButton"
-            ></div>
-
-            <br />
-
-            <!-- Disabled link by default -->
-            <a id="formLink" href="#" class="button-outline-pink disabled">
-              Reach out to us
-            </a>
-          </div>
-
-          <hr class="white-divider" />
-          
-          <h1>Our Socials</h1>
-          <div class="footer-social footer-larger">
-            <span class="tooltip" data-tooltip="Discord">
-              <Button path="https://discord.gg/tUDGrrNPf7" icon="tabler:brand-discord" />
-            </span>
-            <span class="tooltip" data-tooltip="GitHub">
-              <Button path="https://github.com/qut-ams" icon="tabler:brand-github" />
-            </span>
-            <span class="tooltip" data-tooltip="Instagram">
-              <Button path="https://www.instagram.com/qut_ams/" icon="tabler:brand-instagram" />
-            </span>
-            <span class="tooltip" data-tooltip="LinkedIn">
-              <Button path="https://www.linkedin.com/company/qut-ams/" icon="tabler:brand-linkedin" />
-            </span>
-            <span class="tooltip" data-tooltip="TikTok">
-              <Button path="https://www.tiktok.com/@qut_ams" icon="tabler:brand-tiktok" />
-            </span>
-          </div>
-    </main>
-    
-   <script>
-      // Ensure button starts disabled
+    <!-- 1. Define onload callback before loading the API -->
+    <script>
       function disableButton() {
         const link = document.getElementById("formLink");
         link.classList.add("disabled");
         link.href = "#";
       }
 
-      // Called when captcha is solved
       function enableButton() {
         const link = document.getElementById("formLink");
         link.classList.remove("disabled");
         link.href = "https://forms.gle/gk1UKoYbtoPG45Ly7";
       }
 
+      // Called once the reCAPTCHA library is ready
+      function onloadRecaptcha() {
+        grecaptcha.render("recaptcha-container", {
+          sitekey: "6Le7UYErAAAAADdKe_8IAKXK0kVk6Wb1nS1kCjOw",
+          callback: enableButton,
+          "expired-callback": disableButton,
+          theme: "light",      // or "dark"
+          size: "normal"       // or "compact", "invisible"
+        });
+      }
+
+      // Ensure button is disabled on initial load
       document.addEventListener("DOMContentLoaded", disableButton);
     </script>
-	<Footer />
+
+    <!-- 2. Load the reCAPTCHA API with explicit rendering -->
+    <script
+      src="https://www.google.com/recaptcha/api.js?onload=onloadRecaptcha&render=explicit"
+      async
+      defer
+    ></script>
+  </head>
+
+  <body class="dark background">
+    <Navigation />
+
+    <main class="min-h-screen py-12 justify-items-center">
+      <div class="contact-center">
+        <h1>Get in Touch</h1>
+
+        <!-- 3. Empty container for explicit render -->
+        <div id="recaptcha-container"></div>
+        <br />
+
+        <!-- 4. Link starts disabled; will be enabled by enableButton() -->
+        <a id="formLink" href="#" class="button-outline-pink disabled">
+          Reach out to us
+        </a>
+      </div>
+
+      <hr class="white-divider" />
+
+      <h1>Our Socials</h1>
+      <div class="footer-social footer-larger">
+        <span class="tooltip" data-tooltip="Discord">
+          <Button
+            path="https://discord.gg/tUDGrrNPf7"
+            icon="tabler:brand-discord"
+          />
+        </span>
+        <span class="tooltip" data-tooltip="GitHub">
+          <Button path="https://github.com/qut-ams" icon="tabler:brand-github" />
+        </span>
+        <span class="tooltip" data-tooltip="Instagram">
+          <Button
+            path="https://www.instagram.com/qut_ams/"
+            icon="tabler:brand-instagram"
+          />
+        </span>
+        <span class="tooltip" data-tooltip="LinkedIn">
+          <Button
+            path="https://www.linkedin.com/company/qut-ams/"
+            icon="tabler:brand-linkedin"
+          />
+        </span>
+        <span class="tooltip" data-tooltip="TikTok">
+          <Button path="https://www.tiktok.com/@qut_ams" icon="tabler:brand-tiktok" />
+        </span>
+      </div>
+    </main>
+
+    <Footer />
   </body>
 </html>

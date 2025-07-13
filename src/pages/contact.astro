@@ -21,13 +21,23 @@ import Button from "@/components/Button.astro"
     <main class="min-h-screen py-12 justify-items-center">
       
           <div class="contact-center">
-              <h1>Get in Touch</h1>
-              <p>Please complete the CAPTCHA to reach our form.</p>
-              <!-- reCAPTCHA widget -->
-              <div class="g-recaptcha" data-sitekey="6Le7UYErAAAAADdKe_8IAKXK0kVk6Wb1nS1kCjOw" data-callback="enableButton"></div>
-              <!-- Disabled link/button -->
-              <br/>
-              <a id="formLink" href="#" class="button-outline-pink disabled">Reach out to us</a>
+            <h1>Get in Touch</h1>
+            <p>Please complete the CAPTCHA to reach our form.</p>
+
+            <!-- reCAPTCHA widget -->
+            <div
+              class="g-recaptcha"
+              data-sitekey="6Le7UYErAAAAADdKe_8IAKXK0kVk6Wb1nS1kCjOw"
+              data-callback="enableButton"
+              data-expired-callback="disableButton"
+            ></div>
+
+            <br />
+
+            <!-- Disabled link by default -->
+            <a id="formLink" href="#" class="button-outline-pink disabled">
+              Reach out to us
+            </a>
           </div>
 
           <hr class="white-divider" />
@@ -52,13 +62,23 @@ import Button from "@/components/Button.astro"
           </div>
     </main>
     
-  <script>
-    function enableButton() {
-      const link = document.getElementById('formLink');
-      link.classList.remove('disabled');
-      link.href = "https://forms.gle/gk1UKoYbtoPG45Ly7";
-    }
-  </script>
+   <script>
+      // Ensure button starts disabled
+      function disableButton() {
+        const link = document.getElementById("formLink");
+        link.classList.add("disabled");
+        link.href = "#";
+      }
+
+      // Called when captcha is solved
+      function enableButton() {
+        const link = document.getElementById("formLink");
+        link.classList.remove("disabled");
+        link.href = "https://forms.gle/gk1UKoYbtoPG45Ly7";
+      }
+
+      document.addEventListener("DOMContentLoaded", disableButton);
+    </script>
 	<Footer />
   </body>
 </html>

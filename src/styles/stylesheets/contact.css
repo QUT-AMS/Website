@@ -1,0 +1,104 @@
+/* Center the “Reach out to us here” button */
+.button-outline-pink {
+  display: block;     
+  margin: 1rem auto;  
+  text-align: center;  
+  font-size: 1.5rem;
+}
+
+/* Make the social icons much larger and center them */
+.footer-larger .tooltip {
+  position: relative;
+  display: inline-block;
+}
+
+/* 2. Create the hidden tooltip text via ::after */
+.footer-larger .tooltip::after {
+  content: attr(data-tooltip);
+  position: absolute;
+
+  /* Position above the icon, centered horizontally */
+  bottom: 100%;
+  left: 50%;
+  transform: translateX(-50%);
+  
+  /* Styling */
+  background-color: #222;
+  color: #fff;
+  padding: 0.3rem 0.6rem;
+  font-size: 0.8rem;
+  white-space: nowrap;
+  pointer-events: none;
+  
+  /* Hide by default */
+  opacity: 0;
+  transition: opacity 0.2s ease-in-out;
+}
+
+.footer-larger .tooltip:hover::after {
+  opacity: 1;
+}
+
+.footer-social.footer-larger {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 1rem;           
+  margin: 0 auto;      
+  padding: 1rem 0;     
+}
+
+.footer-larger svg {
+  width: 3rem !important; 
+  height: 3rem !important;
+}
+
+/* tooltips */
+.footer-larger .tooltip {
+  position: relative;
+  display: inline-block;
+  cursor: pointer;
+}
+
+.footer-larger .tooltip::after {
+  content: attr(data-tooltip);
+  position: absolute;
+  bottom: 100%;          
+  left: 50%;
+  transform: translateX(-50%);
+  background: #222;
+  color: #fff;
+  padding: 0.25rem 0.5rem;
+  font-size: 0.75rem;
+  white-space: nowrap;
+  border-radius: 0.25rem;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.2s;
+}
+
+.footer-larger .tooltip:hover::after {
+  opacity: 1;
+}
+
+.contact-center {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1rem;
+  padding-top: 3rem;
+}
+
+.white-divider {
+  border: 0;
+  height: 0.0625rem;
+  background-color: #fff;
+  width: 60%;        
+  margin: 3rem auto; 
+}
+
+.socials-heading {
+  text-align: center;
+  margin-top: 2rem;
+  color: #fff;      
+}

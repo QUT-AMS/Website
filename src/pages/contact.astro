@@ -1,0 +1,64 @@
+---
+import "@/styles/stylesheets/global.css"
+import "@/styles/stylesheets/contact.css"
+import Navigation from "@/components/Navigation.astro"
+import Footer from '../components/Footer.astro';
+import Button from "@/components/Button.astro"
+
+---
+
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <meta name="viewport" content="width=device-width" />
+    <title>QUT AI & ML Society</title>
+    <script src="https://www.google.com/recaptcha/api.js" async defer></script>
+  </head>
+  <body class="dark background">
+    <Navigation />
+
+    <main class="min-h-screen py-12 justify-items-center">
+      
+          <div class="contact-center">
+              <h1>Get in Touch</h1>
+              <p>Please complete the CAPTCHA to reach our form.</p>
+              <!-- reCAPTCHA widget -->
+              <div class="g-recaptcha" data-sitekey="6Le7UYErAAAAADdKe_8IAKXK0kVk6Wb1nS1kCjOw" data-callback="enableButton"></div>
+              <!-- Disabled link/button -->
+              <br/>
+              <a id="formLink" href="#" class="button-outline-pink disabled">Reach out to us</a>
+          </div>
+
+          <hr class="white-divider" />
+          
+          <h1>Our Socials</h1>
+          <div class="footer-social footer-larger">
+            <span class="tooltip" data-tooltip="Discord">
+              <Button path="https://discord.gg/tUDGrrNPf7" icon="tabler:brand-discord" />
+            </span>
+            <span class="tooltip" data-tooltip="GitHub">
+              <Button path="https://github.com/qut-ams" icon="tabler:brand-github" />
+            </span>
+            <span class="tooltip" data-tooltip="Instagram">
+              <Button path="https://www.instagram.com/qut_ams/" icon="tabler:brand-instagram" />
+            </span>
+            <span class="tooltip" data-tooltip="LinkedIn">
+              <Button path="https://www.linkedin.com/company/qut-ams/" icon="tabler:brand-linkedin" />
+            </span>
+            <span class="tooltip" data-tooltip="TikTok">
+              <Button path="https://www.tiktok.com/@qut_ams" icon="tabler:brand-tiktok" />
+            </span>
+          </div>
+    </main>
+    
+  <script>
+    function enableButton() {
+      const link = document.getElementById('formLink');
+      link.classList.remove('disabled');
+      link.href = "https://forms.gle/gk1UKoYbtoPG45Ly7";
+    }
+  </script>
+	<Footer />
+  </body>
+</html>

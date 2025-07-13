@@ -1,0 +1,224 @@
+---
+import MainLogo from "@/logos/Head-Transparent.png"
+import "@/styles/stylesheets/global.css"
+import "@/styles/stylesheets/navbar.css"
+---
+    
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8"/>
+  <meta name="viewport" content="width=device-width,initial-scale=1"/>
+  <title>Navbar</title>
+</head>
+<body>
+
+  <nav class="navbar">
+    <div class="mobile-header">
+      <div class="brand">
+        <a href="/">
+          <img src={MainLogo.src} alt="Main Logo" class="logo" />
+        </a>
+      </div>
+
+      <button class="hamburger" id="menu-toggle">&#9776;</button>
+    </div>
+
+    <ul class="nav-links main-links" id="main-links">
+
+      <li><a href="/">Home</a></li>
+
+      <li class="dropdown">
+        <a href="#" class="dropbtn">
+          About Us <span class="arrow">&#9662;</span>
+        </a>
+        <ul class="dropdown-content">
+          <li><a href="/about/aims">Our Aims & Objectives</a></li>
+          <li><a href="/about/team">Our Team</a></li>
+        </ul>
+      </li>
+
+      <li class="dropdown">
+        <a href="#" class="dropbtn">
+          Learn <span class="arrow">&#9662;</span>
+        </a>
+        <ul class="dropdown-content">
+          <li><a href="/learn/ai_tools">AI Tools & Resources</a></li>
+          <li><a href="/learn/ml_topics">ML Topics</a></li>
+        </ul>
+      </li>
+
+      <li><a href="/challenges">Challenges</a></li>
+      <li><a href="/events">Events</a></li>
+
+      <!-- For mobile only -->
+      <div class="mobile-only">
+        <li class="contact-button"><a href="/contact">Contact Us</a></li>
+        <li class="pink-button"><a href="https://campus.hellorubric.com/?s=11397">Sign Up</a></li>
+      </div>
+
+      <div class="indicator"></div>
+    </ul>
+
+    <div class="secondary-links">
+      <a href="https://campus.hellorubric.com/?s=11397" class="btn signup">Sign Up</a>
+      <a href="/contact" class="contact-link contact">Contact Us</a>
+    </div>
+  </nav>
+
+</body>
+</html>
+
+
+<script>
+document.addEventListener("DOMContentLoaded", () => {
+  const toggleButton = document.getElementById("menu-toggle");
+  const mainLinks    = document.getElementById("main-links");
+  const body         = document.body;
+
+toggleButton.addEventListener("click", e => {
+  e.stopPropagation();
+
+  const isOpen = mainLinks.classList.toggle("show");
+  body.classList.toggle("no-scroll");
+
+  // ① If nav is opening, collapse all dropdowns
+  if (isOpen) {
+    document.querySelectorAll(".dropdown-content.show")
+      .forEach(el => el.classList.remove("show"));
+    document.querySelectorAll(".dropbtn.open")
+      .forEach(btn => btn.classList.remove("open"));
+  }
+
+  // ② Swap hamburger icon
+  if (isOpen) {
+    toggleButton.innerHTML = "&times;";
+    toggleButton.classList.add("open");
+  } else {
+    toggleButton.innerHTML = "&#9776;";
+    toggleButton.classList.remove("open");
+  }
+});
+
+
+  
+
+
+  // Dropdown buttons → toggle submenus AND arrows
+  document.querySelectorAll(".dropdown > .dropbtn")
+    .forEach(btn => {
+      btn.addEventListener("click", e => {
+        // On desktop (min-width: 768px), do nothing (hover in CSS handles it)
+        if (window.matchMedia("(min-width: 768px)").matches) return;
+
+        // Mobile: toggle submenu as before
+        e.preventDefault();
+        e.stopPropagation();
+
+        const submenu = btn.parentElement.querySelector(".dropdown-content");
+        const isOpen  = submenu.classList.contains("show");
+
+        // close all others
+        document.querySelectorAll(".dropdown-content.show")
+          .forEach(m => m.classList.remove("show"));
+        document.querySelectorAll(".dropbtn.open")
+          .forEach(b => b.classList.remove("open"));
+
+        if (isOpen) {
+          submenu.classList.remove("show");
+          btn.classList.remove("open");
+        } else {
+          submenu.classList.add("show");
+          btn.classList.add("open");
+        }
+      });
+    });
+
+
+
+  // (Optional) close-menu button
+  const closeButton = document.getElementById("close-menu");
+  if (closeButton) {
+    closeButton.addEventListener("click", (e) => {
+      e.stopPropagation();
+      mainLinks.classList.remove("show");
+      body.classList.remove("no-scroll");
+    });
+  }
+});
+</script>
+
+
+
+
+
+
+<script type="module" client:load>
+  const navContainer = document.querySelector('.nav-links');
+  // Include only top-level links and dropdown toggles
+  const links        = Array.from(navContainer.querySelectorAll('a:not(.dropdown-content a)'));
+  const indicator    = navContainer.querySelector('.indicator');
+
+  let activeLink;
+  let indicatorTimeout;
+  const currentPath = window.location.pathname;
+
+  // 1) Try exact match on top-level link
+  activeLink = links.find(link => link.getAttribute('href') === currentPath);
+
+  // 2) Try prefix match for top-level link
+  if (!activeLink) {
+    activeLink = links.find(link => {
+      const href = link.getAttribute('href');
+      return href !== '/' && currentPath.startsWith(href);
+    });
+  }
+
+  // 3) If still no match, look inside each dropdown’s children
+  if (!activeLink) {
+    document.querySelectorAll('.dropdown').forEach(drop => {
+      const toggle = drop.querySelector('.dropbtn');
+      const childs = drop.querySelectorAll('.dropdown-content a');
+      childs.forEach(child => {
+        const href = child.getAttribute('href');
+        if (href === currentPath || (href !== '/' && currentPath.startsWith(href))) {
+          activeLink = toggle;
+        }
+      });
+    });
+  }
+  
+
+  // Mark active and position indicator
+  if (activeLink) {
+    activeLink.classList.add('active');
+    updateIndicator(activeLink);
+  }
+
+  function updateIndicator(linkEl) {
+    const linkBox      = linkEl.getBoundingClientRect();
+    const containerBox = navContainer.getBoundingClientRect();
+    const offsetX      = linkBox.left - containerBox.left;
+
+    indicator.style.width = `${linkBox.width}px`;
+    indicator.style.left  = `${offsetX}px`;
+  }
+
+  // On hover, move the indicator
+  links.forEach(link => {
+    link.addEventListener('mouseenter', () => {
+      clearTimeout(indicatorTimeout);
+      updateIndicator(link);
+    });
+  });
+
+  // On mouse leave, return to active
+  navContainer.addEventListener('mouseleave', () => {
+    clearTimeout(indicatorTimeout);
+    indicatorTimeout = setTimeout(() => {
+      if (activeLink) updateIndicator(activeLink);
+    }, 100);
+  });
+
+  
+</script>

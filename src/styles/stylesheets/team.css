@@ -1,0 +1,50 @@
+/* ---------------------------------- */
+/*          Section Wrapper           */
+/* ---------------------------------- */
+
+.team-section {
+  margin-top: 3.75rem;    
+  text-align: center;
+}
+
+/* ---------------------------------- */
+/*             Card Wrapper           */
+/* ---------------------------------- */
+
+.team-wrapper {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 2.5rem;         
+  margin: 2.5rem auto 0;    
+}
+
+/* ---------------------------------- */
+/*       Individual Profile Card      */
+/* ---------------------------------- */
+.team-card {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+}
+
+.team-card img {
+  width: 15rem;
+  height: 15rem;
+  object-fit: cover;
+  border-radius: 50%;
+  border: 2px solid #FF00E6;  
+  display: block;
+  box-sizing: border-box;   
+}
+
+.team-card h2 {
+  margin-top: 0.625rem;    
+  font-size: 1.5rem;       
+}
+
+.team-card p {
+  margin-top: 0.25rem;     
+  color: var(--color-primary);
+}

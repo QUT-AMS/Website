@@ -28,7 +28,7 @@
   position: absolute;
   inset: 0;
   background: 
-    url("../graphics/network.jpg") 
+    url("/network.jpg") 
     center/cover no-repeat fixed;
   z-index: -2;
 }

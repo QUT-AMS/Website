@@ -26,3 +26,4 @@ pnpm-debug.log*
 
 # VS Code settings
 .vscode/
+bun.lockb

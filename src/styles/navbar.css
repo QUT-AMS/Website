@@ -19,7 +19,19 @@
   background-color: rgba(0, 0, 0, 0.8);
   color: #fff;
   font-family: 'Rajdhani', sans-serif;
-  font-size: 1rem;
+  font-size: 1rem;  /* the hidden "bar" above the text */
+  .secondary-links a.contact::after {
+    content: "";
+    position: absolute;
+    top: -8px;         
+    left: 0;
+    width: 100%;
+    height: 2px;          
+    background: #FF00E6;  
+    transform: scaleX(0);
+    transform-origin: left center;
+    transition: transform 0.3s ease;
+  }
   font-weight: bold;
   text-transform: uppercase;
   letter-spacing: 0.02em;
@@ -39,8 +51,9 @@
   list-style:none;
   gap: 2rem;
   margin:0 auto;
-  padding-bottom: 10px;
+  padding: 0;
   position: relative;
+  align-items: center;
 }
 
 .main-links li { 
@@ -60,10 +73,10 @@
 .contact-link {
   font-size: 1rem;
   display: flex;
+  align-items: center;
   list-style:none;
-  margin:0 auto;
-  padding-top: 11px;
-  padding-left: 10px;
+  margin:0;
+  padding: 0;
   position: relative;
 }
 
@@ -144,6 +157,7 @@ body.no-scroll {
 
 .secondary-links { 
   display:flex; 
+  align-items: center;
   gap:1rem; 
 }
 
@@ -154,8 +168,10 @@ body.no-scroll {
   border: 1px solid #FF00E6;
   border-radius:25px; 
   font-size: 1rem;
-  transition: left 0.4s ease-in-out,
-            width 0.4s ease-in-out;
+  display: inline-flex;
+  align-items: center;
+  text-decoration: none;
+  transition: background-color 0.3s ease;
 }
 
 .btn:hover{
@@ -490,7 +506,7 @@ body.no-scroll {
   /* ensure the link itself can carry an absolutely-positioned pseudo */
   .secondary-links a.contact {
     position: relative;
-    padding-top: 0.5rem;
+    padding: 0;
   }
 
   /* the hidden “bar” above the text */

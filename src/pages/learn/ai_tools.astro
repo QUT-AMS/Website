@@ -9,7 +9,7 @@ import Footer from '@/components/Footer.astro';
     <meta charset="utf-8" />
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
     <meta name="viewport" content="width=device-width" />
-    <title>QUT AI & ML Society</title>
+    <title>QUT AI & ML Society</title>   
   </head>
   <body class="background-network">
     <Navigation />
@@ -20,55 +20,72 @@ import Footer from '@/components/Footer.astro';
       </div>
 
       <div class="content-wrapper">
-        <!-- Week 3 Project Night -->
-        <section class="info-panel">
-          <h2 class="section-title">Project Night 05/08</h2>
-          <p class="section-content">
-            To be revealed after the event!
-          </p>
-        </section>
+
+        <!-- Week 3 Project Night as a dropdown -->
+      <section class="info-panel">
+
+        <details>
+          <summary class="section-title">
+            <h2>BANDS x QUT AI & ML Society Collab – How to Build an ML Portfolio</h2>
+          </summary>
+
+          <object
+            class="pdf-container"
+            data="/slides/Week 3 - BANDS Part 1.pdf"
+            type="application/pdf"
+          >
+            <p>
+              Your browser doesn’t support embedded PDFs.
+              <a href="/slides/Week 3 - BANDS Part 1.pdf" target="_blank">
+                Download instead.
+              </a>
+            </p>
+          </object>
+        </details>
+
+        <p class="section-description">
+          Join a special collaboration between BANDS and the QUT AI & ML Society
+          for How to Build an ML Portfolio 101 – Part 1 of a two-part series.
+          Explore ML tools like GitHub, Kaggle, and practical documentation
+          while learning how to showcase your skills through hands-on
+          experience and student-led guidance.
+        </p>
+
+      </section>
+
 
         <!-- Week 4 Project Night -->
         <section class="info-panel">
           <h2 class="section-title">Project Night 12/08</h2>
-          <p class="section-content">
-            To be revealed after the event!
-          </p>
+          <p class="section-content">To be revealed after the event!</p>
         </section>
 
         <!-- Week 5 Project Night -->
         <section class="info-panel">
           <h2 class="section-title">Project Night 19/08</h2>
-          <p class="section-content">
-            To be revealed after the event!
-          </p>
+          <p class="section-content">To be revealed after the event!</p>
         </section>
 
         <!-- Week 6 Project Night -->
         <section class="info-panel">
           <h2 class="section-title">Project Night 26/08</h2>
-          <p class="section-content">
-            To be revealed after the event!
-          </p>
+          <p class="section-content">To be revealed after the event!</p>
         </section>
 
         <!-- Week 7 Project Night -->
         <section class="info-panel">
           <h2 class="section-title">Project Night 02/09</h2>
-          <p class="section-content">
-            To be revealed after the event!
-          </p>
+          <p class="section-content">To be revealed after the event!</p>
         </section>
 
         <!-- Week 8 Project Night -->
         <section class="info-panel">
           <h2 class="section-title">Project Night 09/09</h2>
-          <p class="section-content">
-            To be revealed after the event!
-          </p>
+          <p class="section-content">To be revealed after the event!</p>
         </section>
       </div>
     </main>
+
     <Footer />
   </body>
 </html>

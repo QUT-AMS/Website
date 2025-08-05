@@ -399,3 +399,75 @@ h2 {
 }
 
 
+
+
+
+/* ------------------------------------ */
+/*                DETAILS               */
+/* ------------------------------------ */
+
+/* make summary a flex‐row so arrow + h2 sit inline */
+.info-panel details summary {
+  display: flex;
+  align-items: center;
+  list-style: none;         /* remove default arrow */
+  cursor: pointer;
+  margin-bottom: 0.5rem;
+}
+
+/* hide default triangle in WebKit */
+.info-panel details summary::-webkit-details-marker {
+  display: none;
+}
+
+/* inject our arrow */
+.info-panel details summary::before {
+  content: "▶";
+  margin-right: 0.5em;
+  transition: transform 0.2s ease;
+}
+
+/* rotate arrow on open */
+.info-panel details[open] summary::before {
+  transform: rotate(90deg);
+}
+
+/* strip h2 margins so it’s perfectly inline */
+.info-panel details summary h2 {
+  margin: 0;
+  font-size: 1.5rem;
+  flex: 1;                  /* use up leftover space if needed */
+}
+
+/* hide the PDF until <details> is open */
+.pdf-container {
+  display: none;
+  width: 100%;
+  height: 600px;
+  border: none;
+  margin-top: 1rem;
+}
+
+.info-panel details[open] .pdf-container {
+  display: block;
+}
+
+/* always-visible description */
+.section-description {
+  margin: 0.5rem 0;
+}
+
+/* Hide by collapsing height + visibility instead of display:none */
+.info-panel details > .pdf-container {
+  height: 0;
+  overflow: hidden;
+  visibility: hidden;
+  transition: height 0.2s ease;
+}
+
+.info-panel details[open] > .pdf-container {
+  height: 600px;
+  visibility: visible;
+}
+
+

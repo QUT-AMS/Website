@@ -439,13 +439,11 @@ h2 {
   flex: 1;                  /* use up leftover space if needed */
 }
 
-/* hide the PDF until <details> is open */
 .pdf-container {
-  display: none;
   width: 100%;
-  height: 600px;
+  height: 70vh; /* or 100vh if you want fullscreen */
+  max-width: 100%;
   border: none;
-  margin-top: 1rem;
 }
 
 .info-panel details[open] .pdf-container {

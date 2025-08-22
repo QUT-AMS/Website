@@ -201,7 +201,7 @@ h2 {
 /*  RESPONSIVE: STACK ON SMALL SCREENS  */
 /* ------------------------------------ */
 
-@media (max-width: 37.5rem) {
+@media (max-width: 51rem) {
 
   .tab-switch {
     flex-direction: column;

@@ -14,6 +14,10 @@
     background: radial-gradient(125% 125% at 50% 5%, #090909 20%, #090909 55%, #FF00E6 75%);
 }
 
+* {
+  font-family: var(--font-heading);
+  color: var(--color-primary);
+}
 
 .background-network {
   position: relative;
@@ -150,7 +154,7 @@ h2 {
 .tab-switch {
   display: flex;
   gap: 0.5rem;
-  margin: 1rem 0 0;
+  margin: 1rem 0 0font
 }
 
 /* each tab button looks like a box with a raised border */

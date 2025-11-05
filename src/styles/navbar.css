@@ -127,7 +127,7 @@
 .nav-links .dropdown > .dropbtn {
   display: inline-block;      
   width: auto;                
-  padding: 0 1.0625rem;       
+  padding: 0.4rem 1.0625rem;       
   position: relative;        
   box-sizing: content-box;    
 }

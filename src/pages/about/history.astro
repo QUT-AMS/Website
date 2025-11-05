@@ -1,48 +1,26 @@
 ---
-import "@/styles/global.css"
-import "@/styles/team.css"
-import Navigation from "@/components/Navigation.astro"
-import Footer from "@/components/Footer.astro"
+import "@/styles/global.css";
+import "@/styles/team.css";
+import Navigation from "@/components/Navigation.astro";
+import Footer from "@/components/Footer.astro";
 
-const teams = [
-  { id: 'overview', title: 'Our Team', items: [{ img: '/people/team.png', isHero: true }] },
-  { id: 'admin', items: [
-      { name: 'Zac Knight', role: 'President' },
-      { name: 'Niam Nayani', role: 'Vice President' },
-      { name: 'Jackson Riding', role: 'Secretary' },
-      { name: 'Declan Whitty', role: 'Treasurer' }
-    ]
-  },
-  { id: 'projects', items: [
-      { name: 'Steve Hun', role: 'Projects Director' },
-      { name: 'Iwan Kaczmar-Donaghue', role: 'Projects Officer' },
-      { name: 'Valerie Annabella', role: 'Projects Officer' },
-      { name: 'Jaidyn Snabel', role: 'Projects Officer' },
-      { name: 'Rajinder Singh', role: 'Projects Officer' },
-      { name: 'Nhu Hieu Nguyen', role: 'Projects Officer' }
-    ]
-  },
-  { id: 'marketing', items: [
-      { name: 'Amos Wat', role: 'Marketing Director' },
-      { name: 'Belinda Zhou', role: 'Marketing Officer' },
-      { name: 'John Wynter', role: 'Marketing Officer' },
-      { name: 'Venis Patel', role: 'Marketing Officer' }
-    ]
-  },
-  { id: 'events', items: [
-      { name: "Gemma O'Driscoll", role: 'Events Director' },
-      { name: 'Sophia Sweet', role: 'Events Officer' },
-      { name: 'Amit Suthram', role: 'Events Officer' }
-    ]
-  },
-  { id: 'general', items: [
-      { name: 'Leonora Van De Sande', role: 'General Executive' },
-      { name: 'Mandeep Gautam', role: 'General Executive' },
-      { name: 'Ethan Regnart', role: 'General Executive' },
-      { name: 'In Hwa Na', role: 'General Executive' }
-    ]
-  }
-];
+// Import all JSON files from /src/data
+const teamFiles = import.meta.glob('/src/data/*.json', { eager: true, query: '?json' });
+
+// Convert imported files into an array of datasets with year info
+const teamsByYear = Object.entries(teamFiles).map(([filepath, mod]) => {
+  const yearMatch = filepath.match(/(\d{4})_team\.json$/);
+  const year = yearMatch ? parseInt(yearMatch[1]) : null;
+  const data = mod.default;
+  return {
+    year,
+    teams: Array.isArray(data) ? data : []
+  };
+})
+// Sort by year descending (latest first)
+.sort((a, b) => (b.year || 0) - (a.year || 0));
+
+console.log("Teams by year:", teamsByYear);
 
 function groupByRole(items) {
   const map = {};
@@ -53,14 +31,12 @@ function groupByRole(items) {
   return map;
 }
 ---
-
 <html lang="en">
   <head>
     <meta charset="utf-8" />
     <title>QUT AI & ML Society</title>
     <meta name="viewport" content="width=device-width" />
   </head>
-
   <body class="background-network">
     <Navigation />
 
@@ -69,60 +45,74 @@ function groupByRole(items) {
         <h1 class="page-title">Executive Team History</h1>
       </div>
 
-      <section class="info-panel">
-        <h2 class="section-title">Founding Team (2025)</h2>
+      {teamsByYear.map(({ year, teams }, yearIndex) => {
+        if (!teams.length) return null;
 
-        <div class="team-split static-layout">
-          <!-- LEFT -->
-          <aside class="yearbook">
-            <table class="yearbook-table">
-              {teams
-                .filter(t => t.id !== 'overview')
-                .map((t, index, arr) => {
-                  const grouped = groupByRole(t.items);
-                  return (
-                    <>
-                      <tbody class="team-group" key={t.id}>
-                        {Object.entries(grouped).map(([role, names]) => (
-                          <tr class="yearbook-row" key={role}>
-                            <td class="role-cell">{role}</td>
-                            <td class="names-cell">{names.join(', ')}</td>
-                          </tr>
-                        ))}
-                      </tbody>
+        const overviewSection = teams.find(t => t.id === 'overview');
+        const heroImg = overviewSection?.items?.[0]?.img || '';
+        const sectionTitle = overviewSection?.title || `Team ${year}`;
 
-                      {/* Add an empty spacer row between teams */}
-                      {index < arr.length - 1 && (
-                        <tbody>
-                          <tr class="team-spacer">
-                            <td colSpan="2"></td>
-                          </tr>
-                        </tbody>
-                      )}
-                    </>
-                  );
-                })}
-            </table>
-          </aside>
+        return (
+          <section class="info-panel history-box" key={yearIndex}>
+            <h2 class="section-title">{sectionTitle}</h2>
 
+            <div class="team-split static-layout">
+              {/* LEFT: Yearbook Table */}
+              <aside class="yearbook">
+                <table class="yearbook-table">
+                  {teams
+                    .filter(t => t.id !== 'overview')
+                    .map((t, index, arr) => {
+                      const grouped = groupByRole(t.items);
+                      return (
+                        <>
+                          <tbody class="team-group" key={t.id}>
+                            {Object.entries(grouped).map(([role, names]) => (
+                              <tr class="yearbook-row" key={role}>
+                                <td class="role-cell">{role}</td>
+                                <td class="names-cell">{names.join(', ')}</td>
+                              </tr>
+                            ))}
+                          </tbody>
 
-          <!-- RIGHT -->
-          <div class="team-photo-large">
-            <img 
-              src="/people/team.png" 
-              alt="Founding team 2025" 
-              class="team-hero" 
-              id="teamHero" 
-            />
-          </div>
+                          {index < arr.length - 1 && (
+                            <tbody>
+                              <tr class="team-spacer">
+                                <td colSpan="2"></td>
+                              </tr>
+                            </tbody>
+                          )}
+                        </>
+                      );
+                    })}
+                </table>
+              </aside>
 
-          <!-- Modal -->
-          <div id="photoModal" class="modal">
-            <span class="modal-close" id="modalClose">&times;</span>
-            <img class="modal-content" id="modalImg">
-          </div>
-        </div>
-      </section>
+              {/* RIGHT: Hero Image */}
+              <div class="team-photo-large">
+                {heroImg && heroImg !== "N/A" ? (
+                  <img
+                    src={heroImg}
+                    alt={sectionTitle}
+                    class="team-hero"
+                    id={`teamHero-${yearIndex}`}
+                  />
+                ) : (
+                  <div class="team-placeholder">
+                    Photo coming soon!
+                  </div>
+                )}
+              </div>
+
+              {/* Modal */}
+              <div id={`photoModal-${yearIndex}`} class="modal">
+                <span class="modal-close" id={`modalClose-${yearIndex}`}>&times;</span>
+                <img class="modal-content" id={`modalImg-${yearIndex}`} />
+              </div>
+            </div>
+          </section>
+        );
+      })}
     </main>
 
     <Footer />
@@ -130,28 +120,28 @@ function groupByRole(items) {
 </html>
 
 <script>
-  const modal = document.getElementById("photoModal");
-  const img = document.getElementById("teamHero");
-  const modalImg = document.getElementById("modalImg");
-  const closeBtn = document.getElementById("modalClose");
+  // Handle multiple modals automatically
+  document.querySelectorAll('.team-hero').forEach((img, i) => {
+    const modal = document.getElementById(`photoModal-${i}`);
+    const modalImg = document.getElementById(`modalImg-${i}`);
+    const closeBtn = document.getElementById(`modalClose-${i}`);
 
-  // Open modal
-  img.onclick = function() {
-    modal.style.display = "block";
-    modalImg.src = this.src;
-    document.body.classList.add("modal-open"); // hide navbar + disable scroll
-  }
+    img.onclick = () => {
+      modal.style.display = "block";
+      modalImg.src = img.src;
+      document.body.classList.add("modal-open");
+    }
 
-  // Close modal function
-  function closeModal() {
-    modal.style.display = "none";
-    document.body.classList.remove("modal-open"); // show navbar + enable scroll
-  }
+    closeBtn.onclick = () => {
+      modal.style.display = "none";
+      document.body.classList.remove("modal-open");
+    }
 
-  closeBtn.onclick = closeModal;
-
-  // Close modal if clicking outside the image
-  modal.onclick = function(e) {
-    if (e.target === modal) closeModal();
-  }
+    modal.onclick = (e) => {
+      if (e.target === modal) {
+        modal.style.display = "none";
+        document.body.classList.remove("modal-open");
+      }
+    }
+  });
 </script>

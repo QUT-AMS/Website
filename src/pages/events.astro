@@ -1,6 +1,7 @@
 ---
 import "@/styles/global.css"
 import "@/styles/ml-topics.css"
+import "@/styles/events.css"
 import Navigation from "@/components/Navigation.astro"
 import Footer from '@/components/Footer.astro';
 ---
@@ -52,9 +53,16 @@ import Footer from '@/components/Footer.astro';
             </p>
 
             <p class="section-content">
-              <img src="/events/Projects Night - 1.jpg" alt="projects night photo 1" />
-              <img src="/events/Projects Night - 2.jpg" alt="projects night photo 2" />
-              <img src="/events/Projects Night - 3.jpg" alt="projects night photo 3" />
+              <div class="carousel" id="projects-carousel">
+                <button class="carousel-btn prev">&#10094;</button>
+                <div class="carousel-track">
+                  <img src="/events/Projects Night - 1.jpg" alt="projects night photo 1" />
+                  <img src="/events/Projects Night - 2.jpg" alt="projects night photo 2" />
+                  <img src="/events/Projects Night - 3.jpg" alt="projects night photo 3" />
+                  <img src="/events/Projects Night - 4.jpg" alt="projects night photo 3" />
+                </div>
+                <button class="carousel-btn next">&#10095;</button>
+              </div>
             </p>
           </section>
         </div>
@@ -83,7 +91,15 @@ import Footer from '@/components/Footer.astro';
             </p>
 
             <p class="section-content">
-              <img src="/events/Industry Night.jpg" alt="industry speaker photo" />
+              <div class="carousel" id="projects-carousel">
+                <button class="carousel-btn prev">&#10094;</button>
+                <div class="carousel-track">
+                  <img src="/events/Industry Night - 1.jpg" alt="industry speaker photo" />
+                  <img src="/events/Industry Night - 2.jpg" alt="industry speaker photo" />
+                  <img src="/events/Industry Night - 3.jpg" alt="industry speaker photo" />
+                </div>
+                <button class="carousel-btn next">&#10095;</button>
+              </div>
             </p>
           </section>
         </div>
@@ -110,7 +126,15 @@ import Footer from '@/components/Footer.astro';
             </p>
 
             <p class="section-content">
-              <img src="/events/Social Night.jpg" alt="social night photo" />
+              <div class="carousel" id="projects-carousel">
+                <button class="carousel-btn prev">&#10094;</button>
+                <div class="carousel-track">
+                  <img src="/events/Social Night - 1.jpg" alt="social night photo" />
+                  <video src="/events/Social Night - 3.mp4" muted loop playsinline style="width: 100%; border-radius: 8px;"></video>
+                  <img src="/events/Social Night - 2.jpg" alt="social night photo" />
+                </div>
+                <button class="carousel-btn next">&#10095;</button>
+              </div>
             </p>
           </section>
         </div>
@@ -143,18 +167,85 @@ import Footer from '@/components/Footer.astro';
 </html>
 
 <script type="module">
+  document.addEventListener('DOMContentLoaded', () => {
     const tabs = document.querySelectorAll('.tab-btn');
     const panels = document.querySelectorAll('.tab-panel');
 
     tabs.forEach(tab => {
       tab.addEventListener('click', () => {
-        // deactivate all
         tabs.forEach(t => t.classList.remove('active'));
         panels.forEach(p => p.classList.remove('active'));
-
-        // activate clicked + matching panel
         tab.classList.add('active');
         document.getElementById(tab.dataset.tab).classList.add('active');
       });
     });
+
+    document.querySelectorAll('.carousel').forEach(initCarousel);
+
+    function initCarousel(carousel) {
+      const track = carousel.querySelector('.carousel-track');
+      const slides = Array.from(track.children).filter(el =>
+        el.tagName === 'IMG' || el.tagName === 'VIDEO'
+      );
+
+      const prevBtn = carousel.querySelector('.carousel-btn.prev');
+      const nextBtn = carousel.querySelector('.carousel-btn.next');
+      const dotsContainer = document.createElement('div');
+      dotsContainer.className = 'carousel-dots';
+      carousel.appendChild(dotsContainer);
+
+      let index = 0;
+
+      function updateCarousel() {
+        track.style.transform = `translateX(-${index * 100}%)`;
+
+        // Update dots
+        dotsContainer.querySelectorAll('.dot').forEach((dot, i) => {
+          dot.classList.toggle('active', i === index);
+          dot.setAttribute('aria-current', i === index ? 'true' : 'false');
+        });
+
+        // Pause all videos except the active one
+        slides.forEach((slide, i) => {
+          if (slide.tagName === 'VIDEO') {
+            if (i === index) {
+              slide.play().catch(() => {});
+            } else {
+              slide.pause();
+              slide.currentTime = 0; // optional: reset to start
+            }
+          }
+        });
+      }
+
+      slides.forEach((_, i) => {
+        const dot = document.createElement('button');
+        dot.className = 'dot';
+        dot.type = 'button';
+        dot.addEventListener('click', () => {
+          index = i;
+          updateCarousel();
+        });
+        dotsContainer.appendChild(dot);
+      });
+
+      if (slides.length <= 1) {
+        prevBtn.style.display = 'none';
+        nextBtn.style.display = 'none';
+        carousel.classList.add('hide-arrows');
+      } else {
+        prevBtn.addEventListener('click', () => {
+          index = (index - 1 + slides.length) % slides.length;
+          updateCarousel();
+        });
+        nextBtn.addEventListener('click', () => {
+          index = (index + 1) % slides.length;
+          updateCarousel();
+        });
+      }
+
+      window.addEventListener('resize', updateCarousel);
+      updateCarousel();
+    }
+  });
 </script>

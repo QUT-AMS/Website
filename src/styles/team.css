@@ -1,7 +1,7 @@
 /* === Layout === */
 .team-split.static-layout {
   display: grid;
-  grid-template-columns: 45% 55%;
+  grid-template-columns: 40% 60%;
   gap: 2.5rem;
   align-items: start;
   width: 100%;
@@ -36,7 +36,7 @@
 }
 
 .role-cell {
-  width: 35%;
+  width: 36%;
   color: var(--color-primary);
   font-family: var(--font-heading);
   font-weight: 700;
@@ -192,4 +192,23 @@ body.modal-open nav {
 .modal-close:focus {
   outline: 3px solid rgba(255,0,230,0.45);
   outline-offset: 3px;
+}
+
+.history-box {
+  margin-bottom: 3rem;
+}
+
+/* Placeholder for missing hero image */
+.team-placeholder {
+  width: 100%;           /* full container width */
+  aspect-ratio: 4/3;     /* maintain image-like aspect ratio */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 1rem;
+  background-color: #333; /* dark grey background */
+  color: #fff;            /* white text */
+  font-weight: bold;
+  text-align: center;
+  font-size: 1.2rem;
 }
